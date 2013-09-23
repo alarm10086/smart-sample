@@ -64,9 +64,9 @@ public class ProductAction extends BaseAction {
 
     @Request("post:/products")
     public Result searchProducts(Map<String, String> formFieldMap) {
-        int pageNumber = CastUtil.castInt(formFieldMap.get("pageNumber"));
-        int pageSize = CastUtil.castInt(formFieldMap.get("pageSize"));
-        String queryString = formFieldMap.get("queryString");
+        int pageNumber = CastUtil.castInt(formFieldMap.get(PAGE_NUMBER));
+        int pageSize = CastUtil.castInt(formFieldMap.get(PAGE_SIZE));
+        String queryString = formFieldMap.get(QUERY_STRING);
 
         Map<String, String> queryMap = WebUtil.createQueryMap(queryString);
 

@@ -18,6 +18,5 @@ public interface ProductService {
 
     boolean deleteProduct(long productId);
 
-//    Pager<Product> searchProductPager(int pageNumber, int pageSize, Map<String, String> formFieldMap);
     Pager<ProductBean> searchProductPager(int pageNumber, int pageSize, Map<String, String> formFieldMap);
 }
