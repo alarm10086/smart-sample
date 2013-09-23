@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Product Picture</title>
+    <link rel="stylesheet" href="../style/global.css"/>
+    <script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../lib/jquery-form/jquery.form.min.js"></script>
+    <script type="text/javascript" src="../script/global.js"></script>
+    <script type="text/javascript" src="../script/product/product_upload.js"></script>
+</head>
+<body>
+
+<form id="upload_form" action="/upload.do" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="path" value="product"/>
+    <p>
+        <label for="file">Picture:</label>
+        <input type="file" id="file" name="file"/>
+        <button type="submit">Upload</button>
+    </p>
+</form>
+<br/>
+<div id="console"></div>
+
+</body>
+</html>
