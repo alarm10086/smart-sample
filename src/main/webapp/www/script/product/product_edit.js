@@ -17,6 +17,15 @@ $(function() {
                 $('#product_code').val(product.productCode);
                 $('#price').val(product.price);
                 $('#description').val(product.description);
+            } else {
+                switch (result.error) {
+                    case 10:
+                        alert('The parameter is error!');
+                        break;
+                    case 20:
+                        alert('The data is error!');
+                        break;
+                }
             }
         }
     });

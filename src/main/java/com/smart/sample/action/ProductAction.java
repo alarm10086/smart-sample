@@ -41,7 +41,7 @@ public class ProductAction extends BaseAction {
     @Request("post:/product")
     public Result createProduct(Map<String, Object> formFieldMap) {
         boolean success = productService.createProduct(formFieldMap);
-        return new Result(true);
+        return new Result(success);
     }
 
     @Request("put:/product/{id}")
@@ -63,10 +63,10 @@ public class ProductAction extends BaseAction {
     }
 
     @Request("post:/products")
-    public Result searchProducts(Map<String, String> formFieldMap) {
+    public Result searchProducts(Map<String, Object> formFieldMap) {
         int pageNumber = CastUtil.castInt(formFieldMap.get(PAGE_NUMBER));
         int pageSize = CastUtil.castInt(formFieldMap.get(PAGE_SIZE));
-        String queryString = formFieldMap.get(QUERY_STRING);
+        String queryString = CastUtil.castString(formFieldMap.get(QUERY_STRING));
 
         Map<String, String> queryMap = WebUtil.createQueryMap(queryString);
 
