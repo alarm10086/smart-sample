@@ -1,5 +1,7 @@
 $(function() {
-    var validator = new Validator();
+    $('#edit').click(function() {
+        location.href = 'product_edit.html';
+    });
 
     $('#cancel').click(function() {
         location.href = 'product.html';
@@ -12,7 +14,7 @@ $(function() {
         success: function(result) {
             if (result.success) {
                 var productBean = result.data;
-                $('#product_type_id').val(productBean.productType.id);
+                $('#product_type_id').val(productBean.productType.productTypeName);
                 $('#product_name').val(productBean.product.productName);
                 $('#product_code').val(productBean.product.productCode);
                 $('#price').val(productBean.product.price);
@@ -26,19 +28,6 @@ $(function() {
                         alert('The data is error!');
                         break;
                 }
-            }
-        }
-    });
-
-    $('#product_edit_form').ajaxForm({
-        url: '/product/' + productId,
-        type: 'put',
-        beforeSubmit: function() {
-            return validator.required('product_edit_form');
-        },
-        success: function(result) {
-            if (result.success) {
-                location.href = 'product.html';
             }
         }
     });

@@ -12,6 +12,8 @@ public interface ProductService {
 
     Product getProduct(long productId);
 
+    ProductBean getProductBean(long productId);
+
     boolean createProduct(Map<String, Object> productFieldMap);
 
     boolean updateProduct(long productId, Map<String, Object> productFieldMap);

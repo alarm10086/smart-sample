@@ -20,10 +20,16 @@ public class UserAction extends BaseAction {
     public Result login(Map<String, Object> fieldMap) {
         User user = userService.login(fieldMap);
         if (user != null) {
-            DataContext.Session.put("user", user); // 将 user 对象放入 Session 中
+            DataContext.Session.put("user", user);
             return new Result(true).data(user);
         } else {
             return new Result(false).error(ERROR_DATA);
         }
+    }
+
+    @Request("get:/logout")
+    public Result logout() {
+        DataContext.Session.removeAll();
+        return new Result(true);
     }
 }

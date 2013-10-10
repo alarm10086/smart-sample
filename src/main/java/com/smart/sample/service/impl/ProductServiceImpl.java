@@ -29,6 +29,19 @@ public class ProductServiceImpl extends BaseService implements ProductService {
     }
 
     @Override
+    public ProductBean getProductBean(long productId) {
+        ProductBean productBean = null;
+        Product product = DataSet.select(Product.class, "id = ?", productId);
+        if (product != null) {
+            ProductType productType = DataSet.select(ProductType.class, "id = ?", product.getProductTypeId());
+            if (productType != null) {
+                productBean = new ProductBean(product, productType);
+            }
+        }
+        return productBean;
+    }
+
+    @Override
     @Transaction
     public boolean createProduct(Map<String, Object> productFieldMap) {
         return DataSet.insert(Product.class, productFieldMap);

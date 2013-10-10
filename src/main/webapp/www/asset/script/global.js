@@ -140,3 +140,38 @@ var Validator = function() {
         return result;
     }
 };
+
+$(function() {
+    $.ajaxSetup({
+        cache: false,
+        error: function(jqXHR, textStatus, errorThrown) {
+            switch (jqXHR.status) {
+                case 503:
+                    alert(errorThrown);
+                    break;
+            }
+        }
+    });
+
+    var storage = window.sessionStorage;
+    var currentURL = location.href;
+    var indexURL = 'login.html';
+    if (currentURL.lastIndexOf(indexURL) == -1) {
+        if (!storage.auth) {
+            document.write('');
+            location.href = indexURL;
+        }
+    }
+
+    $('#logout').click(function() {
+        if (confirm('Do you want to logout system?')) {
+            $.get('/logout', function(result) {
+                console.log(result);
+                if (result.success) {
+                    storage.clear();
+                    location.href = indexURL;
+                }
+            });
+        }
+    });
+});

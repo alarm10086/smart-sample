@@ -1,6 +1,17 @@
 $(function() {
+    // 清空会话存储
+    window.sessionStorage.removeItem('product.id');
+
     // 定义对象
     var productTable = new ProductTable();
+
+    // 查看
+    $(document).on('click', '.ext-product-view', function() {
+        var $tr = $(this).closest('tr');
+        var productId = $tr.data('id');
+        window.sessionStorage.setItem('product.id', productId);
+        location.href = 'product_view.html';
+    });
 
     // 编辑
     $(document).on('click', '.ext-product-edit', function() {
@@ -25,7 +36,6 @@ $(function() {
                     }
                 }
             });
-            window.sessionStorage.removeItem('product.id');
         }
         return false;
     });

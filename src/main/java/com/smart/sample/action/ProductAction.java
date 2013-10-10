@@ -30,9 +30,9 @@ public class ProductAction extends BaseAction {
         if (productId == 0) {
             return new Result(false).error(ERROR_PARAM);
         }
-        Product product = productService.getProduct(productId);
-        if (product != null) {
-            return new Result(true).data(product);
+        ProductBean productBean = productService.getProductBean(productId);
+        if (productBean != null) {
+            return new Result(true).data(productBean);
         } else {
             return new Result(false).error(ERROR_DATA);
         }
