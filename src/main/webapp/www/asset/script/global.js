@@ -155,7 +155,7 @@ $(function() {
 
     var storage = window.sessionStorage;
     var currentURL = location.href;
-    var indexURL = 'login.html';
+    var indexURL = '/index.html';
     if (currentURL.lastIndexOf(indexURL) == -1) {
         if (!storage.auth) {
             document.write('');
@@ -165,11 +165,14 @@ $(function() {
 
     $('#logout').click(function() {
         if (confirm('Do you want to logout system?')) {
-            $.get('/logout', function(result) {
-                console.log(result);
-                if (result.success) {
-                    storage.clear();
-                    location.href = indexURL;
+            $.ajax({
+                type: 'get',
+                url: '/logout',
+                success: function(result) {
+                    if (result.success) {
+                        storage.clear();
+                        location.href = indexURL;
+                    }
                 }
             });
         }

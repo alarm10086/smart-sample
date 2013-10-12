@@ -4,9 +4,9 @@ import com.smart.framework.base.BaseEntity;
 
 public class User extends BaseEntity {
 
-    private String username = "";
+    private String username;
 
-    private String password = "";
+    private String password;
 
     public String getUsername() {
         return username;

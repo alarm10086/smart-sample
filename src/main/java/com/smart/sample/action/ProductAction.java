@@ -9,7 +9,6 @@ import com.smart.framework.bean.Result;
 import com.smart.framework.util.CastUtil;
 import com.smart.framework.util.WebUtil;
 import com.smart.sample.bean.ProductBean;
-import com.smart.sample.entity.Product;
 import com.smart.sample.service.ProductService;
 import java.util.Map;
 

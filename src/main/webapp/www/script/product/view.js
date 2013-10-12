@@ -1,16 +1,16 @@
 $(function() {
     $('#edit').click(function() {
-        location.href = 'product_edit.html';
+        location.href = 'edit.html';
     });
 
     $('#cancel').click(function() {
-        location.href = 'product.html';
+        location.href = 'main.html';
     });
 
     var productId = window.sessionStorage.getItem('product.id');
     $.ajax({
-        url: '/product/' + productId,
         type: 'get',
+        url: '/product/' + productId,
         success: function(result) {
             if (result.success) {
                 var productBean = result.data;

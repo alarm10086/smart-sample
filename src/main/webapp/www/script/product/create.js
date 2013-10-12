@@ -2,7 +2,7 @@ $(function() {
     var validator = new Validator();
 
     $('#cancel').click(function() {
-        location.href = 'product.html';
+        location.href = 'main.html';
     });
 
     $('#product_create_form').ajaxForm({
@@ -12,7 +12,7 @@ $(function() {
         },
         success: function(result) {
             if (result.success) {
-                location.href = 'product.html';
+                location.href = 'main.html';
             }
         }
     });

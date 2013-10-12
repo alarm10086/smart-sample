@@ -2,13 +2,13 @@ $(function() {
     var validator = new Validator();
 
     $('#cancel').click(function() {
-        location.href = 'product.html';
+        location.href = 'main.html';
     });
 
     var productId = window.sessionStorage.getItem('product.id');
     $.ajax({
-        url: '/product/' + productId,
         type: 'get',
+        url: '/product/' + productId,
         success: function(result) {
             if (result.success) {
                 var productBean = result.data;
@@ -38,7 +38,7 @@ $(function() {
         },
         success: function(result) {
             if (result.success) {
-                location.href = 'product.html';
+                location.href = 'main.html';
             }
         }
     });

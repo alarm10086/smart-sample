@@ -10,7 +10,7 @@ $(function() {
         var $tr = $(this).closest('tr');
         var productId = $tr.data('id');
         window.sessionStorage.setItem('product.id', productId);
-        location.href = 'product_view.html';
+        location.href = 'view.html';
     });
 
     // 编辑
@@ -18,7 +18,7 @@ $(function() {
         var $tr = $(this).closest('tr');
         var productId = $tr.data('id');
         window.sessionStorage.setItem('product.id', productId);
-        location.href = 'product_edit.html';
+        location.href = 'edit.html';
     });
 
     // 删除
@@ -28,8 +28,8 @@ $(function() {
         var productName = $tr.data('name');
         if (confirm('Do you want to delete product [' + productName + ']?')) {
             $.ajax({
-                url: '/product/' + productId,
                 type: 'delete',
+                url: '/product/' + productId,
                 success: function(result) {
                     if (result.success) {
                         $tr.remove();
@@ -55,8 +55,8 @@ var ProductTable = function() {
     // 初始化
     (function() {
         $.ajax({
-            url: '/products',
             type: 'get',
+            url: '/products',
             success: function(result) {
                 render(result);
             }
@@ -66,8 +66,8 @@ var ProductTable = function() {
     // 加载
     this.load = function(pageNumber) {
         $.ajax({
-            url: '/products',
             type: 'post',
+            url: '/products',
             data: {
                 'pageNumber': pageNumber,
                 'pageSize': $.trim($('#product_pager .ext-pager-ps').val()),
