@@ -2,7 +2,7 @@ $(function() {
     var validator = new Validator();
 
     $('#cancel').click(function() {
-        location.href = 'main.html';
+        location.href = 'product.html';
     });
 
     var productId = window.sessionStorage.getItem('product.id');
@@ -38,7 +38,7 @@ $(function() {
         },
         success: function(result) {
             if (result.success) {
-                location.href = 'main.html';
+                location.href = 'product.html';
             }
         }
     });

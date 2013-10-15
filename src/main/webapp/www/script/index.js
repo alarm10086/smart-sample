@@ -1,5 +1,5 @@
 $(function() {
-    var mainURL = 'product/main.html';
+    var mainURL = 'product.html';
 
     var storage = window.sessionStorage;
     if (storage.auth) {

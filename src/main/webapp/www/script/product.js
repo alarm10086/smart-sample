@@ -10,7 +10,7 @@ $(function() {
         var $tr = $(this).closest('tr');
         var productId = $tr.data('id');
         window.sessionStorage.setItem('product.id', productId);
-        location.href = 'view.html';
+        location.href = 'product_view.html';
     });
 
     // 编辑
@@ -18,7 +18,7 @@ $(function() {
         var $tr = $(this).closest('tr');
         var productId = $tr.data('id');
         window.sessionStorage.setItem('product.id', productId);
-        location.href = 'edit.html';
+        location.href = 'product_edit.html';
     });
 
     // 删除

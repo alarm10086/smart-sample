@@ -1,10 +1,10 @@
 $(function() {
     $('#edit').click(function() {
-        location.href = 'edit.html';
+        location.href = 'product_edit.html';
     });
 
     $('#cancel').click(function() {
-        location.href = 'main.html';
+        location.href = 'product.html';
     });
 
     var productId = window.sessionStorage.getItem('product.id');

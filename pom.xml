@@ -15,13 +15,6 @@
     </properties>
 
     <dependencies>
-        <!-- Smart -->
-        <dependency>
-            <groupId>com.smart</groupId>
-            <artifactId>smart-framework</artifactId>
-            <version>1.0</version>
-        </dependency>
-
         <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>
@@ -36,6 +29,13 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.25</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- Smart -->
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>smart-framework</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 
