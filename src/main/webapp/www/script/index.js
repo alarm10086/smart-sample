@@ -10,7 +10,7 @@ $(function() {
         type: 'post',
         url: '/login',
         beforeSubmit: function() {
-            $('#login_form :input').prop('disabled', true);
+            $('#login_form').find(':input').prop('disabled', true);
         },
         success: function(result) {
             switch (result.error) {
@@ -20,7 +20,7 @@ $(function() {
                     break;
                 default:
                     alert('Login failure!');
-                    $('#login_form :input').prop('disabled', false);
+                    $('#login_form').find(':input').prop('disabled', false);
             }
         }
     });

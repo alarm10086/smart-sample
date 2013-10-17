@@ -70,7 +70,7 @@ var ProductTable = function() {
             url: '/product/search',
             data: {
                 'pageNumber': pageNumber,
-                'pageSize': $.trim($('#product_pager .ext-pager-ps').val()),
+                'pageSize': $.trim($('#product_pager').find('.ext-pager-ps').val()),
                 'queryString': 'productName:' + $.trim($('#product_name').val())
             },
             success: function(result) {
@@ -95,7 +95,7 @@ var ProductTable = function() {
         $.each(data.recordList, function(i, product) {
             tableHTML += renderer.render(template, product);
         });
-        $('#product_table tbody').html(tableHTML);
+        $('#product_table').find('tbody').html(tableHTML);
     };
 
     // 渲染分页
