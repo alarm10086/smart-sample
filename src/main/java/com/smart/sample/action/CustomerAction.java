@@ -16,7 +16,7 @@ public class CustomerAction extends BaseAction {
         String bbb = "bbb";
         String ccc = "ccc";
 
-        return new Page("customer.html")
+        return new Page("customer.jsp")
             .data("aaa", aaa)
             .data("bbb", bbb)
             .data("ccc", ccc);
@@ -33,7 +33,7 @@ public class CustomerAction extends BaseAction {
         data.put("bbb", bbb);
         data.put("ccc", ccc);
 
-        return new Page("customer.html", data);
+        return new Page("customer.jsp", data);
     }
 
     @Request("get:/customer")
@@ -42,10 +42,23 @@ public class CustomerAction extends BaseAction {
         String bbb = "bbb";
         String ccc = "ccc";
 
-        return new Page("customer.html",
+        return new Page("customer.jsp",
             "aaa", aaa,
             "bbb", bbb,
             "ccc", ccc
         );
+    }
+
+    @Request("get:/customer")
+    public String index4(Map<String, Object> data) {
+        String aaa = "aaa";
+        String bbb = "bbb";
+        String ccc = "ccc";
+
+        data.put("aaa", aaa);
+        data.put("bbb", bbb);
+        data.put("ccc", ccc);
+
+        return "customer.jsp";
     }
 }
