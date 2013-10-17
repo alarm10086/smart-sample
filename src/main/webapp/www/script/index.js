@@ -7,6 +7,7 @@ $(function() {
     }
 
     $('#login_form').ajaxForm({
+        type: 'post',
         url: '/login',
         beforeSubmit: function() {
             $('#login_form :input').prop('disabled', true);

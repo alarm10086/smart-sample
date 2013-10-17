@@ -29,7 +29,7 @@ $(function() {
         if (confirm('Do you want to delete product [' + productName + ']?')) {
             $.ajax({
                 type: 'delete',
-                url: '/product/' + productId,
+                url: '/product/delete/' + productId,
                 success: function(result) {
                     if (result.success) {
                         $tr.remove();
@@ -56,7 +56,7 @@ var ProductTable = function() {
     (function() {
         $.ajax({
             type: 'get',
-            url: '/products',
+            url: '/product',
             success: function(result) {
                 render(result);
             }
@@ -67,7 +67,7 @@ var ProductTable = function() {
     this.load = function(pageNumber) {
         $.ajax({
             type: 'post',
-            url: '/products',
+            url: '/product/search',
             data: {
                 'pageNumber': pageNumber,
                 'pageSize': $.trim($('#product_pager .ext-pager-ps').val()),

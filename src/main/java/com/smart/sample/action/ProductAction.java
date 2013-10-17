@@ -18,51 +18,14 @@ public class ProductAction extends BaseAction {
     @Inject
     private ProductService productService;
 
-    @Request("get:/products")
-    public Result getProducts() {
+    @Request("get:/product")
+    public Result index() {
         Pager<ProductBean> productBeanPager = productService.searchProductPager(1, 10, null);
         return new Result(true).data(productBeanPager);
     }
 
-    @Request("get:/product/{id}")
-    public Result getProductById(long productId) {
-        if (productId == 0) {
-            return new Result(false).error(ERROR_PARAM);
-        }
-        ProductBean productBean = productService.getProductBean(productId);
-        if (productBean != null) {
-            return new Result(true).data(productBean);
-        } else {
-            return new Result(false).error(ERROR_DATA);
-        }
-    }
-
-    @Request("post:/product")
-    public Result createProduct(Map<String, Object> formFieldMap) {
-        boolean success = productService.createProduct(formFieldMap);
-        return new Result(success);
-    }
-
-    @Request("put:/product/{id}")
-    public Result updateProduct(long productId, Map<String, Object> formFieldMap) {
-        if (productId == 0) {
-            return new Result(false).error(ERROR_PARAM);
-        }
-        boolean success = productService.updateProduct(productId, formFieldMap);
-        return new Result(success);
-    }
-
-    @Request("delete:/product/{id}")
-    public Result deleteProductById(long productId) {
-        if (productId == 0) {
-            return new Result(false).error(ERROR_PARAM);
-        }
-        boolean success = productService.deleteProduct(productId);
-        return new Result(success);
-    }
-
-    @Request("post:/products")
-    public Result searchProducts(Map<String, Object> formFieldMap) {
+    @Request("post:/product/search")
+    public Result search(Map<String, Object> formFieldMap) {
         int pageNumber = CastUtil.castInt(formFieldMap.get(PAGE_NUMBER));
         int pageSize = CastUtil.castInt(formFieldMap.get(PAGE_SIZE));
         String queryString = CastUtil.castString(formFieldMap.get(QUERY_STRING));
@@ -71,5 +34,42 @@ public class ProductAction extends BaseAction {
 
         Pager<ProductBean> productBeanPager = productService.searchProductPager(pageNumber, pageSize, queryMap);
         return new Result(true).data(productBeanPager);
+    }
+
+    @Request("get:/product/show/{id}")
+    public Result show(long id) {
+        if (id == 0) {
+            return new Result(false).error(ERROR_PARAM);
+        }
+        ProductBean productBean = productService.getProductBean(id);
+        if (productBean != null) {
+            return new Result(true).data(productBean);
+        } else {
+            return new Result(false).error(ERROR_DATA);
+        }
+    }
+
+    @Request("post:/product/create")
+    public Result create(Map<String, Object> formFieldMap) {
+        boolean success = productService.createProduct(formFieldMap);
+        return new Result(success);
+    }
+
+    @Request("put:/product/update/{id}")
+    public Result update(long id, Map<String, Object> formFieldMap) {
+        if (id == 0) {
+            return new Result(false).error(ERROR_PARAM);
+        }
+        boolean success = productService.updateProduct(id, formFieldMap);
+        return new Result(success);
+    }
+
+    @Request("delete:/product/delete/{id}")
+    public Result delete(long id) {
+        if (id == 0) {
+            return new Result(false).error(ERROR_PARAM);
+        }
+        boolean success = productService.deleteProduct(id);
+        return new Result(success);
     }
 }

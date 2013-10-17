@@ -155,7 +155,7 @@ $(function() {
 
     var storage = window.sessionStorage;
     var currentURL = location.href;
-    var indexURL = '/index.html';
+    var indexURL = '/';
     if (currentURL.lastIndexOf(indexURL) == -1) {
         if (!storage.auth) {
             document.write('');

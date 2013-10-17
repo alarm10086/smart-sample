@@ -1,5 +1,7 @@
 $(function() {
     $('#upload_form').ajaxForm({
+        type: 'post',
+        url: '/upload.do',
         beforeSubmit: function() {
             var file = $('#file').val();
             if (file == '') {

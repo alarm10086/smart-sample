@@ -10,7 +10,7 @@ $(function() {
     var productId = window.sessionStorage.getItem('product.id');
     $.ajax({
         type: 'get',
-        url: '/product/' + productId,
+        url: '/product/show/' + productId,
         success: function(result) {
             if (result.success) {
                 var productBean = result.data;

@@ -8,7 +8,7 @@ $(function() {
     var productId = window.sessionStorage.getItem('product.id');
     $.ajax({
         type: 'get',
-        url: '/product/' + productId,
+        url: '/product/show/' + productId,
         success: function(result) {
             if (result.success) {
                 var productBean = result.data;
@@ -31,8 +31,8 @@ $(function() {
     });
 
     $('#product_edit_form').ajaxForm({
-        url: '/product/' + productId,
         type: 'put',
+        url: '/product/update/' + productId,
         beforeSubmit: function() {
             return validator.required('product_edit_form');
         },

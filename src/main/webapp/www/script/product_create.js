@@ -6,7 +6,8 @@ $(function() {
     });
 
     $('#product_create_form').ajaxForm({
-        url: '/product',
+        type: 'post',
+        url: '/product/create',
         beforeSubmit: function() {
             return validator.required('product_create_form');
         },
