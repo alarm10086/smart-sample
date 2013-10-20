@@ -1,11 +1,6 @@
 $(function() {
     var mainURL = 'product.html';
 
-    var storage = window.sessionStorage;
-    if (storage.auth) {
-        location.href = mainURL;
-    }
-
     $('#login_form').ajaxForm({
         type: 'post',
         url: '/login',
@@ -15,7 +10,6 @@ $(function() {
         success: function(result) {
             switch (result.error) {
                 case 0:
-                    storage.auth = true;
                     location.href = mainURL;
                     break;
                 default:

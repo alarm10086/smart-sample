@@ -15,7 +15,7 @@ public class ProductActionAspect extends BaseAspect {
     private long begin;
 
     @Override
-    public boolean filter(Method method, Object[] args) {
+    public boolean filter(Class<?> cls, Method method, Object[] args) {
         return method.getName().equals("list");
     }
 

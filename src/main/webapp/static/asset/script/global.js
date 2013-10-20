@@ -153,16 +153,6 @@ $(function() {
         }
     });
 
-    var storage = window.sessionStorage;
-    var currentURL = location.href;
-    var indexURL = '/';
-    if (currentURL.lastIndexOf(indexURL) == -1) {
-        if (!storage.auth) {
-            document.write('');
-            location.href = indexURL;
-        }
-    }
-
     $('#logout').click(function() {
         if (confirm('Do you want to logout system?')) {
             $.ajax({
@@ -170,7 +160,6 @@ $(function() {
                 url: '/logout',
                 success: function(result) {
                     if (result.success) {
-                        storage.clear();
                         location.href = '/';
                     }
                 }
