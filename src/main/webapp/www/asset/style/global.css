@@ -177,7 +177,7 @@ button:hover:not(:disabled) {
     cursor: pointer;
     float: left;
     padding-top: 8px;
-    width: 100px;
+    width: 120px;
 }
 
 .css-form-footer {

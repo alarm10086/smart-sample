@@ -153,15 +153,14 @@ $(function() {
         }
     });
 
-    var storage = window.sessionStorage;
-    var currentURL = location.href;
-    var indexURL = '/';
-    if (currentURL.lastIndexOf(indexURL) == -1) {
-        if (!storage.auth) {
-            document.write('');
-            location.href = indexURL;
-        }
-    }
+//    var storage = window.sessionStorage;
+//    var currentURL = location.href;
+//    if (currentURL.lastIndexOf(indexURL) == -1) {
+//        if (!storage.auth) {
+//            document.write('');
+//            location.href = '/';
+//        }
+//    }
 
     $('#logout').click(function() {
         if (confirm('Do you want to logout system?')) {
@@ -171,7 +170,7 @@ $(function() {
                 success: function(result) {
                     if (result.success) {
                         storage.clear();
-                        location.href = indexURL;
+                        location.href = '/';
                     }
                 }
             });

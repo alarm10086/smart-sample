@@ -12,6 +12,7 @@ $(function() {
                 alert('This file is not JPG format!');
                 return false;
             }
+            return true;
         },
         success: function(result) {
             if (result.success) {

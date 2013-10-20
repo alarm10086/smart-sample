@@ -1,4 +1,6 @@
 $(function() {
+    var productId = window.sessionStorage.getItem('product.id');
+
     $('#edit').click(function() {
         location.href = 'product_edit.html';
     });
@@ -7,10 +9,9 @@ $(function() {
         location.href = 'product.html';
     });
 
-    var productId = window.sessionStorage.getItem('product.id');
     $.ajax({
         type: 'get',
-        url: '/product/show/' + productId,
+        url: '/product/view/' + productId,
         success: function(result) {
             if (result.success) {
                 var productBean = result.data;
