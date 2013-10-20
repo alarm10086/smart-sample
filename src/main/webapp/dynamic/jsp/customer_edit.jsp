@@ -30,6 +30,10 @@
             <input type="text" id="customer_name" name="customerName" value="${customer.customerName}" class="ext-required"/>
             <span class="css-color-red">*</span>
         </div>
+        <div class="css-form-row">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="5">${customer.description}</textarea>
+        </div>
         <div class="css-form-footer">
             <button type="submit">Save</button>
             <button type="button" id="cancel">Cancel</button>

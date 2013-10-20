@@ -28,6 +28,10 @@
             <label for="customer_name">Customer Name:</label>
             <input type="text" id="customer_name" name="customerName" value="${customer.customerName}" class="css-readonly" readonly/>
         </div>
+        <div class="css-form-row">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="5" class="css-readonly" readonly>${customer.description}</textarea>
+        </div>
         <div class="css-form-footer">
             <button type="button" id="edit">Edit</button>
             <button type="button" id="cancel">Cancel</button>

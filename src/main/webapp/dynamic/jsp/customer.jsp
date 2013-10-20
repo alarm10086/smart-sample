@@ -49,6 +49,7 @@
                     <thead>
                         <tr>
                             <td>Customer Name</td>
+                            <td>Description</td>
                             <td class="css-width-75">Action</td>
                         </tr>
                     </thead>
@@ -57,6 +58,9 @@
                             <tr data-id="${customer.id}" data-name="${customer.customerName}">
                                 <td>
                                     <a href="${base}/customer/view/${customer.id}">${customer.customerName}</a>
+                                </td>
+                                <td>
+                                    ${customer.description}
                                 </td>
                                 <td>
                                     <a href="${base}/customer/edit/${customer.id}">Edit</a>
