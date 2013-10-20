@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=8">
     <title>Smart Smaple - Customer</title>
-    <link rel="stylesheet" href="${base}/www/asset/style/global.css"/>
+    <link rel="stylesheet" href="${base}/static/asset/style/global.css"/>
 </head>
 <body>
 
@@ -75,10 +75,10 @@
     <div id="copyright">Copyright @ 2013</div>
 </div>
 
-<script type="text/javascript" src="${base}/www/asset/lib/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="${base}/www/asset/lib/jquery-form/jquery.form.min.js"></script>
-<script type="text/javascript" src="${base}/www/asset/script/global.js"></script>
-<script type="text/javascript" src="${base}/www/script/customer.js"></script>
+<script type="text/javascript" src="${base}/static/asset/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="${base}/static/asset/lib/jquery-form/jquery.form.min.js"></script>
+<script type="text/javascript" src="${base}/static/asset/script/global.js"></script>
+<script type="text/javascript" src="${base}/static/script/customer.js"></script>
 
 </body>
 </html>

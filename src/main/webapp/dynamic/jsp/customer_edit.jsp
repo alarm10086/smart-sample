@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=8">
     <title>Smart Smaple - Customer</title>
-    <link rel="stylesheet" href="${base}/www/asset/style/global.css"/>
+    <link rel="stylesheet" href="${base}/static/asset/style/global.css"/>
+
 </head>
 <body>
 
@@ -19,13 +20,14 @@
 </div>
 
 <div id="content">
-    <form id="customer_create_form" class="css-form">
+    <form id="cusotmer_edit_form" class="css-form">
+        <input type="hidden" id="id" value="${customer.id}"/>
         <div class="css-form-header">
-            <h3>Create Customer</h3>
+            <h3>Edit Customer</h3>
         </div>
         <div class="css-form-row">
             <label for="customer_name">Customer Name:</label>
-            <input type="text" id="customer_name" name="customerName" class="ext-required"/>
+            <input type="text" id="customer_name" name="customerName" value="${customer.customerName}" class="ext-required"/>
             <span class="css-color-red">*</span>
         </div>
         <div class="css-form-footer">
@@ -39,10 +41,10 @@
     <div id="copyright">Copyright @ 2013</div>
 </div>
 
-<script type="text/javascript" src="${base}/www/asset/lib/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="${base}/www/asset/lib/jquery-form/jquery.form.min.js"></script>
-<script type="text/javascript" src="${base}/www/asset/script/global.js"></script>
-<script type="text/javascript" src="${base}/www/script/customer_create.js"></script>
+<script type="text/javascript" src="${base}/static/asset/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="${base}/static/asset/lib/jquery-form/jquery.form.min.js"></script>
+<script type="text/javascript" src="${base}/static/asset/script/global.js"></script>
+<script type="text/javascript" src="${base}/static/script/customer_edit.js"></script>
 
 </body>
 </html>

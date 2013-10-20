@@ -21,7 +21,7 @@ public class UserAction extends BaseAction {
         User user = userService.login(fieldMap);
         if (user != null) {
             DataContext.Session.put("user", user);
-            return new Result(true).data(user);
+            return new Result(true);
         } else {
             return new Result(false).error(ERROR_DATA);
         }
