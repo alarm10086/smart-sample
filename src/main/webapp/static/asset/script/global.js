@@ -146,6 +146,10 @@ $(function() {
         cache: false,
         error: function(jqXHR, textStatus, errorThrown) {
             switch (jqXHR.status) {
+                case 403:
+                    document.write('');
+                    location.href = '/';
+                    break;
                 case 503:
                     alert(errorThrown);
                     break;
