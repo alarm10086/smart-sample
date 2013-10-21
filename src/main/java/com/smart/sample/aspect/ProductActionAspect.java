@@ -3,7 +3,6 @@ package com.smart.sample.aspect;
 import com.smart.framework.annotation.Aspect;
 import com.smart.framework.annotation.Bean;
 import com.smart.framework.base.BaseAspect;
-import java.lang.reflect.Method;
 import org.apache.log4j.Logger;
 
 @Bean
@@ -15,28 +14,28 @@ public class ProductActionAspect extends BaseAspect {
     private long begin;
 
     @Override
-    public boolean filter(Class<?> cls, Method method, Object[] args) {
-        return method.getName().equals("list");
+    public boolean filter(String className, String methodName) {
+        return methodName.equals("index");
     }
 
     @Override
-    public void before(Method method, Object[] args) {
-        if (logger.isInfoEnabled()) {
-            logger.info("---------- Begin ----------");
+    public void before(String className, String methodName) {
+        if (logger.isDebugEnabled()) {
+            logger.debug("---------- Begin ----------");
         }
         begin = System.currentTimeMillis();
     }
 
     @Override
-    public void after(Method method, Object[] args) {
+    public void after(String className, String methodName) {
         logger.info("Time: " + (System.currentTimeMillis() - begin) + "ms");
-        if (logger.isInfoEnabled()) {
-            logger.info("----------- End -----------");
+        if (logger.isDebugEnabled()) {
+            logger.debug("----------- End -----------");
         }
     }
 
     @Override
-    public void error(Method method, Object[] args, Exception e) {
+    public void error(String className, String methodName, Exception e) {
         logger.info("Error: " + e.getMessage());
     }
 }
