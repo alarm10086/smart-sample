@@ -1,9 +1,12 @@
 package com.smart.sample.service;
 
+import com.smart.framework.annotation.Impl;
 import com.smart.sample.entity.Customer;
+import com.smart.sample.service.impl.CustomerServiceCacheImpl;
 import java.util.List;
 import java.util.Map;
 
+@Impl(CustomerServiceCacheImpl.class)
 public interface CustomerService {
 
     List<Customer> getCustomerList();
