@@ -30,21 +30,6 @@
                 </div>
             </div>
             <div class="css-panel-content">
-                <div class="css-row">
-                    <div class="css-left">
-                        <form id="customer_search_form">
-                            <div class="css-search">
-                                <input type="text" id="customer_name" placeholder="Customer Name"/>
-                                <span class="css-search-button">
-                                    <button type="submit">Search</button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="css-right">
-                        <div id="customer_pager"></div>
-                    </div>
-                </div>
                 <table id="customer_table" class="css-table">
                     <thead>
                         <tr>
