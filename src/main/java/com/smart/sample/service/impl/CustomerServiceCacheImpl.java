@@ -22,7 +22,7 @@ public class CustomerServiceCacheImpl extends BaseService implements CustomerSer
     @Override
     public List<Customer> getCustomerList() {
         List<Customer> customerList = customerListCache.get("customer_list");
-        if (CollectionUtil.isEmpty(customerList)) {
+        if (customerList == null) {
             customerList = DataSet.selectList(Customer.class, null, null);
             if (CollectionUtil.isNotEmpty(customerList)) {
                 customerListCache.put("customer_list", customerList);
