@@ -25,10 +25,10 @@ public class ProductAction extends BaseAction {
     }
 
     @Request("post:/product/search")
-    public Result search(Map<String, Object> formFieldMap) {
-        int pageNumber = CastUtil.castInt(formFieldMap.get(PAGE_NUMBER));
-        int pageSize = CastUtil.castInt(formFieldMap.get(PAGE_SIZE));
-        String queryString = CastUtil.castString(formFieldMap.get(QUERY_STRING));
+    public Result search(Map<String, Object> fieldMap) {
+        int pageNumber = CastUtil.castInt(fieldMap.get(PAGE_NUMBER));
+        int pageSize = CastUtil.castInt(fieldMap.get(PAGE_SIZE));
+        String queryString = CastUtil.castString(fieldMap.get(QUERY_STRING));
 
         Map<String, String> queryMap = WebUtil.createQueryMap(queryString);
 
@@ -36,8 +36,8 @@ public class ProductAction extends BaseAction {
         return new Result(true).data(productBeanPager);
     }
 
-    @Request("get:/product/show/{id}")
-    public Result show(long id) {
+    @Request("get:/product/view/{id}")
+    public Result view(long id) {
         if (id == 0) {
             return new Result(false).error(ERROR_PARAM);
         }
@@ -50,17 +50,17 @@ public class ProductAction extends BaseAction {
     }
 
     @Request("post:/product/create")
-    public Result create(Map<String, Object> formFieldMap) {
-        boolean success = productService.createProduct(formFieldMap);
+    public Result create(Map<String, Object> fieldMap) {
+        boolean success = productService.createProduct(fieldMap);
         return new Result(success);
     }
 
     @Request("put:/product/update/{id}")
-    public Result update(long id, Map<String, Object> formFieldMap) {
+    public Result update(long id, Map<String, Object> fieldMap) {
         if (id == 0) {
             return new Result(false).error(ERROR_PARAM);
         }
-        boolean success = productService.updateProduct(id, formFieldMap);
+        boolean success = productService.updateProduct(id, fieldMap);
         return new Result(success);
     }
 

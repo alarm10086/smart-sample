@@ -15,28 +15,29 @@ public class ProductActionAspect extends BaseAspect {
     private long begin;
 
     @Override
-    public boolean filter(Method method, Object[] args) {
-        return method.getName().equals("list");
+    public boolean filter(Class<?> cls, Method method, Object[] params) {
+        String methodName = method.getName();
+        return methodName.equals("index");
     }
 
     @Override
-    public void before(Method method, Object[] args) {
-        if (logger.isInfoEnabled()) {
-            logger.info("---------- Begin ----------");
+    public void before(Class<?> cls, Method method, Object[] params) {
+        if (logger.isDebugEnabled()) {
+            logger.debug("---------- Begin ----------");
         }
         begin = System.currentTimeMillis();
     }
 
     @Override
-    public void after(Method method, Object[] args) {
+    public void after(Class<?> cls, Method method, Object[] params) {
         logger.info("Time: " + (System.currentTimeMillis() - begin) + "ms");
-        if (logger.isInfoEnabled()) {
-            logger.info("----------- End -----------");
+        if (logger.isDebugEnabled()) {
+            logger.debug("----------- End -----------");
         }
     }
 
     @Override
-    public void error(Method method, Object[] args, Exception e) {
-        logger.info("Error: " + e.getMessage());
+    public void error(Class<?> cls, Method method, Object[] params, Exception e) {
+        logger.info("Error: " + e);
     }
 }

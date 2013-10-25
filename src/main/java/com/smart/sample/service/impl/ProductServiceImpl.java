@@ -43,14 +43,14 @@ public class ProductServiceImpl extends BaseService implements ProductService {
 
     @Override
     @Transaction
-    public boolean createProduct(Map<String, Object> productFieldMap) {
-        return DataSet.insert(Product.class, productFieldMap);
+    public boolean createProduct(Map<String, Object> fieldMap) {
+        return DataSet.insert(Product.class, fieldMap);
     }
 
     @Override
     @Transaction
-    public boolean updateProduct(long productId, Map<String, Object> productFieldMap) {
-        return DataSet.update(Product.class, productFieldMap, "id = ?", productId);
+    public boolean updateProduct(long productId, Map<String, Object> fieldMap) {
+        return DataSet.update(Product.class, fieldMap, "id = ?", productId);
     }
 
     @Override
