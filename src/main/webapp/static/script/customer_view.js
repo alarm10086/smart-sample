@@ -1,10 +1,10 @@
 $(function() {
     $('#edit').click(function() {
         var customerId = $('#id').val();
-        location.href = '/customer/edit/' + customerId;
+        location.href = BASE + '/customer/edit/' + customerId;
     });
 
     $('#cancel').click(function() {
-        location.href = '/customer';
+        location.href = BASE + '/customer';
     });
 });

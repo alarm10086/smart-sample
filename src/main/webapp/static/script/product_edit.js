@@ -8,7 +8,7 @@ $(function() {
 
     $.ajax({
         type: 'get',
-        url: '/product/view/' + productId,
+        url: BASE + '/product/view/' + productId,
         success: function(result) {
             if (result.success) {
                 var productBean = result.data;
@@ -32,7 +32,7 @@ $(function() {
 
     $('#product_edit_form').ajaxForm({
         type: 'put',
-        url: '/product/update/' + productId,
+        url: BASE + '/product/update/' + productId,
         beforeSubmit: function() {
             return validator.required('product_edit_form');
         },

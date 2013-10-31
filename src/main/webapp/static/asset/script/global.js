@@ -141,14 +141,19 @@ var Validator = function() {
     }
 };
 
+var BASE;
+
 $(function() {
+    var pathname = location.pathname;
+    BASE = pathname.substring(0, pathname.substring(1).indexOf('/') + 1);
+
     $.ajaxSetup({
         cache: false,
         error: function(jqXHR, textStatus, errorThrown) {
             switch (jqXHR.status) {
                 case 403:
                     document.write('');
-                    location.href = '/';
+                    location.href = BASE + '/';
                     break;
                 case 503:
                     alert(errorThrown);
@@ -161,10 +166,10 @@ $(function() {
         if (confirm('Do you want to logout system?')) {
             $.ajax({
                 type: 'get',
-                url: '/logout',
+                url: BASE + '/logout',
                 success: function(result) {
                     if (result.success) {
-                        location.href = '/';
+                        location.href = BASE + '/';
                     }
                 }
             });

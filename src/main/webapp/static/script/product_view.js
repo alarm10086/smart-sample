@@ -11,7 +11,7 @@ $(function() {
 
     $.ajax({
         type: 'get',
-        url: '/product/view/' + productId,
+        url: BASE + '/product/view/' + productId,
         success: function(result) {
             if (result.success) {
                 var productBean = result.data;

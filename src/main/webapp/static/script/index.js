@@ -3,7 +3,7 @@ $(function() {
 
     $('#login_form').ajaxForm({
         type: 'post',
-        url: '/login',
+        url: BASE + '/login',
         beforeSubmit: function() {
             $('#login_form').find(':input').prop('disabled', true);
         },

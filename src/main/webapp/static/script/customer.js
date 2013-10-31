@@ -6,7 +6,7 @@ $(function() {
         if (confirm('Do you want to delete customer [' + customerName + ']?')) {
             $.ajax({
                 type: 'delete',
-                url: '/customer/delete/' + customerId,
+                url: BASE + '/customer/delete/' + customerId,
                 success: function(result) {
                     if (result.success) {
                         $tr.remove();

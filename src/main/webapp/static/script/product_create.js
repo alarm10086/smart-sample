@@ -7,7 +7,7 @@ $(function() {
 
     $('#product_create_form').ajaxForm({
         type: 'post',
-        url: '/product/create',
+        url: BASE + '/product/create',
         beforeSubmit: function() {
             return validator.required('product_create_form');
         },
