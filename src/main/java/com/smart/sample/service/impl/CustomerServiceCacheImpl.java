@@ -15,9 +15,15 @@ import java.util.Map;
 @Bean
 public class CustomerServiceCacheImpl extends BaseService implements CustomerService {
 
-    private static final CacheManager cacheManager = new DefaultCacheManager("customer_list_cache", "customer_cache");
-    private static final Cache<String, List<Customer>> customerListCache = cacheManager.getCache("customer_list_cache");
-    private static final Cache<Long, Customer> customerCache = cacheManager.getCache("customer_cache");
+    private final CacheManager cacheManager;
+    private final Cache<String, List<Customer>> customerListCache;
+    private final Cache<Long, Customer> customerCache;
+
+    public CustomerServiceCacheImpl() {
+        cacheManager = new DefaultCacheManager("customer_list_cache", "customer_cache");
+        customerListCache = cacheManager.getCache("customer_list_cache");
+        customerCache = cacheManager.getCache("customer_cache");
+    }
 
     @Override
     public List<Customer> getCustomerList() {
@@ -57,9 +63,7 @@ public class CustomerServiceCacheImpl extends BaseService implements CustomerSer
     public boolean updateCustomer(long id, Map<String, Object> fieldMap) {
         boolean result = DataSet.update(Customer.class, fieldMap, "id = ?", id);
         if (result) {
-            for (String cacheName : cacheManager.getCacheNames()) {
-                cacheManager.destroyCache(cacheName);
-            }
+            cacheManager.destroyCacheAll();
         }
         return result;
     }
@@ -68,9 +72,7 @@ public class CustomerServiceCacheImpl extends BaseService implements CustomerSer
     public boolean createCustomer(Map<String, Object> fieldMap) {
         boolean result = DataSet.insert(Customer.class, fieldMap);
         if (result) {
-            for (String cacheName : cacheManager.getCacheNames()) {
-                cacheManager.destroyCache(cacheName);
-            }
+            cacheManager.destroyCacheAll();
         }
         return result;
     }
