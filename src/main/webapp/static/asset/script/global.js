@@ -1,3 +1,6 @@
+/* 全局变量 */
+var BASE = 'smart-sample'; // 应用 Context 名称
+
 var Pager = function(pagerId, $tableComponent) {
     (function() {
         // 翻页
@@ -140,9 +143,6 @@ var Validator = function() {
         return result;
     }
 };
-
-/* 全局变量 */
-var BASE = 'smart-sample'; // 应用 Context 名称
 
 $(function() {
     $.ajaxSetup({
