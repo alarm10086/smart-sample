@@ -141,12 +141,10 @@ var Validator = function() {
     }
 };
 
-var BASE;
+/* 全局变量 */
+var BASE = 'smart-sample'; // 应用 Context 名称
 
 $(function() {
-    var pathname = location.pathname;
-    BASE = pathname.substring(0, pathname.substring(1).indexOf('/') + 1);
-
     $.ajaxSetup({
         cache: false,
         error: function(jqXHR, textStatus, errorThrown) {
