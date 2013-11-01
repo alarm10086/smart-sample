@@ -45,7 +45,7 @@ a:hover {
 
 input, select, textarea, button {
     font-family: inherit;
-    font-size: 12px;
+    font-size: inherit;
     outline: none;
 }
 
