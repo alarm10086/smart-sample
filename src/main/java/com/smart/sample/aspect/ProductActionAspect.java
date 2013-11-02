@@ -29,7 +29,7 @@ public class ProductActionAspect extends BaseAspect {
     }
 
     @Override
-    public void after(Class<?> cls, Method method, Object[] params) {
+    public void after(Class<?> cls, Method method, Object[] params, Object result) {
         logger.info("Time: " + (System.currentTimeMillis() - begin) + "ms");
         if (logger.isDebugEnabled()) {
             logger.debug("----------- End -----------");
