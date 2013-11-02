@@ -3,13 +3,15 @@ package com.smart.sample.aspect;
 import com.smart.framework.AuthException;
 import com.smart.framework.DataContext;
 import com.smart.framework.annotation.Aspect;
+import com.smart.framework.annotation.Bean;
 import com.smart.framework.annotation.Order;
 import com.smart.framework.base.BaseAspect;
 import com.smart.sample.entity.User;
 import java.lang.reflect.Method;
 
-@Order(0)
+@Bean
 @Aspect(pkg = "com.smart.sample.action")
+@Order(0)
 public class AuthAspect extends BaseAspect {
 
     @Override

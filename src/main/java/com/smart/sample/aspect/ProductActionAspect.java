@@ -8,8 +8,8 @@ import java.lang.reflect.Method;
 import org.apache.log4j.Logger;
 
 @Bean
-@Order(1)
 @Aspect(pkg = "com.smart.sample.action", cls = "ProductAction")
+@Order(1)
 public class ProductActionAspect extends BaseAspect {
 
     private static final Logger logger = Logger.getLogger(ProductActionAspect.class);
