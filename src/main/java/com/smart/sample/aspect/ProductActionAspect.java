@@ -17,13 +17,13 @@ public class ProductActionAspect extends BaseAspect {
     private long begin;
 
     @Override
-    public boolean filter(Class<?> cls, Method method, Object[] params) {
+    public boolean filter(Class<?> cls, Method method, Object[] params) throws Exception {
         String methodName = method.getName();
         return methodName.equals("index");
     }
 
     @Override
-    public void before(Class<?> cls, Method method, Object[] params) {
+    public void before(Class<?> cls, Method method, Object[] params) throws Exception {
         if (logger.isDebugEnabled()) {
             logger.debug("---------- Begin ----------");
         }
@@ -31,7 +31,7 @@ public class ProductActionAspect extends BaseAspect {
     }
 
     @Override
-    public void after(Class<?> cls, Method method, Object[] params, Object result) {
+    public void after(Class<?> cls, Method method, Object[] params, Object result) throws Exception {
         logger.info("Time: " + (System.currentTimeMillis() - begin) + "ms");
         if (logger.isDebugEnabled()) {
             logger.debug("----------- End -----------");

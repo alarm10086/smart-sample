@@ -15,14 +15,14 @@ public class ProductServiceAspect extends BaseAspect {
     private static final Logger logger = Logger.getLogger(ProductServiceAspect.class);
 
     @Override
-    public void before(Class<?> cls, Method method, Object[] params) {
+    public void before(Class<?> cls, Method method, Object[] params) throws Exception {
         if (logger.isDebugEnabled()) {
             logger.debug("[BEFORE]");
         }
     }
 
     @Override
-    public void after(Class<?> cls, Method method, Object[] params, Object result) {
+    public void after(Class<?> cls, Method method, Object[] params, Object result) throws Exception {
         if (logger.isDebugEnabled()) {
             logger.debug("[AFTER]");
         }

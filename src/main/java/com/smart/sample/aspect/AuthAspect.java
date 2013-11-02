@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 public class AuthAspect extends BaseAspect {
 
     @Override
-    public boolean filter(Class<?> cls, Method method, Object[] params) {
+    public boolean filter(Class<?> cls, Method method, Object[] params) throws Exception {
         String className = cls.getSimpleName();
         String methodName = method.getName();
         return !(
@@ -26,7 +26,7 @@ public class AuthAspect extends BaseAspect {
     }
 
     @Override
-    public void before(Class<?> cls, Method method, Object[] params) {
+    public void before(Class<?> cls, Method method, Object[] params) throws Exception {
         User user = DataContext.Session.get("user");
         if (user == null) {
             throw new AuthException();
