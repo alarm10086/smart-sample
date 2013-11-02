@@ -2,11 +2,13 @@ package com.smart.sample.aspect;
 
 import com.smart.framework.annotation.Aspect;
 import com.smart.framework.annotation.Bean;
+import com.smart.framework.annotation.Order;
 import com.smart.framework.base.BaseAspect;
 import java.lang.reflect.Method;
 import org.apache.log4j.Logger;
 
 @Bean
+@Order(1)
 @Aspect(pkg = "com.smart.sample.action", cls = "ProductAction")
 public class ProductActionAspect extends BaseAspect {
 
