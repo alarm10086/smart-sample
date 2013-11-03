@@ -1,5 +1,5 @@
 /* 全局变量 */
-var BASE = '/smart-sample'; // 应用 Context 名称（若为空字符串表示应用以 ROOT 来发布）
+var BASE = '/smart-sample'; // 应用 Context 名称（空字符串表示以 ROOT 发布）
 
 var Pager = function(pagerId, $tableComponent) {
     (function() {
@@ -145,6 +145,12 @@ var Validator = function() {
 };
 
 $(function() {
+    // 忽略空链接
+    $('a[href="#"]').click(function() {
+        return false;
+    });
+
+    // 全局 AJAX 设置
     $.ajaxSetup({
         cache: false,
         error: function(jqXHR, textStatus, errorThrown) {
@@ -160,6 +166,7 @@ $(function() {
         }
     });
 
+    // 绑定注销事件
     $('#logout').click(function() {
         if (confirm('Do you want to logout system?')) {
             $.ajax({

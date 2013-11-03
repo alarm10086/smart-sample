@@ -17,14 +17,14 @@ public class ProductServiceAspect extends BaseAspect {
     @Override
     public void before(Class<?> cls, Method method, Object[] params) throws Exception {
         if (logger.isDebugEnabled()) {
-            logger.debug("[BEFORE]");
+            logger.debug("[Before]");
         }
     }
 
     @Override
     public void after(Class<?> cls, Method method, Object[] params, Object result) throws Exception {
         if (logger.isDebugEnabled()) {
-            logger.debug("[AFTER]");
+            logger.debug("[After]");
         }
     }
 }
