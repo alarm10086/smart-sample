@@ -31,7 +31,7 @@ public class ProductServiceTest extends BaseTest {
     public void getProductListTest() {
         List<Product> productList = productService.getProductList();
         Assert.assertNotNull(productList);
-        Assert.assertEquals(productList.size(), 7);
+        Assert.assertEquals(productList.size(), 8);
     }
 
     @Test

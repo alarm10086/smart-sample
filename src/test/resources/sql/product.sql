@@ -7,7 +7,3 @@ INSERT INTO `product` (`id`, `product_type_id`, `product_name`, `product_code`, 
 INSERT INTO `product` (`id`, `product_type_id`, `product_name`, `product_code`, `price`, `description`) VALUES ('6', '2', 'iPad 3', 'TC002', '3000', 'iPad 3 平板电脑');
 INSERT INTO `product` (`id`, `product_type_id`, `product_name`, `product_code`, `price`, `description`) VALUES ('7', '1', 'iPhone 5', 'MP005', '5000', 'iPhone 5 移动电话');
 INSERT INTO `product` (`id`, `product_type_id`, `product_name`, `product_code`, `price`, `description`) VALUES ('8', '2', 'iPad mini', 'TC003', '3000', 'iPad mini 平板电脑');
-INSERT INTO `product` (`id`, `product_type_id`, `product_name`, `product_code`, `price`, `description`) VALUES ('9', '1', '1', '1', '1', '');
-INSERT INTO `product` (`id`, `product_type_id`, `product_name`, `product_code`, `price`, `description`) VALUES ('10', '1', '2', '2', '2', '');
-INSERT INTO `product` (`id`, `product_type_id`, `product_name`, `product_code`, `price`, `description`) VALUES ('11', '1', '3', '3', '3', '');
-INSERT INTO `product` (`id`, `product_type_id`, `product_name`, `product_code`, `price`, `description`) VALUES ('12', '1', '4', '4', '4', '');
