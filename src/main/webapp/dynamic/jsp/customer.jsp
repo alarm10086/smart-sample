@@ -1,13 +1,13 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="base" value="${pageContext.request.contextPath}"/>
+<c:set var="BASE" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=8">
     <title>Smart Smaple - Customer</title>
-    <link rel="stylesheet" href="${base}/static/asset/style/global.css"/>
+    <link rel="stylesheet" href="${BASE}/static/asset/style/global.css"/>
 </head>
 <body>
 
@@ -26,7 +26,7 @@
                     <h3>Customer List</h3>
                 </div>
                 <div class="css-right">
-                    <a href="${base}/customer_create">New Customer</a>
+                    <a href="${BASE}/customer_create">New Customer</a>
                 </div>
             </div>
             <div class="css-panel-content">
@@ -42,13 +42,13 @@
                         <c:forEach var="customer" items="${customerList}">
                             <tr data-id="${customer.id}" data-name="${customer.customerName}">
                                 <td>
-                                    <a href="${base}/customer/view/${customer.id}">${customer.customerName}</a>
+                                    <a href="${BASE}/customer/view/${customer.id}">${customer.customerName}</a>
                                 </td>
                                 <td>
                                     ${customer.description}
                                 </td>
                                 <td>
-                                    <a href="${base}/customer/edit/${customer.id}">Edit</a>
+                                    <a href="${BASE}/customer/edit/${customer.id}">Edit</a>
                                     <a href="#" class="ext-customer-delete">Delete</a>
                                 </td>
                             </tr>
@@ -64,10 +64,10 @@
     <div id="copyright">Copyright @ 2013</div>
 </div>
 
-<script type="text/javascript" src="${base}/static/asset/lib/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="${base}/static/asset/lib/jquery-form/jquery.form.min.js"></script>
-<script type="text/javascript" src="${base}/static/asset/script/global.js"></script>
-<script type="text/javascript" src="${base}/static/script/customer.js"></script>
+<script type="text/javascript" src="${BASE}/static/asset/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="${BASE}/static/asset/lib/jquery-form/jquery.form.min.js"></script>
+<script type="text/javascript" src="${BASE}/static/asset/script/global.js"></script>
+<script type="text/javascript" src="${BASE}/static/script/customer.js"></script>
 
 </body>
 </html>

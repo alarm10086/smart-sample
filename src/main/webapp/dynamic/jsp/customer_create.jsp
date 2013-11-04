@@ -1,13 +1,13 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="base" value="${pageContext.request.contextPath}"/>
+<c:set var="BASE" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=8">
     <title>Smart Smaple - Customer</title>
-    <link rel="stylesheet" href="${base}/static/asset/style/global.css"/>
+    <link rel="stylesheet" href="${BASE}/static/asset/style/global.css"/>
 </head>
 <body>
 
@@ -43,10 +43,10 @@
     <div id="copyright">Copyright @ 2013</div>
 </div>
 
-<script type="text/javascript" src="${base}/static/asset/lib/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="${base}/static/asset/lib/jquery-form/jquery.form.min.js"></script>
-<script type="text/javascript" src="${base}/static/asset/script/global.js"></script>
-<script type="text/javascript" src="${base}/static/script/customer_create.js"></script>
+<script type="text/javascript" src="${BASE}/static/asset/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="${BASE}/static/asset/lib/jquery-form/jquery.form.min.js"></script>
+<script type="text/javascript" src="${BASE}/static/asset/script/global.js"></script>
+<script type="text/javascript" src="${BASE}/static/script/customer_create.js"></script>
 
 </body>
 </html>
