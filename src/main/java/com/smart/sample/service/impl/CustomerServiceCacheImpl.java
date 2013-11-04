@@ -5,6 +5,7 @@ import com.smart.framework.annotation.Bean;
 import com.smart.framework.base.BaseService;
 import com.smart.framework.util.CollectionUtil;
 import com.smart.plugin.cache.Cache;
+import com.smart.plugin.cache.CacheFactory;
 import com.smart.plugin.cache.CacheManager;
 import com.smart.plugin.cache.impl.DefaultCacheManager;
 import com.smart.sample.entity.Customer;
@@ -15,14 +16,12 @@ import java.util.Map;
 @Bean
 public class CustomerServiceCacheImpl extends BaseService implements CustomerService {
 
-    private final CacheManager cacheManager;
     private final Cache<String, List<Customer>> customerListCache;
     private final Cache<Long, Customer> customerCache;
 
     public CustomerServiceCacheImpl() {
-        cacheManager = new DefaultCacheManager("customer_list_cache", "customer_cache");
-        customerListCache = cacheManager.getCache("customer_list_cache");
-        customerCache = cacheManager.getCache("customer_cache");
+        customerListCache = CacheFactory.createCache(getClass(), "customer_list_cache");
+        customerCache = CacheFactory.createCache(getClass(), "customer_cache");
     }
 
     @Override
@@ -63,7 +62,8 @@ public class CustomerServiceCacheImpl extends BaseService implements CustomerSer
     public boolean updateCustomer(long id, Map<String, Object> fieldMap) {
         boolean result = DataSet.update(Customer.class, fieldMap, "id = ?", id);
         if (result) {
-            cacheManager.destroyCacheAll();
+            customerListCache.clear();
+            customerCache.clear();
         }
         return result;
     }
@@ -72,7 +72,8 @@ public class CustomerServiceCacheImpl extends BaseService implements CustomerSer
     public boolean createCustomer(Map<String, Object> fieldMap) {
         boolean result = DataSet.insert(Customer.class, fieldMap);
         if (result) {
-            cacheManager.destroyCacheAll();
+            customerListCache.clear();
+            customerCache.clear();
         }
         return result;
     }

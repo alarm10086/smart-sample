@@ -4,7 +4,7 @@ import com.smart.framework.DataSet;
 import com.smart.framework.annotation.Bean;
 import com.smart.framework.base.BaseService;
 import com.smart.plugin.cache.annotation.Cachable;
-import com.smart.plugin.cache.annotation.CacheFlush;
+import com.smart.plugin.cache.annotation.CacheClear;
 import com.smart.plugin.cache.annotation.CachePut;
 import com.smart.sample.entity.Customer;
 import com.smart.sample.service.CustomerService;
@@ -22,7 +22,7 @@ public class CustomerServiceCacheAnnotationImpl extends BaseService implements C
     }
 
     @Override
-    @CacheFlush({"customer_list_cache", "customer_cache"})
+    @CacheClear({"customer_list_cache", "customer_cache"})
     public boolean deleteCustomer(long id) {
         return DataSet.delete(Customer.class, "id = ?", id);
     }
@@ -34,13 +34,13 @@ public class CustomerServiceCacheAnnotationImpl extends BaseService implements C
     }
 
     @Override
-    @CacheFlush({"customer_list_cache", "customer_cache"})
+    @CacheClear({"customer_list_cache", "customer_cache"})
     public boolean updateCustomer(long id, Map<String, Object> fieldMap) {
         return DataSet.update(Customer.class, fieldMap, "id = ?", id);
     }
 
     @Override
-    @CacheFlush({"customer_list_cache", "customer_cache"})
+    @CacheClear({"customer_list_cache", "customer_cache"})
     public boolean createCustomer(Map<String, Object> fieldMap) {
         return DataSet.insert(Customer.class, fieldMap);
     }
