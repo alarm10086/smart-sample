@@ -6,8 +6,6 @@ import com.smart.framework.base.BaseService;
 import com.smart.framework.util.CollectionUtil;
 import com.smart.plugin.cache.Cache;
 import com.smart.plugin.cache.CacheFactory;
-import com.smart.plugin.cache.CacheManager;
-import com.smart.plugin.cache.impl.DefaultCacheManager;
 import com.smart.sample.entity.Customer;
 import com.smart.sample.service.CustomerService;
 import java.util.List;
