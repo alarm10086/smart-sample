@@ -18,7 +18,7 @@ public class CustomerServiceCacheAnnotationImpl extends BaseService implements C
     @Override
     @CachePut("customer_list_cache")
     public List<Customer> getCustomerList() {
-        return DataSet.selectList(Customer.class, null, null);
+        return DataSet.selectList(Customer.class, "", "");
     }
 
     @Override
