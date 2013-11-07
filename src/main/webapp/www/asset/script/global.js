@@ -1,5 +1,5 @@
 /* 全局变量 */
-var BASE = '/smart-sample'; // 应用 Context 名称（空字符串表示以 ROOT 发布）
+var BASE = '/smart-sample'; // Context Path（若以 ROOT 发布，则为空字符串）
 
 var Pager = function(pagerId, $tableComponent) {
     (function() {
