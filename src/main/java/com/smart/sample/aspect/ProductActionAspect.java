@@ -17,7 +17,7 @@ public class ProductActionAspect extends BaseAspect {
     private long begin;
 
     @Override
-    public boolean filter(Class<?> cls, Method method, Object[] params) throws Exception {
+    public boolean intercept(Class<?> cls, Method method, Object[] params) throws Exception {
         String methodName = method.getName();
         return methodName.equals("index");
     }

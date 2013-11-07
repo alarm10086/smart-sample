@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 public class AuthAspect extends BaseAspect {
 
     @Override
-    public boolean filter(Class<?> cls, Method method, Object[] params) throws Exception {
+    public boolean intercept(Class<?> cls, Method method, Object[] params) throws Exception {
         String className = cls.getSimpleName();
         String methodName = method.getName();
         return !(
