@@ -3,6 +3,7 @@ package com.smart.sample.service.impl;
 import com.smart.framework.DataSet;
 import com.smart.framework.annotation.Bean;
 import com.smart.framework.base.BaseService;
+import com.smart.plugin.cache.Expiry;
 import com.smart.plugin.cache.annotation.Cachable;
 import com.smart.plugin.cache.annotation.CacheClear;
 import com.smart.plugin.cache.annotation.CachePut;
@@ -16,7 +17,7 @@ import java.util.Map;
 public class CustomerServiceCacheAnnotationImpl extends BaseService implements CustomerService {
 
     @Override
-    @CachePut("customer_list_cache")
+    @CachePut(value = "customer_list_cache", expiry = Expiry.ONE_MINUTE)
     public List<Customer> getCustomerList() {
         return DataSet.selectList(Customer.class, "", "");
     }
