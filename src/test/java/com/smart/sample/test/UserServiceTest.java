@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class UserServiceTest extends BaseTest {
 
-    private UserService userService = BeanHelper.getInstance().getBean(UserServiceImpl.class);
+    private UserService userService = BeanHelper.getBean(UserServiceImpl.class);
 
     @BeforeClass
     @AfterClass

@@ -19,9 +19,9 @@ $(function() {
                 var data = result.data;
                 if (data) {
                     var html = '';
-                    html += '<div>File Name: ' + data.fileName + '</div>';
-                    html += '<div>File Type: ' + data.fileType + '</div>';
-                    html += '<div>File Size: ' + data.fileSize + '</div>';
+                    html += '<div>File Name: ' + data.file_name + '</div>';
+                    html += '<div>File Type: ' + data.file_type + '</div>';
+                    html += '<div>File Size: ' + data.file_size + '</div>';
                     html += '<img src="../upload/product/' + data.fileName + '" style="height: 400px;"/>';
                     $('#console').html(html);
                 }

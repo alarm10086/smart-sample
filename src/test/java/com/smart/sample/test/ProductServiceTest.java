@@ -18,7 +18,7 @@ import org.junit.Test;
 
 public class ProductServiceTest extends BaseTest {
 
-    private ProductService productService = BeanHelper.getInstance().getBean(ProductServiceImpl.class);
+    private ProductService productService = BeanHelper.getBean(ProductServiceImpl.class);
 
     @BeforeClass
     @AfterClass
