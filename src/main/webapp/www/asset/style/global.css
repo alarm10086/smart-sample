@@ -118,6 +118,14 @@ button:hover:not(:disabled) {
     font-weight: bold;
     margin: 10px;
 }
+#header #menu {
+    float: left;
+    margin: 10px;
+}
+#header #menu a {
+    padding: 10px;
+    color: #FFF;
+}
 #header #oper {
     float: right;
     margin: 10px;

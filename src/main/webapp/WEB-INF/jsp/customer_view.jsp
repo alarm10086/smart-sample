@@ -13,6 +13,10 @@
 
 <div id="header">
     <div id="logo">Smart Sample</div>
+    <div id="menu">
+        <a href="${BASE}/www/page/product.html">Product</a>
+        <a href="${BASE}/customer">Customer</a>
+    </div>
     <div id="oper">
         <button type="button" id="logout">Logout</button>
     </div>
