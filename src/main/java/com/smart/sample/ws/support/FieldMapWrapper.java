@@ -1,4 +1,4 @@
-package com.smart.sample.ws;
+package com.smart.sample.ws.support;
 
 import java.util.ArrayList;
 import java.util.List;

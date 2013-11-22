@@ -1,7 +1,7 @@
-package com.smart.sample.service.impl;
+package com.smart.sample.ws.impl;
 
 import com.smart.framework.annotation.Bean;
-import com.smart.sample.service.GreetingService;
+import com.smart.sample.ws.GreetingService;
 
 @Bean
 public class GreetingServiceImpl implements GreetingService {

@@ -1,4 +1,4 @@
-package com.smart.sample.service;
+package com.smart.sample.ws;
 
 import com.smart.plugin.ws.annotation.WebService;
 
