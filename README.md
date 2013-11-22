@@ -12,3 +12,12 @@ Smart Sample
 3. 执行 doc/sample.sql 脚本。
 4. 配置 Tomcat，并运行该应用。
 5. 访问应用：http://[host]:[port]/
+
+
+----------------------------------------------------------------------
+
+Smart Sample For Eclipse
+
+导入Eclipse，可直接运行！
+
+[http://git.oschina.net/coxapp/smart-sample](http://git.oschina.net/coxapp/smart-sample)
