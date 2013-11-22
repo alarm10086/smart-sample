@@ -58,6 +58,11 @@
             <artifactId>smart-plugin-cache</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>smart-plugin-ws</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
