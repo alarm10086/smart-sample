@@ -1,6 +1,6 @@
 package com.smart.sample.test;
 
-import com.smart.plugin.ws.helper.WSHelper;
+import com.smart.plugin.ws.WSHelper;
 import com.smart.sample.entity.User;
 import com.smart.sample.ws.UserService;
 import java.util.HashMap;
