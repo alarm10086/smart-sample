@@ -1,45 +1,35 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="BASE" value="${pageContext.request.contextPath}"/>
+<%@ include file="common/global.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=8">
-    <title>Smart Smaple - Customer</title>
+    <%@ include file="common/meta.jsp" %>
+    <title><f:message key="common.smart_sample"/> - <f:message key="customer"/></title>
     <link rel="stylesheet" href="${BASE}/www/asset/style/global.css"/>
 </head>
 <body>
 
-<div id="header">
-    <div id="logo">Smart Sample</div>
-    <div id="menu">
-        <a href="${BASE}/www/page/product.html">Product</a>
-        <a href="${BASE}/customer">Customer</a>
-    </div>
-    <div id="oper">
-        <button type="button" id="logout">Logout</button>
-    </div>
-</div>
+<%@ include file="common/header.jsp" %>
 
 <div id="content">
     <div id="main">
         <div class="css-panel">
             <div class="css-panel-header">
                 <div class="css-left">
-                    <h3>Customer List</h3>
+                    <h3><f:message key="customer.customer_list"/></h3>
                 </div>
                 <div class="css-right">
-                    <a href="${BASE}/customer_create">New Customer</a>
+                    <a href="${BASE}/customer_create"><f:message key="customer.create_customer"/></a>
                 </div>
             </div>
             <div class="css-panel-content">
                 <table id="customer_table" class="css-table">
                     <thead>
                         <tr>
-                            <td>Customer Name</td>
-                            <td>Description</td>
-                            <td class="css-width-75">Action</td>
+                            <td><f:message key="customer.customer_name"/></td>
+                            <td><f:message key="customer.description"/></td>
+                            <td class="css-width-75"><f:message key="common.action"/></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,8 +42,8 @@
                                     ${customer.description}
                                 </td>
                                 <td>
-                                    <a href="${BASE}/customer/edit/${customer.id}">Edit</a>
-                                    <a href="#" class="ext-customer-delete">Delete</a>
+                                    <a href="${BASE}/customer/edit/${customer.id}"><f:message key="common.edit"/></a>
+                                    <a href="#" class="ext-customer-delete"><f:message key="common.delete"/></a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -64,13 +54,9 @@
     </div>
 </div>
 
-<div id="footer">
-    <div id="copyright">Copyright @ 2013</div>
-</div>
+<%@ include file="common/footer.jsp" %>
 
-<script type="text/javascript" src="${BASE}/www/asset/lib/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="${BASE}/www/asset/lib/jquery-form/jquery.form.min.js"></script>
-<script type="text/javascript" src="${BASE}/www/asset/script/global.js"></script>
+<%@ include file="common/script.jsp" %>
 <script type="text/javascript" src="${BASE}/www/script/customer.js"></script>
 
 </body>

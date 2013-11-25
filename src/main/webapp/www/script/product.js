@@ -50,7 +50,6 @@ $(function() {
 var ProductTable = function() {
     // 定义对象
     var pager = new Pager('product_pager', this);
-    var renderer = new Renderer();
 
     // 初始化
     (function() {
@@ -93,7 +92,7 @@ var ProductTable = function() {
         var template = $('#product_table_template').html();
         var tableHTML = '';
         $.each(data.recordList, function(i, product) {
-            tableHTML += renderer.render(template, product);
+            tableHTML += $.render(template, product);
         });
         $('#product_table').find('tbody').html(tableHTML);
     };

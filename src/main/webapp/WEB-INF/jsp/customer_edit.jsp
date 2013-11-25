@@ -1,27 +1,17 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="BASE" value="${pageContext.request.contextPath}"/>
+<%@ include file="common/global.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <%@ include file="common/meta.jsp" %>
     <title>Smart Smaple - Customer</title>
     <link rel="stylesheet" href="${BASE}/www/asset/style/global.css"/>
 
 </head>
 <body>
 
-<div id="header">
-    <div id="logo">Smart Sample</div>
-    <div id="menu">
-        <a href="${BASE}/www/page/product.html">Product</a>
-        <a href="${BASE}/customer">Customer</a>
-    </div>
-    <div id="oper">
-        <button type="button" id="logout">Logout</button>
-    </div>
-</div>
+<%@ include file="common/header.jsp" %>
 
 <div id="content">
     <form id="cusotmer_edit_form" class="css-form">
@@ -45,13 +35,9 @@
     </form>
 </div>
 
-<div id="footer">
-    <div id="copyright">Copyright @ 2013</div>
-</div>
+<%@ include file="common/footer.jsp" %>
 
-<script type="text/javascript" src="${BASE}/www/asset/lib/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="${BASE}/www/asset/lib/jquery-form/jquery.form.min.js"></script>
-<script type="text/javascript" src="${BASE}/www/asset/script/global.js"></script>
+<%@ include file="common/script.jsp" %>
 <script type="text/javascript" src="${BASE}/www/script/customer_edit.js"></script>
 
 </body>

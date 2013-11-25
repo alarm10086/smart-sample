@@ -40,7 +40,7 @@ a, a:before, a:after {
 }
 
 a:hover {
-    color: red;
+    color: red !important;
 }
 
 input, select, textarea, button {
@@ -104,6 +104,7 @@ button:hover:not(:disabled) {
 }
 
 #header {
+    color: #FFF;
     position: absolute;
     top: 0;
     right: 0;
@@ -111,8 +112,10 @@ button:hover:not(:disabled) {
     height: 40px;
     background-color: #0382AD;
 }
-#header #logo {
+#header a {
     color: #FFF;
+}
+#header #logo {
     float: left;
     font-size: 16px;
     font-weight: bold;
@@ -123,8 +126,7 @@ button:hover:not(:disabled) {
     margin: 10px;
 }
 #header #menu a {
-    padding: 10px;
-    color: #FFF;
+    margin: 10px;
 }
 #header #oper {
     float: right;
@@ -161,10 +163,18 @@ button:hover:not(:disabled) {
     background-color: #555;
     color: #FFF;
 }
+#footer a {
+    color: #FFF;
+}
 #footer #copyright {
     float: left;
-    margin: 2px 10px;
+    margin: 1px 0 0 10px;
 }
+#footer #language {
+    float: right;
+    margin: 1px 10px 0 0;
+}
+
 
 .css-form {
     border: 1px solid #CCC;

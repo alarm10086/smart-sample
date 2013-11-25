@@ -87,19 +87,6 @@ var Pager = function(pagerId, $tableComponent) {
     };
 };
 
-var Renderer = function() {
-    this.render = function(template, data) {
-        return template.replace(/\{([\w\.]*)\}/g, function(str, key) {
-            var keys = key.split('.');
-            var value = data[keys.shift()];
-            for (var i = 0, l = keys.length; i < l; i++) {
-                value = value[keys[i]];
-            }
-            return (typeof value !== 'undefined' && value !== null) ? value : '';
-        });
-    };
-};
-
 var Validator = function() {
     this.required = function(formId) {
         var result = true;
@@ -178,6 +165,42 @@ $(function() {
                     }
                 }
             });
+        }
+    });
+
+    // 切换系统语言
+    $('#language').find('a').click(function() {
+        var language = $(this).data('value');
+        $.cookie('cookie_language', language, {expires: 365, path: '/'});
+        location.reload();
+    });
+
+    // 扩展 jQuery 函数
+    $.extend($, {
+        render: function(template, data) {
+            return template.replace(/\{([\w\.]*)\}/g, function(str, key) {
+                var keys = key.split('.');
+                var value = data[keys.shift()];
+                for (var i = 0, l = keys.length; i < l; i++) {
+                    value = value[keys[i]];
+                }
+                return (typeof value !== 'undefined' && value !== null) ? value : '';
+            });
+        },
+        i18n: function() {
+            var args = arguments;
+            var code = args[0];
+            var text = I18N[code];
+            if (text) {
+                if (args.length > 0) {
+                    text = text.replace(/\{(\d+)\}/g, function(m, i) {
+                        return args[parseInt(i) + 1];
+                    });
+                }
+                return text;
+            } else {
+                return code;
+            }
         }
     });
 });
