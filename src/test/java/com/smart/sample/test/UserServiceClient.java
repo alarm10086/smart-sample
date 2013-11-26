@@ -1,6 +1,6 @@
 package com.smart.sample.test;
 
-import com.smart.plugin.ws.WSHelper;
+import com.smart.plugin.ws.WebServiceHelper;
 import com.smart.sample.entity.User;
 import com.smart.sample.ws.soap.UserService;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ public class UserServiceClient {
 
     public static void main(String[] args) {
         String wsAddress = "http://localhost:8080/smart-sample/ws/UserService";
-        UserService userService = WSHelper.createWebClient(wsAddress, UserService.class);
+        UserService userService = WebServiceHelper.createWebClient(wsAddress, UserService.class);
 
         Map<String, Object> fieldMap = new HashMap<String, Object>();
         fieldMap.put("username", "admin");
