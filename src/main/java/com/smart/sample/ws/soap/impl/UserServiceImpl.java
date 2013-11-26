@@ -1,10 +1,10 @@
-package com.smart.sample.ws.impl;
+package com.smart.sample.ws.soap.impl;
 
 import com.smart.framework.DataSet;
 import com.smart.framework.annotation.Bean;
 import com.smart.framework.base.BaseService;
 import com.smart.sample.entity.User;
-import com.smart.sample.ws.UserService;
+import com.smart.sample.ws.soap.UserService;
 import java.util.Map;
 
 @Bean

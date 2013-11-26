@@ -2,7 +2,7 @@ package com.smart.sample.test;
 
 import com.smart.plugin.ws.WSHelper;
 import com.smart.sample.entity.User;
-import com.smart.sample.ws.UserService;
+import com.smart.sample.ws.soap.UserService;
 import java.util.HashMap;
 import java.util.Map;
 

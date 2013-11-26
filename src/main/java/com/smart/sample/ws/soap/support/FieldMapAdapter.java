@@ -1,4 +1,4 @@
-package com.smart.sample.ws.support;
+package com.smart.sample.ws.soap.support;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,7 +1,7 @@
 package com.smart.sample.test;
 
 import com.smart.plugin.ws.WSHelper;
-import com.smart.sample.ws.GreetingService;
+import com.smart.sample.ws.soap.GreetingService;
 
 public class GreetingServiceClient {
 

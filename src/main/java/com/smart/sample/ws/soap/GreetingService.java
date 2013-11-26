@@ -1,4 +1,4 @@
-package com.smart.sample.ws;
+package com.smart.sample.ws.soap;
 
 import com.smart.plugin.ws.WebService;
 
