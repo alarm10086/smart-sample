@@ -5,7 +5,7 @@
 <html>
 <head>
     <%@ include file="common/meta.jsp" %>
-    <title>Smart Smaple - Customer</title>
+    <title><f:message key="common.smart_sample"/> - <f:message key="customer"/></title>
     <link rel="stylesheet" href="${BASE}/www/asset/style/global.css"/>
 </head>
 <body>
@@ -15,20 +15,20 @@
 <div id="content">
     <form id="customer_create_form" class="css-form">
         <div class="css-form-header">
-            <h3>Create Customer</h3>
+            <h3><f:message key="customer.new_customer"/></h3>
         </div>
         <div class="css-form-row">
-            <label for="customer_name">Customer Name:</label>
+            <label for="customer_name"><f:message key="customer.customer_name"/>:</label>
             <input type="text" id="customer_name" name="customerName" class="ext-required"/>
             <span class="css-color-red">*</span>
         </div>
         <div class="css-form-row">
-            <label for="description">Description:</label>
+            <label for="description"><f:message key="customer.description"/>:</label>
             <textarea id="description" name="description" rows="5"></textarea>
         </div>
         <div class="css-form-footer">
-            <button type="submit">Save</button>
-            <button type="button" id="cancel">Cancel</button>
+            <button type="submit"><f:message key="common.save"/></button>
+            <button type="button" id="cancel"><f:message key="common.cancel"/></button>
         </div>
     </form>
 </div>

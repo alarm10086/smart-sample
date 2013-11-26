@@ -20,7 +20,7 @@
                     <h3><f:message key="customer.customer_list"/></h3>
                 </div>
                 <div class="css-right">
-                    <a href="${BASE}/customer_create"><f:message key="customer.create_customer"/></a>
+                    <a href="${BASE}/customer_create"><f:message key="customer.new_customer"/></a>
                 </div>
             </div>
             <div class="css-panel-content">
