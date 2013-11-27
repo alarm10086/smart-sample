@@ -8,8 +8,8 @@ public class GreetingServiceSOAPTest {
 
     @Test
     public void sayHelloTest() {
-        String wsAddress = "http://localhost:8080/smart-sample/ws/GreetingService";
-        GreetingService greetingService = SOAPHelper.createClient(wsAddress, GreetingService.class);
+        String wsdl = "http://localhost:8080/smart-sample/ws/GreetingService";
+        GreetingService greetingService = SOAPHelper.createClient(wsdl, GreetingService.class);
         greetingService.sayHello("Jack");
     }
 }

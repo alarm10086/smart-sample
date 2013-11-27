@@ -11,8 +11,8 @@ public class UserServiceSOAPTest {
 
     @Test
     public void loginTest() {
-        String wsAddress = "http://localhost:8080/smart-sample/ws/UserService";
-        UserService userService = SOAPHelper.createClient(wsAddress, UserService.class);
+        String wsdl = "http://localhost:8080/smart-sample/ws/UserService";
+        UserService userService = SOAPHelper.createClient(wsdl, UserService.class);
 
         Map<String, Object> fieldMap = new HashMap<String, Object>();
         fieldMap.put("username", "admin");
