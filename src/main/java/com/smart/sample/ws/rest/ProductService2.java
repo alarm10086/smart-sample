@@ -6,8 +6,10 @@ import com.smart.framework.base.BaseService;
 import com.smart.plugin.ws.WebService;
 import com.smart.sample.entity.Product;
 import java.util.List;
+import java.util.Map;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -29,5 +31,11 @@ public class ProductService2 extends BaseService {
     @Path("/product/{productId}")
     public Product getProduct(@PathParam("productId") long productId) {
         return DataSet.select(Product.class, "id = ?", productId);
+    }
+
+    @POST
+    @Path("/product")
+    public boolean createProduct(Map<String, Object> fieldMap) {
+        return DataSet.insert(Product.class, fieldMap);
     }
 }
