@@ -5,7 +5,7 @@
 <html>
 <head>
     <%@ include file="common/meta.jsp" %>
-    <title><f:message key="common.smart_sample"/> - <f:message key="customer"/></title>
+    <title><f:message key="common.title"/> - <f:message key="customer"/></title>
     <link rel="stylesheet" href="${BASE}/www/asset/style/global.css"/>
 </head>
 <body>

@@ -161,6 +161,11 @@ $(function() {
         }
     });
 
+    // 忽略空链接
+    $('a[href="#"]').click(function() {
+        return false;
+    });
+
     // 全局 AJAX 设置
     $.ajaxSetup({
         cache: true,
@@ -177,9 +182,11 @@ $(function() {
         }
     });
 
-    // 忽略空链接
-    $('a[href="#"]').click(function() {
-        return false;
+    // 切换系统语言
+    $('#language').find('a').click(function() {
+        var language = $(this).data('value');
+        $.cookie('cookie_language', language, {expires: 365, path: '/'});
+        location.reload();
     });
 
     // 绑定注销事件
@@ -195,12 +202,5 @@ $(function() {
                 }
             });
         }
-    });
-
-    // 切换系统语言
-    $('#language').find('a').click(function() {
-        var language = $(this).data('value');
-        $.cookie('cookie_language', language, {expires: 365, path: '/'});
-        location.reload();
     });
 });
