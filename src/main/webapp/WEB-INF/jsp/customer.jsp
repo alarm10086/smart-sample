@@ -56,7 +56,7 @@
 
 <%@ include file="common/footer.jsp" %>
 
-<%@ include file="common/script.jsp" %>
+<%@ include file="common/js.jsp" %>
 <script type="text/javascript" src="${BASE}/www/script/customer.js"></script>
 
 </body>
