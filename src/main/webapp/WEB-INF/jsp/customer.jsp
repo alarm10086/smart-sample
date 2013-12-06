@@ -6,7 +6,7 @@
 <head>
     <%@ include file="common/meta.jsp" %>
     <title><f:message key="common.title"/> - <f:message key="customer"/></title>
-    <link rel="stylesheet" href="${BASE}/www/asset/style/global.css"/>
+    <%@ include file="common/css.jsp" %>
 </head>
 <body>
 
@@ -37,7 +37,9 @@
                         <c:forEach var="customer" items="${customerList}">
                             <tr data-id="${customer.id}" data-name="${customer.customerName}">
                                 <td>
-                                    <img src="${BASE}/www/upload/${not empty customer.photo ? customer.photo : 'default.jpg'}" width="32"/>
+                                    <c:set var="photo" value="www/upload/${customer.photo}"/>
+                                    <c:set var="default" value="'www/img/default.jpg'"/>
+                                    <img src="${BASE}/${not empty photo ? photo : default}" width="32"/>
                                 </td>
                                 <td>
                                     <a href="${BASE}/customer/view/${customer.id}">${customer.customerName}</a>
@@ -61,7 +63,7 @@
 <%@ include file="common/footer.jsp" %>
 
 <%@ include file="common/js.jsp" %>
-<script type="text/javascript" src="${BASE}/www/script/customer.js"></script>
+<script type="text/javascript" src="${BASE}/www/js/customer.js"></script>
 
 </body>
 </html>

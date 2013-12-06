@@ -6,7 +6,7 @@
 <head>
     <%@ include file="common/meta.jsp" %>
     <title><f:message key="common.title"/> - <f:message key="customer"/></title>
-    <link rel="stylesheet" href="${BASE}/www/asset/style/global.css"/>
+    <%@ include file="common/css.jsp" %>
 </head>
 <body>
 
@@ -32,7 +32,9 @@
             <div class="css-left">
                 <div class="css-form-row">
                     <label><f:message key="customer.photo"/>:</label>
-                    <img src="${BASE}/www/upload/${not empty customer.photo ? customer.photo : 'default.jpg'}" width="64"/>
+                    <c:set var="photo" value="www/upload/${customer.photo}"/>
+                    <c:set var="default" value="'www/img/default.jpg'"/>
+                    <img src="${BASE}/${not empty photo ? photo : default}" width="64"/>
                 </div>
             </div>
         </div>
@@ -46,7 +48,7 @@
 <%@ include file="common/footer.jsp" %>
 
 <%@ include file="common/js.jsp" %>
-<script type="text/javascript" src="${BASE}/www/script/customer_view.js"></script>
+<script type="text/javascript" src="${BASE}/www/js/customer_view.js"></script>
 
 </body>
 </html>

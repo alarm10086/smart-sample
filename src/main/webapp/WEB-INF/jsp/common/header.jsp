@@ -3,7 +3,6 @@
 <div id="header">
     <div id="logo"><f:message key="common.title"/></div>
     <div id="menu">
-        <a href="${BASE}/www/page/product.html"><f:message key="product"/></a>
         <a href="${BASE}/customer"><f:message key="customer"/></a>
     </div>
     <div id="oper">

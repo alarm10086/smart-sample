@@ -6,7 +6,7 @@
 <head>
     <%@ include file="common/meta.jsp" %>
     <title><f:message key="common.title"/> - <f:message key="customer"/></title>
-    <link rel="stylesheet" href="${BASE}/www/asset/style/global.css"/>
+    <%@ include file="common/css.jsp" %>
 </head>
 <body>
 
@@ -40,7 +40,7 @@
 <%@ include file="common/footer.jsp" %>
 
 <%@ include file="common/js.jsp" %>
-<script type="text/javascript" src="${BASE}/www/script/customer_create.js"></script>
+<script type="text/javascript" src="${BASE}/www/js/customer_create.js"></script>
 
 </body>
 </html>
