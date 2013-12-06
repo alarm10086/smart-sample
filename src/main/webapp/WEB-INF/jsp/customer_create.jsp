@@ -13,7 +13,7 @@
 <%@ include file="common/header.jsp" %>
 
 <div id="content">
-    <form id="customer_create_form" class="css-form">
+    <form id="customer_create_form" method="post" enctype="multipart/form-data" class="css-form">
         <div class="css-form-header">
             <h3><f:message key="customer.new_customer"/></h3>
         </div>
@@ -25,6 +25,10 @@
         <div class="css-form-row">
             <label for="description"><f:message key="customer.description"/>:</label>
             <textarea id="description" name="description" rows="5"></textarea>
+        </div>
+        <div class="css-form-row">
+            <label for="photo"><f:message key="customer.photo"/>:</label>
+            <input type="file" id="photo" name="photo"/>
         </div>
         <div class="css-form-footer">
             <button type="submit"><f:message key="common.save"/></button>

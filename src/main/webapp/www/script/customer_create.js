@@ -4,6 +4,7 @@ $(function() {
     $('#customer_create_form').ajaxForm({
         type: 'post',
         url: BASE + '/customer/create',
+        dataType: 'json',
         beforeSubmit: function() {
             return validator.required('customer_create_form');
         },

@@ -13,19 +13,33 @@
 <%@ include file="common/header.jsp" %>
 
 <div id="content">
-    <form id="cusotmer_edit_form" class="css-form">
+    <form id="cusotmer_edit_form" method="post" enctype="multipart/form-data" class="css-form">
         <input type="hidden" id="id" value="${customer.id}"/>
         <div class="css-form-header">
             <h3><f:message key="customer.edit_customer"/></h3>
         </div>
-        <div class="css-form-row">
-            <label for="customer_name"><f:message key="customer.customer_name"/>:</label>
-            <input type="text" id="customer_name" name="customerName" value="${customer.customerName}" class="ext-required"/>
-            <span class="css-color-red">*</span>
-        </div>
-        <div class="css-form-row">
-            <label for="description"><f:message key="customer.description"/>:</label>
-            <textarea id="description" name="description" rows="5">${customer.description}</textarea>
+        <div class="css-box">
+            <div class="css-left">
+                <div class="css-form-row">
+                    <label for="customer_name"><f:message key="customer.customer_name"/>:</label>
+                    <input type="text" id="customer_name" name="customerName" value="${customer.customerName}" class="ext-required"/>
+                    <span class="css-color-red">*</span>
+                </div>
+                <div class="css-form-row">
+                    <label for="description"><f:message key="customer.description"/>:</label>
+                    <textarea id="description" name="description" rows="5">${customer.description}</textarea>
+                </div>
+            </div>
+            <div class="css-left">
+                <div class="css-form-row">
+                    <label for="photo"><f:message key="customer.photo"/>:</label>
+                    <input type="file" id="photo" name="photo"/>
+                </div>
+                <div class="css-form-row">
+                    <label></label>
+                    <img src="${BASE}/www/upload/${not empty customer.photo ? customer.photo : 'default.jpg'}" width="64"/>
+                </div>
+            </div>
         </div>
         <div class="css-form-footer">
             <button type="submit"><f:message key="common.save"/></button>

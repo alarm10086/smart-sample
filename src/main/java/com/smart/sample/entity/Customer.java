@@ -8,6 +8,8 @@ public class Customer extends BaseEntity {
 
     private String description;
 
+    private String photo;
+
     public String getCustomerName() {
         return customerName;
     }
@@ -22,5 +24,13 @@ public class Customer extends BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

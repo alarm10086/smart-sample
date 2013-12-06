@@ -18,13 +18,23 @@
         <div class="css-form-header">
             <h3><f:message key="customer.view_customer"/></h3>
         </div>
-        <div class="css-form-row">
-            <label for="customer_name"><f:message key="customer.customer_name"/>:</label>
-            <input type="text" id="customer_name" name="customerName" value="${customer.customerName}" class="css-readonly" readonly/>
-        </div>
-        <div class="css-form-row">
-            <label for="description"><f:message key="customer.description"/>:</label>
-            <textarea id="description" name="description" rows="5" class="css-readonly" readonly>${customer.description}</textarea>
+        <div class="css-box">
+            <div class="css-left">
+                <div class="css-form-row">
+                    <label for="customer_name"><f:message key="customer.customer_name"/>:</label>
+                    <input type="text" id="customer_name" name="customerName" value="${customer.customerName}" class="css-readonly" readonly/>
+                </div>
+                <div class="css-form-row">
+                    <label for="description"><f:message key="customer.description"/>:</label>
+                    <textarea id="description" name="description" rows="5" class="css-readonly" readonly>${customer.description}</textarea>
+                </div>
+            </div>
+            <div class="css-left">
+                <div class="css-form-row">
+                    <label><f:message key="customer.photo"/>:</label>
+                    <img src="${BASE}/www/upload/${not empty customer.photo ? customer.photo : 'default.jpg'}" width="64"/>
+                </div>
+            </div>
         </div>
         <div class="css-form-footer">
             <button type="button" id="edit"><f:message key="common.edit"/></button>
