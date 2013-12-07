@@ -1,6 +1,52 @@
 /* 全局变量 */
 var BASE = '/smart-sample'; // Context Path（若以 ROOT 发布，则为空字符串）
 
+var Smart = {
+    Validator: {
+        checkRequired: function(formId) {
+            var result = true;
+            $('#' + formId + ' .ext-required')
+                .each(function() {
+                    var value = $.trim($(this).val());
+                    var tagName = this.tagName;
+                    if (tagName == 'INPUT' || tagName == 'TEXTAREA') {
+                        if (value == '') {
+                            $(this).addClass('css-error');
+                            result = false;
+                        } else {
+                            $(this).removeClass('css-error');
+                        }
+                    } else if (tagName == 'SELECT') {
+                        if (value == '' || value == 0) {
+                            $(this).addClass('css-error');
+                            result = false;
+                        } else {
+                            $(this).removeClass('css-error');
+                        }
+                    }
+                })
+                .change(function() {
+                    var value = $.trim($(this).val());
+                    var tagName = this.tagName;
+                    if (tagName == 'INPUT' || tagName == 'TEXTAREA') {
+                        if (value != '') {
+                            $(this).removeClass('css-error');
+                        } else {
+                            $(this).addClass('css-error');
+                        }
+                    } else if (tagName == 'SELECT') {
+                        if (value != '' && value != 0) {
+                            $(this).removeClass('css-error');
+                        } else {
+                            $(this).addClass('css-error');
+                        }
+                    }
+                });
+            return result;
+        }
+    }
+};
+
 var Pager = function(pagerId, $tableComponent) {
     (function() {
         // 翻页
@@ -87,50 +133,6 @@ var Pager = function(pagerId, $tableComponent) {
     };
 };
 
-var Validator = function() {
-    this.required = function(formId) {
-        var result = true;
-        $('#' + formId + ' .ext-required')
-            .each(function() {
-                var value = $.trim($(this).val());
-                var tagName = this.tagName;
-                if (tagName == 'INPUT' || tagName == 'TEXTAREA') {
-                    if (value == '') {
-                        $(this).addClass('css-error');
-                        result = false;
-                    } else {
-                        $(this).removeClass('css-error');
-                    }
-                } else if (tagName == 'SELECT') {
-                    if (value == '' || value == 0) {
-                        $(this).addClass('css-error');
-                        result = false;
-                    } else {
-                        $(this).removeClass('css-error');
-                    }
-                }
-            })
-            .change(function() {
-                var value = $.trim($(this).val());
-                var tagName = this.tagName;
-                if (tagName == 'INPUT' || tagName == 'TEXTAREA') {
-                    if (value != '') {
-                        $(this).removeClass('css-error');
-                    } else {
-                        $(this).addClass('css-error');
-                    }
-                } else if (tagName == 'SELECT') {
-                    if (value != '' && value != 0) {
-                        $(this).removeClass('css-error');
-                    } else {
-                        $(this).addClass('css-error');
-                    }
-                }
-            });
-        return result;
-    }
-};
-
 $(function() {
     // 扩展 jQuery 函数
     $.extend($, {
@@ -165,6 +167,9 @@ $(function() {
     $('a[href="#"]').click(function() {
         return false;
     });
+
+    // 设置 form 默认为 post 类型
+    $('form').attr('method', 'post');
 
     // 全局 AJAX 设置
     $.ajaxSetup({

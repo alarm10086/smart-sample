@@ -13,7 +13,7 @@
 <%@ include file="common/header.jsp" %>
 
 <div id="content">
-    <form id="customer_create_form" method="post" enctype="multipart/form-data" class="css-form">
+    <form id="customer_create_form" enctype="multipart/form-data" class="css-form">
         <div class="css-form-header">
             <h3><f:message key="customer.new_customer"/></h3>
         </div>

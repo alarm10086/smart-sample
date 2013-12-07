@@ -4,7 +4,7 @@ $(function() {
         location.href = BASE + '/customer/edit/' + customerId;
     });
 
-    $('#cancel').click(function() {
+    $('#back').click(function() {
         location.href = BASE + '/customer';
     });
 });

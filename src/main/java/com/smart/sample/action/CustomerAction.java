@@ -8,10 +8,10 @@ import com.smart.framework.base.BaseAction;
 import com.smart.framework.bean.Multipart;
 import com.smart.framework.bean.Page;
 import com.smart.framework.bean.Result;
-import com.smart.framework.util.FileUtil;
+import com.smart.framework.helper.UploadHelper;
+import com.smart.sample.Constant;
 import com.smart.sample.entity.Customer;
 import com.smart.sample.service.CustomerService;
-import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -39,37 +39,35 @@ public class CustomerAction extends BaseAction {
         return new Page("customer_edit.jsp").data("customer", customer);
     }
 
-    @Request("post:/customer/update/{id}")
-    public Result update(long id, Map<String, Object> fieldMap, Map<String, Multipart> multipartMap) {
-        boolean success = customerService.updateCustomer(id, fieldMap);
+    @Request("post:/customer/create")
+    public Result create(Map<String, Object> fieldMap, Multipart multipart) {
+        boolean success = customerService.createCustomer(fieldMap);
         if (success) {
-            upload(multipartMap);
+            String basePath = DataContext.getServletContext().getRealPath("") + Constant.UPLOAD_PATH;
+            UploadHelper.upload(basePath, multipart);
         }
         return new Result(success);
     }
 
-    @Request("post:/customer/create")
-    public Result create(Map<String, Object> fieldMap, Map<String, Multipart> multipartMap) {
-        boolean success = customerService.createCustomer(fieldMap);
-        if (success) {
-            upload(multipartMap);
-        }
+    @Request("put:/customer/update/{id}")
+    public Result update(long id, Map<String, Object> fieldMap) {
+        boolean success = customerService.updateCustomer(id, fieldMap);
         return new Result(success);
+    }
+
+    @Request("post:/customer/upload/{id}")
+    public Result upload(long id, Map<String, Object> fieldMap, Multipart multipart) {
+        boolean success = customerService.updateCustomer(id, fieldMap);
+        if (success) {
+            String basePath = DataContext.getServletContext().getRealPath("") + Constant.UPLOAD_PATH;
+            UploadHelper.upload(basePath, multipart);
+        }
+        return new Result(success).data(multipart.getFileName());
     }
 
     @Request("delete:/customer/delete/{id}")
     public Result delete(long id) {
         boolean success = customerService.deleteCustomer(id);
         return new Result(success);
-    }
-
-    private void upload(Map<String, Multipart> multipartMap) {
-        String basePath = DataContext.getServletContext().getRealPath("") + "/www/upload/";
-        for (Multipart multipart : multipartMap.values()) {
-            String fileName = multipart.getFileName();
-            InputStream inputStream = multipart.getInputStream();
-            String filePath = basePath + fileName;
-            FileUtil.uploadFile(filePath, inputStream);
-        }
     }
 }

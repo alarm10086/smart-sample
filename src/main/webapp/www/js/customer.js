@@ -7,6 +7,7 @@ $(function() {
             $.ajax({
                 type: 'delete',
                 url: BASE + '/customer/delete/' + customerId,
+                dataType: 'json',
                 success: function(result) {
                     if (result.success) {
                         $tr.remove();

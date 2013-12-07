@@ -13,7 +13,7 @@
 <%@ include file="common/header.jsp" %>
 
 <div id="content">
-    <form id="customer_view_form" class="css-form">
+    <div class="css-panel">
         <input type="hidden" id="id" value="${customer.id}"/>
         <div class="css-form-header">
             <h3><f:message key="customer.view_customer"/></h3>
@@ -33,15 +33,15 @@
                 <div class="css-form-row">
                     <label><f:message key="customer.photo"/>:</label>
                     <c:set var="photo" value="www/upload/${customer.photo}"/>
-                    <img src="${BASE}/${not empty photo ? photo : 'www/img/default.jpg'}" width="64"/>
+                    <img src="${BASE}/${not empty customer.photo ? photo : 'www/img/default.jpg'}" height="128"/>
                 </div>
             </div>
         </div>
         <div class="css-form-footer">
             <button type="button" id="edit"><f:message key="common.edit"/></button>
-            <button type="button" id="cancel"><f:message key="common.cancel"/></button>
+            <button type="button" id="back"><f:message key="common.back"/></button>
         </div>
-    </form>
+    </div>
 </div>
 
 <%@ include file="common/footer.jsp" %>

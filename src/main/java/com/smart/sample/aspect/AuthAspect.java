@@ -19,7 +19,7 @@ public class AuthAspect extends BaseAspect {
         String className = cls.getSimpleName();
         String methodName = method.getName();
         return !(
-            className.equals("UserAction") &&
+            className.equals("SystemAction") &&
                 (methodName.equals("login") || methodName.equals("logout")
             )
         );

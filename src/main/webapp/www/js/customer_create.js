@@ -1,12 +1,10 @@
 $(function() {
-    var validator = new Validator();
-
     $('#customer_create_form').ajaxForm({
         type: 'post',
         url: BASE + '/customer/create',
         dataType: 'json',
         beforeSubmit: function() {
-            return validator.required('customer_create_form');
+            return Smart.Validator.checkRequired('customer_create_form');
         },
         success: function(result) {
             if (result.success) {
