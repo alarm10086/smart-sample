@@ -10,7 +10,9 @@
 </head>
 <body>
 
-<%@ include file="common/header_none.jsp" %>
+<div id="header">
+    <div id="logo"><f:message key="common.title"/></div>
+</div>
 
 <div id="content">
     <form id="login_form" class="css-form" style="width: 400px; margin: 0 auto;">
