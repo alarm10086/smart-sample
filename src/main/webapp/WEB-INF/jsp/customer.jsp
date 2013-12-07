@@ -38,8 +38,7 @@
                             <tr data-id="${customer.id}" data-name="${customer.customerName}">
                                 <td>
                                     <c:set var="photo" value="www/upload/${customer.photo}"/>
-                                    <c:set var="default" value="'www/img/default.jpg'"/>
-                                    <img src="${BASE}/${not empty photo ? photo : default}" width="32"/>
+                                    <img src="${BASE}/${not empty photo ? photo : 'www/img/default.jpg'}" width="32"/>
                                 </td>
                                 <td>
                                     <a href="${BASE}/customer/view/${customer.id}">${customer.customerName}</a>

@@ -38,8 +38,7 @@
                 <div class="css-form-row">
                     <label></label>
                     <c:set var="photo" value="www/upload/${customer.photo}"/>
-                    <c:set var="default" value="'www/img/default.jpg'"/>
-                    <img src="${BASE}/${not empty photo ? photo : default}" width="64"/>
+                    <img src="${BASE}/${not empty photo ? photo : 'www/img/default.jpg'}" width="64"/>
                 </div>
             </div>
         </div>
