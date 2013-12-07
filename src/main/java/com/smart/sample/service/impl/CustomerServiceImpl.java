@@ -13,7 +13,12 @@ public class CustomerServiceImpl extends BaseService implements CustomerService 
 
     @Override
     public List<Customer> getCustomerList() {
-        return DataSet.selectList(Customer.class, "", "");
+        return DataSet.selectList(Customer.class, "", "id desc");
+    }
+
+    @Override
+    public List<Customer> getCustomerList(String customerName) {
+        return DataSet.selectList(Customer.class, "customer_name like ?", "id desc", '%' + customerName + '%');
     }
 
     @Override

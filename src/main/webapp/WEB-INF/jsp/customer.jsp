@@ -24,36 +24,22 @@
                 </div>
             </div>
             <div class="css-panel-content">
-                <table id="customer_table" class="css-table">
-                    <thead>
-                        <tr>
-                            <td><f:message key="customer.photo"/></td>
-                            <td><f:message key="customer.customer_name"/></td>
-                            <td><f:message key="customer.description"/></td>
-                            <td class="css-width-75"><f:message key="common.action"/></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="customer" items="${customerList}">
-                            <tr data-id="${customer.id}" data-name="${customer.customerName}">
-                                <td>
-                                    <c:set var="photo" value="www/upload/${customer.photo}"/>
-                                    <img src="${BASE}/${not empty customer.photo ? photo : 'www/img/default.jpg'}" height="32"/>
-                                </td>
-                                <td>
-                                    <a href="${BASE}/customer/view/${customer.id}">${customer.customerName}</a>
-                                </td>
-                                <td>
-                                    ${customer.description}
-                                </td>
-                                <td>
-                                    <a href="${BASE}/customer/edit/${customer.id}"><f:message key="common.edit"/></a>
-                                    <a href="#" class="ext-customer-delete"><f:message key="common.delete"/></a>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                <div class="css-row">
+                    <div class="css-left">
+                        <form id="customer_search_form">
+                            <div class="css-search">
+                                <input type="text" name="customerName" placeholder="<f:message key="customer.customer_name"/>"/>
+                                <span class="css-search-button">
+                                    <button type="submit"><f:message key="common.search"/></button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="css-right">
+                        <div id="product_pager"></div>
+                    </div>
+                </div>
+                <%@ include file="customer_list.jsp" %>
             </div>
         </div>
     </div>

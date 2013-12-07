@@ -9,6 +9,7 @@ import com.smart.framework.bean.Multipart;
 import com.smart.framework.bean.Page;
 import com.smart.framework.bean.Result;
 import com.smart.framework.helper.UploadHelper;
+import com.smart.framework.util.CastUtil;
 import com.smart.sample.Constant;
 import com.smart.sample.entity.Customer;
 import com.smart.sample.service.CustomerService;
@@ -25,6 +26,13 @@ public class CustomerAction extends BaseAction {
     public Page index() {
         List<Customer> customerList = customerService.getCustomerList();
         return new Page("customer.jsp").data("customerList", customerList);
+    }
+
+    @Request("post:/customer/search")
+    public Page search(Map<String, Object> fieldMap) {
+        String customerName = CastUtil.castString(fieldMap.get("customerName"));
+        List<Customer> customerList = customerService.getCustomerList(customerName);
+        return new Page("customer_list.jsp").data("customerList", customerList);
     }
 
     @Request("get:/customer/view/{id}")
