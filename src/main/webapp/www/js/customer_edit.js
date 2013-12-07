@@ -19,6 +19,9 @@ $(function() {
         type: 'post',
         url: BASE + '/customer/upload/' + $id.val(),
         dataType: 'json',
+        beforeSubmit: function() {
+            return $('#photo').val().length > 0;
+        },
         success: function(result) {
             if (result.success) {
                 $('#photo_img').attr('src', BASE + '/www/upload/' + result.data);

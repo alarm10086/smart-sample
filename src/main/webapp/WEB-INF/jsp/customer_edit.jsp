@@ -36,7 +36,7 @@
                 <form id="customer_upload_form" enctype="multipart/form-data" class="css-form">
                     <div class="css-form-row">
                         <label for="photo"><f:message key="customer.photo"/>:</label>
-                        <input type="file" id="photo" name="photo" value="${customer.photo}"/>
+                        <input type="file" id="photo" name="photo"/>
                     </div>
                     <div class="css-form-row">
                         <label></label>
