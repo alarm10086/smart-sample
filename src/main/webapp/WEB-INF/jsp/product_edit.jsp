@@ -1,6 +1,8 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ include file="common/global.jsp" %>
 
+<c:set var="product" value="${productBean.product}"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +23,14 @@
             <input type="hidden" id="id" value="${product.id}"/>
             <div class="css-left">
                 <form id="product_edit_form" class="css-form">
+                    <div class="css-form-row">
+                        <label for="productType"><f:message key="product.product_type"/>:</label>
+                        <select id="productType" name="productTypeId" class="ext-required">
+                            <c:forEach var="productType" items="${productTypeList}">
+                                <option value="${productType.id}" ${product.productTypeId == productType.id ? 'selected' : ''}>${productType.name}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
                     <div class="css-form-row">
                         <label for="product_name"><f:message key="product.product_name"/>:</label>
                         <input type="text" id="product_name" name="productName" value="${product.productName}" class="ext-required"/>

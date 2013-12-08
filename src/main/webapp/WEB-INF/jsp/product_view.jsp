@@ -1,6 +1,9 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ include file="common/global.jsp" %>
 
+<c:set var="product" value="${productBean.product}"/>
+<c:set var="productType" value="${productBean.productType}"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +23,10 @@
         </div>
         <div class="css-box">
             <div class="css-left">
+                <div class="css-form-row">
+                    <label><f:message key="product.product_type"/>:</label>
+                    <input type="text" value="${productType.name}" class="css-readonly" readonly/>
+                </div>
                 <div class="css-form-row">
                     <label><f:message key="product.product_name"/>:</label>
                     <input type="text" value="${product.productName}" class="css-readonly" readonly/>

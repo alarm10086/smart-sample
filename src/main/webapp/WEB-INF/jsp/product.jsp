@@ -31,7 +31,7 @@
                         </form>
                     </div>
                     <div class="css-right">
-                        <a href="${BASE}/product_create"><f:message key="product.new_product"/></a>
+                        <a href="${BASE}/product/create"><f:message key="product.new_product"/></a>
                     </div>
                 </div>
                 <div id="product_list">

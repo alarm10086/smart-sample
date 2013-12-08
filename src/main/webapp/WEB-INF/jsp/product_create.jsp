@@ -18,6 +18,14 @@
             <h3><f:message key="product.new_product"/></h3>
         </div>
         <div class="css-form-row">
+            <label for="productType"><f:message key="product.product_type"/>:</label>
+            <select id="productType" name="productTypeId" class="ext-required">
+                <c:forEach var="productType" items="${productTypeList}">
+                    <option value="${productType.id}">${productType.name}</option>
+                </c:forEach>
+            </select>
+        </div>
+        <div class="css-form-row">
             <label for="product_name"><f:message key="product.product_name"/>:</label>
             <input type="text" id="product_name" name="productName" class="ext-required"/>
             <span class="css-color-red">*</span>
