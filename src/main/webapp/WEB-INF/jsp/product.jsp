@@ -5,7 +5,7 @@
 <html>
 <head>
     <%@ include file="common/meta.jsp" %>
-    <title><f:message key="common.title"/> - <f:message key="customer"/></title>
+    <title><f:message key="common.title"/> - <f:message key="product"/></title>
     <%@ include file="common/css.jsp" %>
 </head>
 <body>
@@ -16,19 +16,14 @@
     <div id="main">
         <div class="css-panel">
             <div class="css-panel-header">
-                <div class="css-left">
-                    <h3><f:message key="customer.customer_list"/></h3>
-                </div>
-                <div class="css-right">
-                    <a href="${BASE}/customer_create"><f:message key="customer.new_customer"/></a>
-                </div>
+                <h3><f:message key="product.product_list"/></h3>
             </div>
             <div class="css-panel-content">
                 <div class="css-row">
                     <div class="css-left">
-                        <form id="customer_search_form">
+                        <form id="product_search_form">
                             <div class="css-search">
-                                <input type="text" name="customerName" placeholder="<f:message key="customer.customer_name"/>"/>
+                                <input type="text" name="productName" placeholder="<f:message key="product.product_name"/>"/>
                                 <span class="css-search-button">
                                     <button type="submit"><f:message key="common.search"/></button>
                                 </span>
@@ -36,10 +31,12 @@
                         </form>
                     </div>
                     <div class="css-right">
-                        <div id="product_pager"></div>
+                        <a href="${BASE}/product_create"><f:message key="product.new_product"/></a>
                     </div>
                 </div>
-                <%@ include file="customer_list.jsp" %>
+                <div id="product_list">
+                    <%@ include file="product_list.jsp" %>
+                </div>
             </div>
         </div>
     </div>
@@ -48,7 +45,7 @@
 <%@ include file="common/footer.jsp" %>
 
 <%@ include file="common/js.jsp" %>
-<script type="text/javascript" src="${BASE}/www/js/customer.js"></script>
+<script type="text/javascript" src="${BASE}/www/js/product.js"></script>
 
 </body>
 </html>

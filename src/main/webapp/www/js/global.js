@@ -1,7 +1,9 @@
-/* 全局变量 */
-var BASE = '/smart-sample'; // Context Path（若以 ROOT 发布，则为空字符串）
-
 var Smart = {
+    /* -------------------------------------------------- 常量 -------------------------------------------------- */
+    BASE: '/smart-sample', // Context Path（若以 ROOT 发布，则为空字符串）
+    INVALID_CLASS: 'css-error',
+    COOKIE_EXPIRES: 365,
+    /* -------------------------------------------------- 函数 -------------------------------------------------- */
     Validator: {
         checkRequired: function(formId) {
             var result = true;
@@ -11,17 +13,17 @@ var Smart = {
                     var tagName = this.tagName;
                     if (tagName == 'INPUT' || tagName == 'TEXTAREA') {
                         if (value == '') {
-                            $(this).addClass('css-error');
+                            $(this).addClass(Smart.INVALID_CLASS);
                             result = false;
                         } else {
-                            $(this).removeClass('css-error');
+                            $(this).removeClass(Smart.INVALID_CLASS);
                         }
                     } else if (tagName == 'SELECT') {
                         if (value == '' || value == 0) {
-                            $(this).addClass('css-error');
+                            $(this).addClass(Smart.INVALID_CLASS);
                             result = false;
                         } else {
-                            $(this).removeClass('css-error');
+                            $(this).removeClass(Smart.INVALID_CLASS);
                         }
                     }
                 })
@@ -30,139 +32,112 @@ var Smart = {
                     var tagName = this.tagName;
                     if (tagName == 'INPUT' || tagName == 'TEXTAREA') {
                         if (value != '') {
-                            $(this).removeClass('css-error');
+                            $(this).removeClass(Smart.INVALID_CLASS);
                         } else {
-                            $(this).addClass('css-error');
+                            $(this).addClass(Smart.INVALID_CLASS);
                         }
                     } else if (tagName == 'SELECT') {
                         if (value != '' && value != 0) {
-                            $(this).removeClass('css-error');
+                            $(this).removeClass(Smart.INVALID_CLASS);
                         } else {
-                            $(this).addClass('css-error');
+                            $(this).addClass(Smart.INVALID_CLASS);
                         }
                     }
                 });
             return result;
         }
+    },
+    Cookie: {
+        put: function(key, value) {
+            $.cookie(key, value, {path: Smart.BASE, expires: Smart.COOKIE_EXPIRES});
+        },
+        get: function(key) {
+            return $.cookie(key);
+        }
+    },
+    render: function(template, data) {
+        return template.replace(/\{([\w\.]*)\}/g, function(str, key) {
+            var keys = key.split('.');
+            var value = data[keys.shift()];
+            for (var i = 0, l = keys.length; i < l; i++) {
+                value = value[keys[i]];
+            }
+            return (typeof value !== 'undefined' && value !== null) ? value : '';
+        });
+    },
+    i18n: function() {
+        var args = arguments;
+        var code = args[0];
+        var text = window['I18N'][code];
+        if (text) {
+            if (args.length > 0) {
+                text = text.replace(/\{(\d+)\}/g, function(m, i) {
+                    return args[parseInt(i) + 1];
+                });
+            }
+            return text;
+        } else {
+            return code;
+        }
+    },
+    /* -------------------------------------------------- 组件 -------------------------------------------------- */
+    Pager: function(pagerId, onChangePageNumber, onChangePageSize) {
+        var $pager = $('#' + pagerId);
+        // 初始化
+        (function() {
+            // 点击翻页按钮
+            $(document).on('click', '#' + pagerId + ' .ext-pager-button button', function() {
+                onChangePageNumber($(this).data('pn'));
+            });
+            // 点击并切换页面编号
+            var pageNumberInput = '#' + pagerId + ' .ext-pager-pn';
+            $(document)
+                .on('click', pageNumberInput, function() {
+                    $(this).select();
+                })
+                .on('keydown', pageNumberInput, function(event) {
+                    if (event.keyCode == '13') {
+                        var pageNumber = $(this).val();
+                        var totalPage = parseInt($pager.find('.ext-pager-tp').text());
+                        if (isNaN(pageNumber) || pageNumber <= 0 || pageNumber > totalPage) {
+                            alert(Smart.i18n('common.pager.input_error'));
+                            $(this).select();
+                            return;
+                        }
+                        onChangePageNumber(pageNumber);
+                    }
+                });
+            // 点击并切换每页条数
+            var pageSizeInput = '#' + pagerId + ' .ext-pager-ps';
+            $(document)
+                .on('click', pageSizeInput, function() {
+                    $(this).select();
+                })
+                .on('keydown', pageSizeInput, function(event) {
+                    if (event.keyCode == '13') {
+                        var pageSize = $(this).val();
+                        if (isNaN(pageSize) || pageSize <= 0) {
+                            alert(Smart.i18n('common.pager.input_error'));
+                            $(this).select();
+                            return;
+                        }
+                        onChangePageSize(pageSize);
+                        Smart.Cookie.put('cookie_ps_' + pagerId, pageSize);
+                    }
+                });
+        })();
+        // 获取页面编号
+        this.getPageNumber = function() {
+            return $pager.find('.ext-pager-pn').val();
+        };
+        // 获取每页条数
+        this.getPageSize = function() {
+            return $pager.find('.ext-pager-ps').val();
+        };
     }
 };
 
-var Pager = function(pagerId, $tableComponent) {
-    (function() {
-        // 翻页
-        $(document).on('click', '#' + pagerId + ' .ext-pager-button button', function() {
-            var pageNumber = $(this).data('pn');
-            $tableComponent.load(pageNumber);
-        });
-
-        // 更改当前页号
-        var pageNumberInput = '#' + pagerId + ' .ext-pager-pn';
-        $(document)
-            .on('click', pageNumberInput, function() {
-                $(this).select();
-            })
-            .on('keydown', pageNumberInput, function(event) {
-                if (event.keyCode == '13') {
-                    var pageNumber = $(this).val();
-                    var totalPage = parseInt($('#' + pagerId + ' .ext-pager-tp').text());
-                    if (isNaN(pageNumber) || pageNumber <= 0 || pageNumber > totalPage) {
-                        alert('Input error for page number!');
-                        $(this).select();
-                        return;
-                    }
-                    $tableComponent.load(pageNumber);
-                }
-            });
-
-        // 更改每页条数
-        var pageSizeInput = '#' + pagerId + ' .ext-pager-ps';
-        $(document)
-            .on('click', pageSizeInput, function() {
-                $(this).select();
-            })
-            .on('keydown', pageSizeInput, function(event) {
-                if (event.keyCode == '13') {
-                    var pageSize = $(this).val();
-                    if (isNaN(pageSize) || pageSize <= 0) {
-                        alert('Input error for page size!');
-                        $(this).select();
-                        return;
-                    }
-                    $tableComponent.load(1);
-                }
-            });
-    })();
-
-    // 渲染
-    this.render = function(data) {
-        var pageNumber = data.pageNumber;
-        var totalPage = data.totalPage;
-        var pageSize = data.pageSize;
-        var totalRecord = data.totalRecord;
-
-        var pagerHTML = '';
-        pagerHTML += '<span>Page: </span>';
-        pagerHTML += '<input type="text" value="' + pageNumber + '"class="css-width-25 css-text-center ext-pager-pn"/>';
-        pagerHTML += '<span> / </span>';
-        pagerHTML += '<span class="ext-pager-tp">' + totalPage + '</span>';
-        pagerHTML += '<span class="css-blank-10"></span>';
-        pagerHTML += '<span>Size: </span>';
-        pagerHTML += '<input type="text" value="' + pageSize + '"class="css-width-25 css-text-center ext-pager-ps"/>';
-        pagerHTML += '<span class="css-blank-10"></span>';
-        pagerHTML += '<span>Total: </span>';
-        pagerHTML += '<span id="total_record">' + totalRecord + '</span>';
-        pagerHTML += '<span class="css-blank-10"></span>';
-        pagerHTML += '<div class="css-button-group ext-pager-button">';
-        if (pageNumber > 1 && pageNumber <= totalPage) {
-            pagerHTML += '    <button type="button" title="First" data-pn="1">|&lt;</button>';
-            pagerHTML += '    <button type="button" title="Pre" data-pn="' + (pageNumber - 1) + '">&lt;</button>';
-        } else {
-            pagerHTML += '    <button type="button" title="First" disabled>|&lt;</button>';
-            pagerHTML += '    <button type="button" title="Pre" disabled>&lt;</button>';
-        }
-        if (pageNumber < totalPage) {
-            pagerHTML += '    <button type="button" title="Next" data-pn="' + (pageNumber + 1) + '">&gt;</button>';
-            pagerHTML += '    <button type="button" title="Last" data-pn="' + totalPage + '">&gt;|</button>';
-        } else {
-            pagerHTML += '    <button type="button" title="Next" disabled>&gt;</button>';
-            pagerHTML += '    <button type="button" title="Last" disabled>&gt;|</button>';
-        }
-        pagerHTML += '</div>';
-
-        $('#' + pagerId).html(pagerHTML);
-    };
-};
-
 $(function() {
-    // 扩展 jQuery 函数
-    $.extend($, {
-        render: function(template, data) {
-            return template.replace(/\{([\w\.]*)\}/g, function(str, key) {
-                var keys = key.split('.');
-                var value = data[keys.shift()];
-                for (var i = 0, l = keys.length; i < l; i++) {
-                    value = value[keys[i]];
-                }
-                return (typeof value !== 'undefined' && value !== null) ? value : '';
-            });
-        },
-        i18n: function() {
-            var args = arguments;
-            var code = args[0];
-            var text = window['I18N'][code];
-            if (text) {
-                if (args.length > 0) {
-                    text = text.replace(/\{(\d+)\}/g, function(m, i) {
-                        return args[parseInt(i) + 1];
-                    });
-                }
-                return text;
-            } else {
-                return code;
-            }
-        }
-    });
-
     // 忽略空链接
     $('a[href="#"]').click(function() {
         return false;
@@ -178,7 +153,7 @@ $(function() {
             switch (jqXHR.status) {
                 case 403:
                     document.write('');
-                    location.href = BASE + '/';
+                    location.href = Smart.BASE + '/';
                     break;
                 case 503:
                     alert(errorThrown);
@@ -190,19 +165,19 @@ $(function() {
     // 切换系统语言
     $('#language').find('a').click(function() {
         var language = $(this).data('value');
-        $.cookie('cookie_language', language, {expires: 365, path: '/'});
+        Smart.Cookie.put('cookie_language', language);
         location.reload();
     });
 
     // 绑定注销事件
     $('#logout').click(function() {
-        if (confirm($.i18n('common.logout_confirm'))) {
+        if (confirm(Smart.i18n('common.logout_confirm'))) {
             $.ajax({
                 type: 'get',
-                url: BASE + '/logout',
+                url: Smart.BASE + '/logout',
                 success: function(result) {
                     if (result.success) {
-                        location.href = BASE + '/';
+                        location.href = Smart.BASE + '/';
                     }
                 }
             });

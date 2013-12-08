@@ -5,7 +5,7 @@
 <html>
 <head>
     <%@ include file="common/meta.jsp" %>
-    <title><f:message key="common.title"/> - <f:message key="customer"/></title>
+    <title><f:message key="common.title"/> - <f:message key="login"/></title>
     <%@ include file="common/css.jsp" %>
 </head>
 <body>

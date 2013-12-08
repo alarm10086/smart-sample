@@ -91,6 +91,10 @@ button:hover:not(:disabled) {
     background-color: #DDD;
 }
 
+img {
+    border: 1px solid #CCC;
+}
+
 *:disabled {
     background-color: #FFF;
     cursor: not-allowed !important;

@@ -23,7 +23,7 @@ public class SystemAction extends BaseAction {
             DataContext.Session.put("user", user);
             return new Result(true);
         } else {
-            return new Result(false).error(ERROR_DATA);
+            return new Result(false);
         }
     }
 
