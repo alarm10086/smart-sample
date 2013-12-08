@@ -27,7 +27,7 @@ $(function() {
         }
     });
 
-    $('.ext-product-delete').click(function() {
+    var deleteFn = function() {
         var $tr = $(this).closest('tr');
         var productId = $tr.data('id');
         var name = $tr.data('name');
@@ -38,10 +38,12 @@ $(function() {
                 dataType: 'json',
                 success: function(result) {
                     if (result.success) {
-                        $tr.remove();
+                        location.reload();
                     }
                 }
             });
         }
-    });
+    };
+    $('.ext-product-delete').click(deleteFn);
+    $(document).on('click', '.ext-product-delete', deleteFn);
 });

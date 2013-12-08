@@ -50,7 +50,7 @@
         </div>
         <div class="css-form-footer">
             <button type="submit"><f:message key="common.save"/></button>
-            <button type="button" id="cancel"><f:message key="common.cancel"/></button>
+            <button type="button" id="back"><f:message key="common.back"/></button>
         </div>
     </form>
 </div>

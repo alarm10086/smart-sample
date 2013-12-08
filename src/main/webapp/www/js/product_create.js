@@ -13,7 +13,7 @@ $(function() {
         }
     });
 
-    $('#cancel').click(function() {
-        location.href = Smart.BASE + '/product';
+    $('#back').click(function() {
+        history.back();
     });
 });

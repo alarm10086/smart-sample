@@ -19,44 +19,50 @@
 
 <div id="content">
     <div class="css-panel">
-        <div class="css-form-header">
-            <h3><f:message key="product.view_product"/></h3>
-        </div>
-        <div class="css-box">
-            <div class="css-left">
-                <div class="css-form-row">
-                    <label><f:message key="product.product_type"/>:</label>
-                    <input type="text" value="${productType.name}" class="css-readonly" readonly>
+        <form class="css-form">
+            <div class="css-form-header">
+                <h3><f:message key="product.view_product"/></h3>
+            </div>
+            <div class="css-box">
+                <div class="css-left">
+                    <div class="css-form-row">
+                        <label><f:message key="product.product_type"/>:</label>
+                        <input type="text" value="${productType.name}" class="css-readonly" readonly>
+                    </div>
+                    <div class="css-form-row">
+                        <label><f:message key="product.name"/>:</label>
+                        <input type="text" value="${product.name}" class="css-readonly" readonly>
+                    </div>
+                    <div class="css-form-row">
+                        <label><f:message key="product.code"/>:</label>
+                        <input type="text" value="${product.code}" class="css-readonly" readonly>
+                    </div>
+                    <div class="css-form-row">
+                        <label><f:message key="product.price"/>:</label>
+                        <input type="text" value="${product.price}" class="css-readonly" readonly>
+                    </div>
+                    <div class="css-form-row">
+                        <label><f:message key="product.description"/>:</label>
+                        <textarea rows="5" class="css-readonly" readonly>${product.description}</textarea>
+                    </div>
                 </div>
-                <div class="css-form-row">
-                    <label><f:message key="product.name"/>:</label>
-                    <input type="text" value="${product.name}" class="css-readonly" readonly>
-                </div>
-                <div class="css-form-row">
-                    <label><f:message key="product.code"/>:</label>
-                    <input type="text" value="${product.code}" class="css-readonly" readonly>
-                </div>
-                <div class="css-form-row">
-                    <label><f:message key="product.price"/>:</label>
-                    <input type="text" value="${product.price}" class="css-readonly" readonly>
-                </div>
-                <div class="css-form-row">
-                    <label><f:message key="product.description"/>:</label>
-                    <textarea rows="5" class="css-readonly" readonly>${product.description}</textarea>
+                <div class="css-left">
+                    <div class="css-form-row">
+                        <label><f:message key="product.picture"/>:</label>
+                        <c:set var="picture" value="www/upload/${product.picture}"/>
+                        <img src="${BASE}/${not empty product.picture ? picture : 'www/img/s.gif'}" height="128"/>
+                    </div>
+                    <div class="css-form-row">
+                        <label></label>
+                        <a href="${BASE}/product/change_picture/${product.id}"><f:message key="product.change_picture"/></a>
+                    </div>
                 </div>
             </div>
-            <div class="css-left">
-                <div class="css-form-row">
-                    <label><f:message key="product.picture"/>:</label>
-                    <c:set var="picture" value="www/upload/${product.picture}"/>
-                    <img src="${BASE}/${not empty product.picture ? picture : 'www/img/s.gif'}" height="128"/>
-                </div>
+            <div class="css-form-footer">
+                <button type="button" id="edit"><f:message key="common.edit"/></button>
+                <button type="button" id="back"><f:message key="common.back"/></button>
             </div>
-        </div>
-        <div class="css-form-footer">
-            <button type="button" id="edit"><f:message key="common.edit"/></button>
-            <button type="button" id="back"><f:message key="common.back"/></button>
-        </div>
+        </form>
     </div>
 </div>
 

@@ -5,6 +5,6 @@ $(function() {
     });
 
     $('#back').click(function() {
-        location.href = Smart.BASE + '/product';
+        history.back();
     });
 });

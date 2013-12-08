@@ -35,9 +35,14 @@ public class ProductServiceImpl extends BaseService implements ProductService {
     }
 
     @Override
-    public ProductBean getProductBean(long productId) {
+    public Product getProduct(long id) {
+        return DataSet.select(Product.class, "id = ?", id);
+    }
+
+    @Override
+    public ProductBean getProductBean(long id) {
         ProductBean productBean = null;
-        Product product = DataSet.select(Product.class, "id = ?", productId);
+        Product product = getProduct(id);
         if (product != null) {
             ProductType productType = DataSet.select(ProductType.class, "id = ?", product.getProductTypeId());
             if (productType != null) {
