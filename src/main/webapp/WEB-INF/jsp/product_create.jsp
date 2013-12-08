@@ -27,17 +27,17 @@
         </div>
         <div class="css-form-row">
             <label for="name"><f:message key="product.name"/>:</label>
-            <input type="text" id="name" name="name" class="ext-required"/>
+            <input type="text" id="name" name="name" class="ext-required">
             <span class="css-color-red">*</span>
         </div>
         <div class="css-form-row">
             <label for="code"><f:message key="product.code"/>:</label>
-            <input type="text" id="code" name="code" value="${product.code}" class="ext-required"/>
+            <input type="text" id="code" name="code" value="${product.code}" class="ext-required">
             <span class="css-color-red">*</span>
         </div>
         <div class="css-form-row">
             <label for="price"><f:message key="product.price"/>:</label>
-            <input type="text" id="price" name="price" value="${product.price}" class="ext-required"/>
+            <input type="text" id="price" name="price" value="${product.price}" class="ext-required">
             <span class="css-color-red">*</span>
         </div>
         <div class="css-form-row">
@@ -46,7 +46,7 @@
         </div>
         <div class="css-form-row">
             <label for="picture"><f:message key="product.picture"/>:</label>
-            <input type="file" id="picture" name="picture"/>
+            <input type="file" id="picture" name="picture">
         </div>
         <div class="css-form-footer">
             <button type="submit"><f:message key="common.save"/></button>

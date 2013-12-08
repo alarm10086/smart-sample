@@ -14,13 +14,14 @@
 
 <%@ include file="common/header.jsp" %>
 
+<input type="hidden" id="id" value="${product.id}">
+
 <div id="content">
     <div class="css-panel">
         <div class="css-form-header">
             <h3><f:message key="product.edit_product"/></h3>
         </div>
         <div class="css-box">
-            <input type="hidden" id="id" value="${product.id}"/>
             <div class="css-left">
                 <form id="product_edit_form" class="css-form">
                     <div class="css-form-row">
@@ -38,12 +39,12 @@
                     </div>
                     <div class="css-form-row">
                         <label for="code"><f:message key="product.code"/>:</label>
-                        <input type="text" id="code" name="code" value="${product.code}" class="ext-required"/>
+                        <input type="text" id="code" name="code" value="${product.code}" class="ext-required">
                         <span class="css-color-red">*</span>
                     </div>
                     <div class="css-form-row">
                         <label for="price"><f:message key="product.price"/>:</label>
-                        <input type="text" id="price" name="price" value="${product.price}" class="ext-required"/>
+                        <input type="text" id="price" name="price" value="${product.price}" class="ext-required">
                         <span class="css-color-red">*</span>
                     </div>
                     <div class="css-form-row">
@@ -56,12 +57,12 @@
                 <form id="product_upload_form" enctype="multipart/form-data" class="css-form">
                     <div class="css-form-row">
                         <label for="picture"><f:message key="product.picture"/>:</label>
-                        <input type="file" id="picture" name="picture"/>
+                        <c:set var="picture" value="www/upload/${product.picture}"/>
+                        <img id="picture_img" src="${BASE}/${not empty product.picture ? picture : 'www/img/s.gif'}" height="128"/>
                     </div>
                     <div class="css-form-row">
                         <label></label>
-                        <c:set var="picture" value="www/upload/${product.picture}"/>
-                        <img id="picture_img" src="${BASE}/${not empty product.picture ? picture : 'www/img/s.gif'}" height="128"/>
+                        <input type="file" id="picture" name="picture">
                     </div>
                 </form>
             </div>

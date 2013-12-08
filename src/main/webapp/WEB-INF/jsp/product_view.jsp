@@ -15,9 +15,10 @@
 
 <%@ include file="common/header.jsp" %>
 
+<input type="hidden" id="id" value="${product.id}"/>
+
 <div id="content">
     <div class="css-panel">
-        <input type="hidden" id="id" value="${product.id}"/>
         <div class="css-form-header">
             <h3><f:message key="product.view_product"/></h3>
         </div>
@@ -25,19 +26,19 @@
             <div class="css-left">
                 <div class="css-form-row">
                     <label><f:message key="product.product_type"/>:</label>
-                    <input type="text" value="${productType.name}" class="css-readonly" readonly/>
+                    <input type="text" value="${productType.name}" class="css-readonly" readonly>
                 </div>
                 <div class="css-form-row">
                     <label><f:message key="product.name"/>:</label>
-                    <input type="text" value="${product.name}" class="css-readonly" readonly/>
+                    <input type="text" value="${product.name}" class="css-readonly" readonly>
                 </div>
                 <div class="css-form-row">
                     <label><f:message key="product.code"/>:</label>
-                    <input type="text" value="${product.code}" class="css-readonly" readonly/>
+                    <input type="text" value="${product.code}" class="css-readonly" readonly>
                 </div>
                 <div class="css-form-row">
                     <label><f:message key="product.price"/>:</label>
-                    <input type="text" value="${product.price}" class="css-readonly" readonly/>
+                    <input type="text" value="${product.price}" class="css-readonly" readonly>
                 </div>
                 <div class="css-form-row">
                     <label><f:message key="product.description"/>:</label>

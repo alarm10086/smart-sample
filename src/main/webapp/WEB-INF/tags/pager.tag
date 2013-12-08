@@ -13,12 +13,12 @@
     <div class="css-right">
         <div id="${id}">
             <span><f:message key="common.pager.page_number"/>:</span>
-            <input type="text" value="${pageNumber}" class="css-width-25 css-text-center ext-pager-pn"/>
+            <input type="text" value="${pageNumber}" class="css-width-25 css-text-center ext-pager-pn">
             <span>/</span>
             <span class="ext-pager-tp">${totalPage}</span>
             <span class="css-blank-10"></span>
             <span><f:message key="common.pager.page_size"/>:</span>
-            <input type="text" value="${pageSize}" class="css-width-25 css-text-center ext-pager-ps"/>
+            <input type="text" value="${pageSize}" class="css-width-25 css-text-center ext-pager-ps">
             <span class="css-blank-10"></span>
             <span><f:message key="common.pager.total_record"/>:</span>
             <span>${totalRecord}</span>

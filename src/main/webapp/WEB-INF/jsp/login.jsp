@@ -21,11 +21,11 @@
         </div>
         <div class="css-form-row">
             <label for="username"><f:message key="login.username"/>:</label>
-            <input type="text" id="username" name="username" value="admin"/>
+            <input type="text" id="username" name="username" value="admin">
         </div>
         <div class="css-form-row">
             <label for="password"><f:message key="login.password"/>:</label>
-            <input type="password" id="password" name="password" value="admin"/>
+            <input type="password" id="password" name="password" value="admin">
         </div>
         <div class="css-form-footer css-text-center">
             <button type="submit"><f:message key="login"/></button>
