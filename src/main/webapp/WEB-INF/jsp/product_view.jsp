@@ -28,12 +28,12 @@
                     <input type="text" value="${productType.name}" class="css-readonly" readonly/>
                 </div>
                 <div class="css-form-row">
-                    <label><f:message key="product.product_name"/>:</label>
-                    <input type="text" value="${product.productName}" class="css-readonly" readonly/>
+                    <label><f:message key="product.name"/>:</label>
+                    <input type="text" value="${product.name}" class="css-readonly" readonly/>
                 </div>
                 <div class="css-form-row">
-                    <label><f:message key="product.product_code"/>:</label>
-                    <input type="text" value="${product.productCode}" class="css-readonly" readonly/>
+                    <label><f:message key="product.code"/>:</label>
+                    <input type="text" value="${product.code}" class="css-readonly" readonly/>
                 </div>
                 <div class="css-form-row">
                     <label><f:message key="product.price"/>:</label>

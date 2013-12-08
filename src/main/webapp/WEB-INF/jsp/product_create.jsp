@@ -26,13 +26,13 @@
             </select>
         </div>
         <div class="css-form-row">
-            <label for="product_name"><f:message key="product.product_name"/>:</label>
-            <input type="text" id="product_name" name="productName" class="ext-required"/>
+            <label for="name"><f:message key="product.name"/>:</label>
+            <input type="text" id="name" name="name" class="ext-required"/>
             <span class="css-color-red">*</span>
         </div>
         <div class="css-form-row">
-            <label for="product_code"><f:message key="product.product_code"/>:</label>
-            <input type="text" id="product_code" name="productCode" value="${product.productCode}" class="ext-required"/>
+            <label for="code"><f:message key="product.code"/>:</label>
+            <input type="text" id="code" name="code" value="${product.code}" class="ext-required"/>
             <span class="css-color-red">*</span>
         </div>
         <div class="css-form-row">

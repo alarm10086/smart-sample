@@ -28,9 +28,9 @@ public class ProductAction extends BaseAction {
     public Page index() {
         int pageNumber = 1;
         int pageSize = CastUtil.castInt(DataContext.Cookie.get("cookie_ps_product_pager"), 10);
-        String productName = "";
+        String name = "";
 
-        Pager<ProductBean> productBeanPager = productService.getProductBeanPager(pageNumber, pageSize, productName);
+        Pager<ProductBean> productBeanPager = productService.getProductBeanPager(pageNumber, pageSize, name);
         return new Page("product.jsp")
             .data("productBeanPager", productBeanPager);
     }
@@ -39,9 +39,9 @@ public class ProductAction extends BaseAction {
     public Page search(Map<String, Object> fieldMap) {
         int pageNumber = CastUtil.castInt(fieldMap.get(PAGE_NUMBER));
         int pageSize = CastUtil.castInt(fieldMap.get(PAGE_SIZE));
-        String productName = CastUtil.castString(fieldMap.get("productName"));
+        String name = CastUtil.castString(fieldMap.get("name"));
 
-        Pager<ProductBean> productBeanPager = productService.getProductBeanPager(pageNumber, pageSize, productName);
+        Pager<ProductBean> productBeanPager = productService.getProductBeanPager(pageNumber, pageSize, name);
         return new Page("product_list.jsp")
             .data("productBeanPager", productBeanPager);
     }

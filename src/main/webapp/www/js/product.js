@@ -30,8 +30,8 @@ $(function() {
     $('.ext-product-delete').click(function() {
         var $tr = $(this).closest('tr');
         var productId = $tr.data('id');
-        var productName = $tr.data('name');
-        if (confirm(Smart.i18n('product.delete_confirm', productName))) {
+        var name = $tr.data('name');
+        if (confirm(Smart.i18n('product.delete_confirm', name))) {
             $.ajax({
                 type: 'delete',
                 url: Smart.BASE + '/product/delete/' + productId,

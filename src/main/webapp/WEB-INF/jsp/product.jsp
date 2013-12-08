@@ -23,7 +23,7 @@
                     <div class="css-left">
                         <form id="product_search_form">
                             <div class="css-search">
-                                <input type="text" name="productName" placeholder="<f:message key="product.product_name"/>"/>
+                                <input type="text" name="name" placeholder="<f:message key="product.name"/>"/>
                                 <span class="css-search-button">
                                     <button type="submit"><f:message key="common.search"/></button>
                                 </span>

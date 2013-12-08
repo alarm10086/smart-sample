@@ -8,8 +8,8 @@
         <tr>
             <td><f:message key="product.picture"/></td>
             <td><f:message key="product.product_type"/></td>
-            <td><f:message key="product.product_name"/></td>
-            <td><f:message key="product.product_code"/></td>
+            <td><f:message key="product.name"/></td>
+            <td><f:message key="product.code"/></td>
             <td><f:message key="product.price"/></td>
             <td><f:message key="product.description"/></td>
             <td class="css-width-75"><f:message key="common.action"/></td>
@@ -19,16 +19,16 @@
         <c:forEach var="productBean" items="${productBeanList}">
             <c:set var="product" value="${productBean.product}"/>
             <c:set var="productType" value="${productBean.productType}"/>
-            <tr data-id="${product.id}" data-name="${product.productName}">
+            <tr data-id="${product.id}" data-name="${product.name}">
                 <td>
                     <c:set var="picture" value="www/upload/${product.picture}"/>
                     <img src="${BASE}/${not empty product.picture ? picture : 'www/img/s.gif'}" height="32"/>
                 </td>
                 <td>${productType.name}</td>
                 <td>
-                    <a href="${BASE}/product/view/${product.id}">${product.productName}</a>
+                    <a href="${BASE}/product/view/${product.id}">${product.name}</a>
                 </td>
-                <td>${product.productCode}</td>
+                <td>${product.code}</td>
                 <td>${product.price}</td>
                 <td>${product.description}</td>
                 <td>

@@ -2,6 +2,7 @@ package com.smart.sample.service.impl;
 
 import com.smart.framework.DataSet;
 import com.smart.framework.annotation.Bean;
+import com.smart.framework.annotation.Transaction;
 import com.smart.framework.base.BaseService;
 import com.smart.framework.bean.Pager;
 import com.smart.sample.bean.ProductBean;
@@ -16,16 +17,19 @@ import java.util.Map;
 public class ProductServiceImpl extends BaseService implements ProductService {
 
     @Override
+    @Transaction
     public boolean createProduct(Map<String, Object> fieldMap) {
         return DataSet.insert(Product.class, fieldMap);
     }
 
     @Override
+    @Transaction
     public boolean deleteProduct(long id) {
         return DataSet.delete(Product.class, "id = ?", id);
     }
 
     @Override
+    @Transaction
     public boolean updateProduct(long id, Map<String, Object> fieldMap) {
         return DataSet.update(Product.class, fieldMap, "id = ?", id);
     }
@@ -44,10 +48,10 @@ public class ProductServiceImpl extends BaseService implements ProductService {
     }
 
     @Override
-    public Pager<ProductBean> getProductBeanPager(int pageNumber, int pageSize, String productName) {
-        String condition = "product_name like ?";
+    public Pager<ProductBean> getProductBeanPager(int pageNumber, int pageSize, String name) {
+        String condition = "name like ?";
         String sort = "id desc";
-        Object[] params = {'%' + productName + '%'};
+        Object[] params = {'%' + name + '%'};
 
         int count = DataSet.selectCount(Product.class, condition, params);
         List<ProductBean> productBeanList = new ArrayList<ProductBean>();

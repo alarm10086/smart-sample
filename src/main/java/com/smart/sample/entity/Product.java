@@ -6,9 +6,9 @@ public class Product extends BaseEntity {
 
     private long productTypeId;
 
-    private String productName;
+    private String name;
 
-    private String productCode;
+    private String code;
 
     private int price;
 
@@ -24,20 +24,20 @@ public class Product extends BaseEntity {
         this.productTypeId = productTypeId;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getProductCode() {
-        return productCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public int getPrice() {

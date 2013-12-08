@@ -16,7 +16,7 @@ public interface ProductService {
 
     ProductBean getProductBean(long id);
 
-    Pager<ProductBean> getProductBeanPager(int pageNumber, int pageSize, String productName);
+    Pager<ProductBean> getProductBeanPager(int pageNumber, int pageSize, String name);
 
     List<ProductType> getProductTypeList();
 }
