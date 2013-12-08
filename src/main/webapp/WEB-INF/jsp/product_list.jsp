@@ -19,10 +19,12 @@
         <c:forEach var="productBean" items="${productBeanList}">
             <c:set var="product" value="${productBean.product}"/>
             <c:set var="productType" value="${productBean.productType}"/>
+            <c:set var="picture" value="www/upload/${product.picture}"/>
             <tr data-id="${product.id}" data-name="${product.name}">
                 <td>
-                    <c:set var="picture" value="www/upload/${product.picture}"/>
-                    <img src="${BASE}/${not empty product.picture ? picture : 'www/img/s.gif'}" height="32"/>
+                    <a href="${BASE}/product/change_picture/${product.id}">
+                        <img src="${BASE}/${not empty product.picture ? picture : 'www/img/s.gif'}" height="32"/>
+                    </a>
                 </td>
                 <td>${productType.name}</td>
                 <td>

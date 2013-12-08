@@ -17,7 +17,7 @@
         <form id="product_upload_form" enctype="multipart/form-data" class="css-form">
             <input type="hidden" id="id" value="${product.id}">
             <div class="css-form-header">
-                <h3><f:message key="product.edit_product"/></h3>
+                <h3><f:message key="product.change_picture"/></h3>
             </div>
             <div class="css-form-row">
                 <label for="picture"><f:message key="product.picture"/>:</label>

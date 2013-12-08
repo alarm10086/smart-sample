@@ -1,6 +1,5 @@
 package com.smart.sample.action;
 
-import com.smart.framework.DataContext;
 import com.smart.framework.annotation.Bean;
 import com.smart.framework.annotation.Inject;
 import com.smart.framework.annotation.Request;
@@ -11,7 +10,7 @@ import com.smart.framework.bean.Pager;
 import com.smart.framework.bean.Result;
 import com.smart.framework.helper.UploadHelper;
 import com.smart.framework.util.CastUtil;
-import com.smart.sample.Constant;
+import com.smart.sample.Tool;
 import com.smart.sample.bean.ProductBean;
 import com.smart.sample.entity.Product;
 import com.smart.sample.entity.ProductType;
@@ -28,7 +27,7 @@ public class ProductAction extends BaseAction {
     @Request("GET:/product")
     public Page index() {
         int pageNumber = 1;
-        int pageSize = CastUtil.castInt(DataContext.Cookie.get("cookie_ps_product_pager"), 10);
+        int pageSize = Tool.getPageSize();
         String name = "";
 
         Pager<ProductBean> productBeanPager = productService.getProductBeanPager(pageNumber, pageSize, name);
@@ -58,7 +57,7 @@ public class ProductAction extends BaseAction {
     public Result create(Map<String, Object> fieldMap, Multipart multipart) {
         boolean success = productService.createProduct(fieldMap);
         if (success) {
-            String basePath = DataContext.getServletContext().getRealPath("") + Constant.UPLOAD_PATH;
+            String basePath = Tool.getBasePath();
             UploadHelper.upload(basePath, multipart);
         }
         return new Result(success);
@@ -103,7 +102,7 @@ public class ProductAction extends BaseAction {
     public Result uploadPicture(long id, Map<String, Object> fieldMap, Multipart multipart) {
         boolean success = productService.updateProduct(id, fieldMap);
         if (success) {
-            String basePath = DataContext.getServletContext().getRealPath("") + Constant.UPLOAD_PATH;
+            String basePath = Tool.getBasePath();
             UploadHelper.upload(basePath, multipart);
         }
         return new Result(success)
