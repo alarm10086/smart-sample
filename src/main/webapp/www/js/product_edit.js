@@ -18,6 +18,6 @@ $(function() {
     });
 
     $('#back').click(function() {
-        history.back();
+        location.href = Smart.BASE + '/product';
     });
 });

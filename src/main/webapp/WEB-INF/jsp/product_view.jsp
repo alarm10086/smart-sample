@@ -52,10 +52,6 @@
                         <c:set var="picture" value="www/upload/${product.picture}"/>
                         <img src="${BASE}/${not empty product.picture ? picture : 'www/img/s.gif'}" height="128"/>
                     </div>
-                    <div class="css-form-row">
-                        <label></label>
-                        <a href="${BASE}/product/change_picture/${product.id}"><f:message key="product.change_picture"/></a>
-                    </div>
                 </div>
             </div>
             <div class="css-form-footer">
