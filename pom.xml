@@ -12,6 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <smart.version>2.0-SNAPSHOT</smart.version>
     </properties>
 
     <dependencies>
@@ -51,22 +52,22 @@
         <dependency>
             <groupId>com.smart</groupId>
             <artifactId>smart-framework</artifactId>
-            <version>1.0</version>
+            <version>${smart.version}</version>
         </dependency>
         <dependency>
             <groupId>com.smart</groupId>
             <artifactId>smart-plugin-cache</artifactId>
-            <version>1.0</version>
+            <version>${smart.version}</version>
         </dependency>
         <dependency>
             <groupId>com.smart</groupId>
             <artifactId>smart-plugin-ws</artifactId>
-            <version>1.0</version>
+            <version>${smart.version}</version>
         </dependency>
         <dependency>
             <groupId>com.smart</groupId>
             <artifactId>smart-plugin-i18n</artifactId>
-            <version>1.0</version>
+            <version>${smart.version}</version>
         </dependency>
     </dependencies>
 
