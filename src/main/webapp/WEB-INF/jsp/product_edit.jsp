@@ -60,7 +60,8 @@
                     </div>
                     <div class="css-form-row">
                         <label></label>
-                        <a href="${BASE}/product/change_picture/${product.id}"><f:message key="product.change_picture"/></a>
+                        <a href="${BASE}/product/upload_picture/${product.id}"><f:message key="product.upload_picture"/></a>
+                        <a href="${BASE}/product/download_picture/${product.id}"><f:message key="product.download_picture"/></a>
                     </div>
                 </div>
             </div>

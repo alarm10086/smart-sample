@@ -52,6 +52,11 @@
                         <c:set var="picture" value="www/upload/${product.picture}"/>
                         <img src="${BASE}/${not empty product.picture ? picture : 'www/img/s.gif'}" height="128"/>
                     </div>
+                    <div class="css-form-row">
+                        <label></label>
+                        <a href="${BASE}/product/upload_picture/${product.id}"><f:message key="product.upload_picture"/></a>
+                        <a href="${BASE}/product/download_picture/${product.id}"><f:message key="product.download_picture"/></a>
+                    </div>
                 </div>
             </div>
             <div class="css-form-footer">

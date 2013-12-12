@@ -22,7 +22,7 @@
             <c:set var="picture" value="www/upload/${product.picture}"/>
             <tr data-id="${product.id}" data-name="${product.name}">
                 <td>
-                    <a href="${BASE}/product/change_picture/${product.id}">
+                    <a href="${BASE}/product/upload_picture/${product.id}">
                         <img src="${BASE}/${not empty product.picture ? picture : 'www/img/s.gif'}" height="32"/>
                     </a>
                 </td>

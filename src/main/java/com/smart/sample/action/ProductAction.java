@@ -1,5 +1,6 @@
 package com.smart.sample.action;
 
+import com.smart.framework.DataContext;
 import com.smart.framework.annotation.Bean;
 import com.smart.framework.annotation.Inject;
 import com.smart.framework.annotation.Request;
@@ -8,8 +9,8 @@ import com.smart.framework.bean.Multipart;
 import com.smart.framework.bean.Page;
 import com.smart.framework.bean.Pager;
 import com.smart.framework.bean.Result;
-import com.smart.framework.helper.UploadHelper;
 import com.smart.framework.util.CastUtil;
+import com.smart.framework.util.FileUtil;
 import com.smart.sample.Tool;
 import com.smart.sample.bean.ProductBean;
 import com.smart.sample.entity.Product;
@@ -57,8 +58,8 @@ public class ProductAction extends BaseAction {
     public Result create(Map<String, Object> fieldMap, Multipart multipart) {
         boolean success = productService.createProduct(fieldMap);
         if (success) {
-            String basePath = Tool.getBasePath();
-            UploadHelper.upload(basePath, multipart);
+            String filePath = Tool.getBasePath() + multipart.getFileName();
+            FileUtil.uploadFile(filePath, multipart.getInputStream());
         }
         return new Result(success);
     }
@@ -91,8 +92,8 @@ public class ProductAction extends BaseAction {
         return new Result(success);
     }
 
-    @Request("GET:/product/change_picture/{id}")
-    public Page changePicture(long id) {
+    @Request("GET:/product/upload_picture/{id}")
+    public Page uploadPicture(long id) {
         Product product = productService.getProduct(id);
         return new Page("product_upload.jsp")
             .data("product", product);
@@ -102,10 +103,19 @@ public class ProductAction extends BaseAction {
     public Result uploadPicture(long id, Map<String, Object> fieldMap, Multipart multipart) {
         boolean success = productService.updateProduct(id, fieldMap);
         if (success) {
-            String basePath = Tool.getBasePath();
-            UploadHelper.upload(basePath, multipart);
+            String filePath = Tool.getBasePath() + multipart.getFileName();
+            FileUtil.uploadFile(filePath, multipart.getInputStream());
         }
         return new Result(success)
             .data(multipart.getFileName());
+    }
+
+    @Request("GET:/product/download_picture/{id}")
+    public void downloadPicture(long id) {
+        Product product = productService.getProduct(id);
+        String picture = product.getPicture();
+
+        String filePath = Tool.getBasePath() + picture;
+        FileUtil.downloadFile(filePath, DataContext.getResponse());
     }
 }
