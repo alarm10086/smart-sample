@@ -9,8 +9,9 @@ import com.smart.framework.bean.Multipart;
 import com.smart.framework.bean.Page;
 import com.smart.framework.bean.Pager;
 import com.smart.framework.bean.Result;
+import com.smart.framework.helper.UploadHelper;
 import com.smart.framework.util.CastUtil;
-import com.smart.framework.util.FileUtil;
+import com.smart.framework.util.WebUtil;
 import com.smart.sample.Tool;
 import com.smart.sample.bean.ProductBean;
 import com.smart.sample.entity.Product;
@@ -58,8 +59,7 @@ public class ProductAction extends BaseAction {
     public Result create(Map<String, Object> fieldMap, Multipart multipart) {
         boolean success = productService.createProduct(fieldMap);
         if (success) {
-            String filePath = Tool.getBasePath() + multipart.getFileName();
-            FileUtil.uploadFile(filePath, multipart.getInputStream());
+            UploadHelper.uploadFile(Tool.getBasePath(), multipart);
         }
         return new Result(success);
     }
@@ -103,8 +103,7 @@ public class ProductAction extends BaseAction {
     public Result uploadPicture(long id, Map<String, Object> fieldMap, Multipart multipart) {
         boolean success = productService.updateProduct(id, fieldMap);
         if (success) {
-            String filePath = Tool.getBasePath() + multipart.getFileName();
-            FileUtil.uploadFile(filePath, multipart.getInputStream());
+            UploadHelper.uploadFile(Tool.getBasePath(), multipart);
         }
         return new Result(success)
             .data(multipart.getFileName());
@@ -115,7 +114,6 @@ public class ProductAction extends BaseAction {
         Product product = productService.getProduct(id);
         String picture = product.getPicture();
 
-        String filePath = Tool.getBasePath() + picture;
-        FileUtil.downloadFile(filePath, DataContext.getResponse());
+        WebUtil.downloadFile(DataContext.getResponse(), Tool.getBasePath() + picture);
     }
 }
