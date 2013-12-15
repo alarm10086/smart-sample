@@ -10,7 +10,12 @@ $(function() {
         },
         success: function(result) {
             if (result.success) {
-                location.href = mainURL;
+                var redirectURL = result.data;
+                if (redirectURL) {
+                    location.href = redirectURL;
+                } else {
+                    location.href = mainURL;
+                }
             } else {
                 alert(Smart.i18n('login.failure'));
                 $('#login_form').find(':input').prop('disabled', false);

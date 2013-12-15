@@ -6,6 +6,8 @@ import com.smart.framework.annotation.Inject;
 import com.smart.framework.annotation.Request;
 import com.smart.framework.base.BaseAction;
 import com.smart.framework.bean.Result;
+import com.smart.framework.util.StringUtil;
+import com.smart.sample.Constant;
 import com.smart.sample.entity.User;
 import com.smart.sample.service.UserService;
 import java.util.Map;
@@ -21,7 +23,13 @@ public class SystemAction extends BaseAction {
         User user = userService.login(fieldMap);
         if (user != null) {
             DataContext.Session.put("user", user);
-            return new Result(true);
+            String redirectURL = DataContext.Session.get(Constant.REDIRECT_URL);
+            if (StringUtil.isNotEmpty(redirectURL)) {
+                DataContext.Session.remove(Constant.REDIRECT_URL);
+                return new Result(true).data(redirectURL);
+            } else {
+                return new Result(true);
+            }
         } else {
             return new Result(false);
         }
