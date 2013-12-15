@@ -23,7 +23,7 @@ public class AccessAspect extends BaseAspect {
         return !(
             className.equals("SystemAction") &&
                 (methodName.equals("login") || methodName.equals("logout")
-            )
+                )
         );
     }
 

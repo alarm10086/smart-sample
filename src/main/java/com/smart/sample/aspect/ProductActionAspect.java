@@ -5,14 +5,15 @@ import com.smart.framework.annotation.Bean;
 import com.smart.framework.annotation.Order;
 import com.smart.framework.base.BaseAspect;
 import java.lang.reflect.Method;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Bean
 @Aspect(pkg = "com.smart.sample.action", cls = "ProductAction")
 @Order(1)
 public class ProductActionAspect extends BaseAspect {
 
-    private static final Logger logger = Logger.getLogger(ProductActionAspect.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProductActionAspect.class);
 
     private long begin;
 

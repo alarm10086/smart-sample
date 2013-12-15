@@ -5,14 +5,15 @@ import com.smart.framework.annotation.Bean;
 import com.smart.framework.annotation.Order;
 import com.smart.framework.base.BaseAspect;
 import java.lang.reflect.Method;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Bean
 @Aspect(pkg = "com.smart.sample.service.impl", cls = "ProductServiceImpl")
 @Order(2)
 public class ProductServiceAspect extends BaseAspect {
 
-    private static final Logger logger = Logger.getLogger(ProductServiceAspect.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProductServiceAspect.class);
 
     @Override
     public void before(Class<?> cls, Method method, Object[] params) throws Exception {
