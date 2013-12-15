@@ -54,8 +54,8 @@
                     </div>
                     <div class="css-form-row">
                         <label></label>
-                        <a href="${BASE}/product/upload_picture/${product.id}"><f:message key="product.upload_picture"/></a>
-                        <a href="${BASE}/product/download_picture/${product.id}"><f:message key="product.download_picture"/></a>
+                        <a href="${BASE}/product/upload_picture/${product.id}"><f:message key="common.upload"/></a>
+                        <a href="${BASE}/product/download_picture/${product.id}"><f:message key="common.download"/></a>
                     </div>
                 </div>
             </div>
