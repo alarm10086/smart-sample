@@ -80,6 +80,9 @@ var Smart = {
             return code;
         }
     },
+    timestamp: function() {
+        return new Date().getTime()
+    },
     /* -------------------------------------------------- 组件 -------------------------------------------------- */
     Pager: function(pagerId, onChangePageNumber, onChangePageSize) {
         var $pager = $('#' + pagerId);
@@ -182,5 +185,16 @@ $(function() {
                 }
             });
         }
+    });
+
+    // 绑定验证码单击事件
+    $('.ext-captcha').click(function() {
+        var url = $(this).attr('src');
+        var index = url.indexOf('?');
+        if (index != -1) {
+            url = url.substring(0, index);
+        }
+        url = url + '?_=' + Smart.timestamp();
+        $(this).attr('src', url);
     });
 });

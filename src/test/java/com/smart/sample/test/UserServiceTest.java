@@ -6,8 +6,6 @@ import com.smart.framework.helper.BeanHelper;
 import com.smart.sample.entity.User;
 import com.smart.sample.service.UserService;
 import com.smart.sample.service.impl.UserServiceImpl;
-import java.util.HashMap;
-import java.util.Map;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -26,10 +24,10 @@ public class UserServiceTest extends BaseTest {
     @Test
     @Order(1)
     public void loginTest() {
-        Map<String, Object> fieldMap = new HashMap<String, Object>();
-        fieldMap.put("username", "admin");
-        fieldMap.put("password", "admin");
-        User user = userService.login(fieldMap);
+        String username = "admin";
+        String password = "admin";
+
+        User user = userService.login(username, password);
         Assert.assertNotNull(user);
     }
 }

@@ -57,7 +57,7 @@ select {
     width: 212px;
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
     height: 18px;
 }
 input[type="text"], input[type="password"], textarea {
@@ -187,7 +187,8 @@ img {
 }
 .css-form-row label {
     float: left;
-    padding-top: 8px;
+    padding: 7px 5px 0 0;
+    text-align: right;
     width: 120px;
 }
 .css-form-footer {
@@ -298,9 +299,41 @@ img {
 }
 
 .css-error {
-    border: 1px solid red !important;
+    border: 1px solid #b94a48 !important;
 }
 
 .css-color-red {
-    color: red;
+    color: #b94a48;
+}
+.css-color-green {
+    color: #468847;
+}
+.css-color-blue {
+    color: #3a87ad;
+}
+.css-color-yellow {
+    color: #c09853;
+}
+
+.css-width-mini {
+    width: 50px !important;
+}
+.css-width-small {
+    width: 100px !important;
+}
+.css-width-medium {
+    width: 200px !important;
+}
+.css-width-large {
+    width: 300px !important;
+}
+.css-width-xlarge {
+    width: 400px !important;
+}
+.css-width-xxlarge {
+    width: 500px !important;
+}
+
+.css-cursor-pointer {
+    cursor: pointer;
 }
