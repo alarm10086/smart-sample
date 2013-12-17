@@ -1,16 +1,15 @@
 package com.smart.sample.ws.soap.impl;
 
 import com.smart.framework.DataSet;
-import com.smart.framework.annotation.Bean;
+import com.smart.framework.annotation.Service;
 import com.smart.framework.annotation.Transaction;
-import com.smart.framework.base.BaseService;
 import com.smart.sample.entity.Product;
 import com.smart.sample.ws.soap.ProductService;
 import java.util.List;
 import java.util.Map;
 
-@Bean
-public class ProductServiceImpl extends BaseService implements ProductService {
+@Service
+public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getProductList() {

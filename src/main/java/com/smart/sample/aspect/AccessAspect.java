@@ -2,7 +2,6 @@ package com.smart.sample.aspect;
 
 import com.smart.framework.DataContext;
 import com.smart.framework.annotation.Aspect;
-import com.smart.framework.annotation.Bean;
 import com.smart.framework.annotation.Order;
 import com.smart.framework.base.BaseAspect;
 import com.smart.framework.exception.AccessException;
@@ -11,7 +10,6 @@ import com.smart.framework.util.WebUtil;
 import com.smart.sample.Constant;
 import java.lang.reflect.Method;
 
-@Bean
 @Aspect(pkg = "com.smart.sample.action")
 @Order(0)
 public class AccessAspect extends BaseAspect {

@@ -1,14 +1,12 @@
 package com.smart.sample.aspect;
 
 import com.smart.framework.annotation.Aspect;
-import com.smart.framework.annotation.Bean;
 import com.smart.framework.annotation.Order;
 import com.smart.framework.base.BaseAspect;
 import java.lang.reflect.Method;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Bean
 @Aspect(pkg = "com.smart.sample.service.impl", cls = "ProductServiceImpl")
 @Order(2)
 public class ProductServiceAspect extends BaseAspect {

@@ -1,9 +1,8 @@
 package com.smart.sample.service.impl;
 
 import com.smart.framework.DataSet;
-import com.smart.framework.annotation.Bean;
+import com.smart.framework.annotation.Service;
 import com.smart.framework.annotation.Transaction;
-import com.smart.framework.base.BaseService;
 import com.smart.framework.bean.Pager;
 import com.smart.sample.bean.ProductBean;
 import com.smart.sample.entity.Product;
@@ -13,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Bean
-public class ProductServiceImpl extends BaseService implements ProductService {
+@Service
+public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transaction

@@ -1,10 +1,9 @@
 package com.smart.sample.action;
 
 import com.smart.framework.DataContext;
-import com.smart.framework.annotation.Bean;
+import com.smart.framework.annotation.Action;
 import com.smart.framework.annotation.Inject;
 import com.smart.framework.annotation.Request;
-import com.smart.framework.base.BaseAction;
 import com.smart.framework.bean.Multipart;
 import com.smart.framework.bean.Page;
 import com.smart.framework.bean.Pager;
@@ -12,6 +11,7 @@ import com.smart.framework.bean.Result;
 import com.smart.framework.helper.UploadHelper;
 import com.smart.framework.util.CastUtil;
 import com.smart.framework.util.WebUtil;
+import com.smart.sample.Constant;
 import com.smart.sample.Tool;
 import com.smart.sample.bean.ProductBean;
 import com.smart.sample.entity.Product;
@@ -20,8 +20,8 @@ import com.smart.sample.service.ProductService;
 import java.util.List;
 import java.util.Map;
 
-@Bean
-public class ProductAction extends BaseAction {
+@Action
+public class ProductAction {
 
     @Inject
     private ProductService productService;
@@ -39,8 +39,8 @@ public class ProductAction extends BaseAction {
 
     @Request("POST:/product/search")
     public Page search(Map<String, Object> fieldMap) {
-        int pageNumber = CastUtil.castInt(fieldMap.get(PAGE_NUMBER));
-        int pageSize = CastUtil.castInt(fieldMap.get(PAGE_SIZE));
+        int pageNumber = CastUtil.castInt(fieldMap.get(Constant.PAGE_NUMBER));
+        int pageSize = CastUtil.castInt(fieldMap.get(Constant.PAGE_SIZE));
         String name = CastUtil.castString(fieldMap.get("name"));
 
         Pager<ProductBean> productBeanPager = productService.getProductBeanPager(pageNumber, pageSize, name);

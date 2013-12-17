@@ -8,5 +8,8 @@ public interface Constant {
     String USER_ID = "session.user_id";
     String REDIRECT_URL = "session.redirect_url";
 
+    String PAGE_NUMBER = "pageNumber";
+    String PAGE_SIZE = "pageSize";
+
     String UPLOAD_PATH = ConfigHelper.getStringProperty("sample.upload_path");
 }

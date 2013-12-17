@@ -1,9 +1,8 @@
 package com.smart.sample.ws.rest;
 
 import com.smart.framework.DataSet;
-import com.smart.framework.annotation.Bean;
+import com.smart.framework.annotation.Service;
 import com.smart.framework.annotation.Transaction;
-import com.smart.framework.base.BaseService;
 import com.smart.plugin.ws.WebService;
 import com.smart.sample.entity.Product;
 import java.util.List;
@@ -18,11 +17,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Bean
+@Service
 @WebService(value = "/rest/ProductService", type = WebService.Type.REST)
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class ProductService extends BaseService {
+public class ProductService {
 
     @GET
     @Path("/products")
