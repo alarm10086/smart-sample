@@ -81,7 +81,7 @@ var Smart = {
         }
     },
     timestamp: function() {
-        return new Date().getTime()
+        return new Date().getTime();
     },
     /* -------------------------------------------------- 组件 -------------------------------------------------- */
     Pager: function(pagerId, onChangePageNumber, onChangePageSize) {
