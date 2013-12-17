@@ -21,15 +21,15 @@
         </div>
         <div class="css-form-row">
             <label for="username"><f:message key="login.username"/>:</label>
-            <input type="text" id="username" name="username" class="css-width-medium ext-required">
+            <input type="text" id="username" name="username" class="css-width-150 ext-required">
         </div>
         <div class="css-form-row">
             <label for="password"><f:message key="login.password"/>:</label>
-            <input type="password" id="password" name="password" class="css-width-medium ext-required">
+            <input type="password" id="password" name="password" class="css-width-150 ext-required">
         </div>
         <div class="css-form-row">
             <label for="captcha"><f:message key="common.captcha"/>:</label>
-            <input type="password" id="captcha" name="captcha" class="css-width-mini ext-required">
+            <input type="password" id="captcha" name="captcha" class="css-width-50 ext-required">
             <img id="captcha_img" src="${BASE}/captcha" title="<f:message key="common.captcha.change"/>" class="css-cursor-pointer ext-captcha">
         </div>
         <div class="css-form-footer css-text-center">

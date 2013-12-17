@@ -277,6 +277,12 @@ img {
 .css-width-100 {
     width: 100px !important;
 }
+.css-width-150 {
+    width: 150px !important;
+}
+.css-width-200 {
+    width: 200px !important;
+}
 
 .css-blank-10 {
     display: inline-block;
@@ -313,25 +319,6 @@ img {
 }
 .css-color-yellow {
     color: #c09853;
-}
-
-.css-width-mini {
-    width: 50px !important;
-}
-.css-width-small {
-    width: 100px !important;
-}
-.css-width-medium {
-    width: 200px !important;
-}
-.css-width-large {
-    width: 300px !important;
-}
-.css-width-xlarge {
-    width: 400px !important;
-}
-.css-width-xxlarge {
-    width: 500px !important;
 }
 
 .css-cursor-pointer {
