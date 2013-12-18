@@ -5,8 +5,8 @@ import com.smart.framework.util.CastUtil;
 
 public class Tool {
 
-    public static int getPageSize() {
-        return CastUtil.castInt(DataContext.Cookie.get("cookie_ps_product_pager"), 10);
+    public static int getPageSize(String key) {
+        return CastUtil.castInt(DataContext.Cookie.get("cookie.ps_" + key), 10);
     }
 
     public static String getBasePath() {

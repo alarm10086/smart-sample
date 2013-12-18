@@ -29,7 +29,7 @@ public class ProductAction {
     @Request("GET:/product")
     public Page index() {
         int pageNumber = 1;
-        int pageSize = Tool.getPageSize();
+        int pageSize = Tool.getPageSize("product_pager");
         String name = "";
 
         Pager<ProductBean> productBeanPager = productService.getProductBeanPager(pageNumber, pageSize, name);
