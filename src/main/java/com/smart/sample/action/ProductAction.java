@@ -82,9 +82,6 @@ public class ProductAction {
             .data("productBean", productBean);
     }
 
-    public void test() {}
-    public void test1() {}
-
     @Request("PUT:/product/update/{id}")
     public Result update(long id, Map<String, Object> fieldMap) {
         boolean success = productService.updateProduct(id, fieldMap, null);
