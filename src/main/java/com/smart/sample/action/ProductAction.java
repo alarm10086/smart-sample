@@ -8,7 +8,6 @@ import com.smart.framework.bean.Multipart;
 import com.smart.framework.bean.Page;
 import com.smart.framework.bean.Pager;
 import com.smart.framework.bean.Result;
-import com.smart.framework.helper.UploadHelper;
 import com.smart.framework.util.CastUtil;
 import com.smart.framework.util.WebUtil;
 import com.smart.sample.Constant;
@@ -57,10 +56,7 @@ public class ProductAction {
 
     @Request("POST:/product/create")
     public Result create(Map<String, Object> fieldMap, Multipart multipart) {
-        boolean success = productService.createProduct(fieldMap);
-        if (success) {
-            UploadHelper.uploadFile(Tool.getBasePath(), multipart);
-        }
+        boolean success = productService.createProduct(fieldMap, multipart);
         return new Result(success);
     }
 
@@ -86,9 +82,12 @@ public class ProductAction {
             .data("productBean", productBean);
     }
 
+    public void test() {}
+    public void test1() {}
+
     @Request("PUT:/product/update/{id}")
     public Result update(long id, Map<String, Object> fieldMap) {
-        boolean success = productService.updateProduct(id, fieldMap);
+        boolean success = productService.updateProduct(id, fieldMap, null);
         return new Result(success);
     }
 
@@ -101,10 +100,7 @@ public class ProductAction {
 
     @Request("POST:/product/upload_picture/{id}")
     public Result uploadPicture(long id, Map<String, Object> fieldMap, Multipart multipart) {
-        boolean success = productService.updateProduct(id, fieldMap);
-        if (success) {
-            UploadHelper.uploadFile(Tool.getBasePath(), multipart);
-        }
+        boolean success = productService.updateProduct(id, fieldMap, multipart);
         return new Result(success)
             .data(multipart.getFileName());
     }
@@ -114,6 +110,7 @@ public class ProductAction {
         Product product = productService.getProduct(id);
         String picture = product.getPicture();
 
-        WebUtil.downloadFile(DataContext.getResponse(), Tool.getBasePath() + picture);
+        String filePath = Tool.getBasePath() + picture;
+        WebUtil.downloadFile(DataContext.getResponse(), filePath);
     }
 }

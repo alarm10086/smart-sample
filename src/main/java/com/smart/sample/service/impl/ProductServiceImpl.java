@@ -3,7 +3,10 @@ package com.smart.sample.service.impl;
 import com.smart.framework.DataSet;
 import com.smart.framework.annotation.Service;
 import com.smart.framework.annotation.Transaction;
+import com.smart.framework.bean.Multipart;
 import com.smart.framework.bean.Pager;
+import com.smart.framework.helper.UploadHelper;
+import com.smart.sample.Tool;
 import com.smart.sample.bean.ProductBean;
 import com.smart.sample.entity.Product;
 import com.smart.sample.entity.ProductType;
@@ -17,8 +20,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transaction
-    public boolean createProduct(Map<String, Object> fieldMap) {
-        return DataSet.insert(Product.class, fieldMap);
+    public boolean createProduct(Map<String, Object> fieldMap, Multipart multipart) {
+        boolean result = DataSet.insert(Product.class, fieldMap);
+        if (result) {
+            UploadHelper.uploadFile(Tool.getBasePath(), multipart);
+        }
+        return result;
     }
 
     @Override
@@ -29,8 +36,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transaction
-    public boolean updateProduct(long id, Map<String, Object> fieldMap) {
-        return DataSet.update(Product.class, fieldMap, "id = ?", id);
+    public boolean updateProduct(long id, Map<String, Object> fieldMap, Multipart multipart) {
+        boolean result = DataSet.update(Product.class, fieldMap, "id = ?", id);
+        if (result) {
+            UploadHelper.uploadFile(Tool.getBasePath(), multipart);
+        }
+        return result;
     }
 
     @Override

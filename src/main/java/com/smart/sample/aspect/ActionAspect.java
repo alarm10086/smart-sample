@@ -7,23 +7,27 @@ import java.lang.reflect.Method;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Aspect(pkg = "com.smart.sample.service.impl", cls = "ProductServiceImpl")
-@Order(2)
-public class ProductServiceAspect extends BaseAspect {
+@Aspect(pkg = "com.smart.sample.action")
+@Order(1)
+public class ActionAspect extends BaseAspect {
 
-    private static final Logger logger = LoggerFactory.getLogger(ProductServiceAspect.class);
+    private static final Logger logger = LoggerFactory.getLogger(ActionAspect.class);
+
+    private long begin;
 
     @Override
     public void before(Class<?> cls, Method method, Object[] params) throws Exception {
         if (logger.isDebugEnabled()) {
-            logger.debug("[Before]");
+            logger.debug("---------- begin ----------");
         }
+        begin = System.currentTimeMillis();
     }
 
     @Override
     public void after(Class<?> cls, Method method, Object[] params, Object result) throws Exception {
+        logger.info("time: " + (System.currentTimeMillis() - begin) + "ms");
         if (logger.isDebugEnabled()) {
-            logger.debug("[After]");
+            logger.debug("----------- end -----------");
         }
     }
 }

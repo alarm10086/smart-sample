@@ -58,7 +58,7 @@ public class ProductServiceTest extends BaseTest {
         productFieldMap.put("price", 1);
         productFieldMap.put("description", "1");
 
-        boolean result = productService.createProduct(productFieldMap);
+        boolean result = productService.createProduct(productFieldMap, null);
         Assert.assertTrue(result);
     }
 
@@ -70,7 +70,7 @@ public class ProductServiceTest extends BaseTest {
         productFieldMap.put("name", "1");
         productFieldMap.put("code", "1");
 
-        boolean result = productService.updateProduct(productId, productFieldMap);
+        boolean result = productService.updateProduct(productId, productFieldMap, null);
         Assert.assertTrue(result);
     }
 
