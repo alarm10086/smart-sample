@@ -9,6 +9,7 @@ import com.smart.framework.bean.Page;
 import com.smart.framework.bean.Pager;
 import com.smart.framework.bean.Result;
 import com.smart.framework.util.CastUtil;
+import com.smart.framework.util.CollectionUtil;
 import com.smart.framework.util.WebUtil;
 import com.smart.sample.Constant;
 import com.smart.sample.Tool;
@@ -55,7 +56,8 @@ public class ProductAction {
     }
 
     @Request("POST:/product/create")
-    public Result create(Map<String, Object> fieldMap, Multipart multipart) {
+    public Result create(Map<String, Object> fieldMap, List<Multipart> multipartList) {
+        Multipart multipart = CollectionUtil.isNotEmpty(multipartList) ? multipartList.get(0) : null;
         boolean success = productService.createProduct(fieldMap, multipart);
         return new Result(success);
     }
@@ -96,7 +98,8 @@ public class ProductAction {
     }
 
     @Request("POST:/product/upload_picture/{id}")
-    public Result uploadPicture(long id, Map<String, Object> fieldMap, Multipart multipart) {
+    public Result uploadPicture(long id, Map<String, Object> fieldMap, List<Multipart> multipartList) {
+        Multipart multipart = multipartList.get(0);
         boolean success = productService.updateProduct(id, fieldMap, multipart);
         return new Result(success)
             .data(multipart.getFileName());
