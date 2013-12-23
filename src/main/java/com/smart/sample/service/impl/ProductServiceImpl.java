@@ -21,6 +21,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transaction
     public boolean createProduct(Map<String, Object> fieldMap, Multipart multipart) {
+        fieldMap.put("picture", multipart.getFileName());
         boolean result = DataSet.insert(Product.class, fieldMap);
         if (result) {
             UploadHelper.uploadFile(Tool.getBasePath(), multipart);
@@ -37,6 +38,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transaction
     public boolean updateProduct(long id, Map<String, Object> fieldMap, Multipart multipart) {
+        fieldMap.put("picture", multipart.getFileName());
         boolean result = DataSet.update(Product.class, fieldMap, "id = ?", id);
         if (result) {
             UploadHelper.uploadFile(Tool.getBasePath(), multipart);
