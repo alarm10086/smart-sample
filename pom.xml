@@ -65,6 +65,11 @@
             <artifactId>smart-plugin-i18n</artifactId>
             <version>${smart.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>smart-plugin-hessian</artifactId>
+            <version>${smart.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
