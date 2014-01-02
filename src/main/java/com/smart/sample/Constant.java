@@ -11,5 +11,5 @@ public interface Constant {
     String PAGE_NUMBER = "pageNumber";
     String PAGE_SIZE = "pageSize";
 
-    String UPLOAD_PATH = ConfigHelper.getStringProperty("sample.upload_path");
+    String UPLOAD_PATH = ConfigHelper.getConfigString("sample.upload_path");
 }
