@@ -1,0 +1,8 @@
+<db>
+    <driver>com.mysql.jdbc.Driver</driver>
+    <url>jdbc:mysql://localhost:3306/sample</url>
+    <username>root</username>
+    <password>root</password>
+    <maxActive>100</maxActive>
+    <maxIdle>10</maxIdle>
+</db>
