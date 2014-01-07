@@ -17,7 +17,7 @@ $(function() {
             if (result.success) {
                 var redirectURL = result.data;
                 if (redirectURL) {
-                    location.href = redirectURL;
+                    location.href = Smart.BASE + redirectURL;
                 } else {
                     location.href = mainURL;
                 }

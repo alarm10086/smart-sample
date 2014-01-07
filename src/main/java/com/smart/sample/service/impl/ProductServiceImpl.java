@@ -72,7 +72,7 @@ public class ProductServiceImpl implements ProductService {
         String sort = "id desc";
         Object[] params = {'%' + name + '%'};
 
-        int count = DataSet.selectCount(Product.class, condition, params);
+        long count = DataSet.selectCount(Product.class, condition, params);
         List<ProductBean> productBeanList = new ArrayList<ProductBean>();
         List<Product> productList = DataSet.selectListForPager(pageNumber, pageSize, Product.class, condition, sort, params);
         Map<Long, ProductType> productTypeMap = DataSet.selectMap(ProductType.class, "");
