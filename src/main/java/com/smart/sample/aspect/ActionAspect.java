@@ -16,7 +16,7 @@ public class ActionAspect extends AspectProxy {
     private long begin;
 
     @Override
-    public void before(Class<?> cls, Method method, Object[] params) throws Exception {
+    public void before(Class<?> cls, Method method, Object[] params) throws Throwable {
         if (logger.isDebugEnabled()) {
             logger.debug("---------- begin ----------");
         }
@@ -24,7 +24,7 @@ public class ActionAspect extends AspectProxy {
     }
 
     @Override
-    public void after(Class<?> cls, Method method, Object[] params, Object result) throws Exception {
+    public void after(Class<?> cls, Method method, Object[] params, Object result) throws Throwable {
         logger.info("time: " + (System.currentTimeMillis() - begin) + "ms");
         if (logger.isDebugEnabled()) {
             logger.debug("----------- end -----------");

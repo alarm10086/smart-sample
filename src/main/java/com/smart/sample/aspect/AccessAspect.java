@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 public class AccessAspect extends AspectProxy {
 
     @Override
-    public boolean intercept(Class<?> cls, Method method, Object[] params) throws Exception {
+    public boolean intercept(Class<?> cls, Method method, Object[] params) throws Throwable {
         boolean result = true;
         if (cls == SystemAction.class) {
             result = false;
@@ -24,7 +24,7 @@ public class AccessAspect extends AspectProxy {
     }
 
     @Override
-    public void before(Class<?> cls, Method method, Object[] params) throws Exception {
+    public void before(Class<?> cls, Method method, Object[] params) throws Throwable {
         Long userId = DataContext.Session.get(Constant.USER_ID);
         if (userId == null) {
             WebUtil.setRedirectURL(DataContext.getRequest(), Constant.REDIRECT_URL);
