@@ -5,6 +5,7 @@ import com.smart.framework.annotation.Action;
 import com.smart.framework.annotation.Inject;
 import com.smart.framework.annotation.Request;
 import com.smart.framework.bean.Multipart;
+import com.smart.framework.bean.Multiparts;
 import com.smart.framework.bean.Page;
 import com.smart.framework.bean.Pager;
 import com.smart.framework.bean.Result;
@@ -55,7 +56,8 @@ public class ProductAction {
     }
 
     @Request("POST:/product/create")
-    public Result create(Map<String, Object> fieldMap, Multipart multipart) {
+    public Result create(Map<String, Object> fieldMap, Multiparts multiparts) {
+        Multipart multipart = multiparts.getOne();
         boolean success = productService.createProduct(fieldMap, multipart);
         return new Result(success);
     }
@@ -96,7 +98,8 @@ public class ProductAction {
     }
 
     @Request("POST:/product/upload_picture/{id}")
-    public Result uploadPicture(long id, Map<String, Object> fieldMap, Multipart multipart) {
+    public Result uploadPicture(long id, Map<String, Object> fieldMap, Multiparts multiparts) {
+        Multipart multipart = multiparts.getOne();
         boolean success = productService.updateProduct(id, fieldMap, multipart);
         return new Result(success)
             .data(multipart.getFileName());
