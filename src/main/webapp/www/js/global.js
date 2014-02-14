@@ -158,6 +158,9 @@ $(function() {
                     document.write('');
                     location.href = Smart.BASE + '/';
                     break;
+                case 500:
+                    alert(Smart.i18n('error.page.500'));
+                    break;
                 case 503:
                     alert(errorThrown);
                     break;
