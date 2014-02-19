@@ -1,6 +1,14 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<script type="text/javascript" src="${BASE}/www/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="${BASE}/www/lib/jquery-form/jquery.form.min.js"></script>
+<script type="text/javascript" src="${BASE}/www/lib/jquery-cookie/jquery.cookie.js"></script>
+<script type="text/javascript" src="${BASE}/www/i18n/i18n_${system_language}.js"></script>
+
+<script type="text/javascript">
 var Smart = {
     /* -------------------------------------------------- 常量 -------------------------------------------------- */
-    BASE: '/smart-sample', // Context Path（若以 ROOT 发布，则为空字符串）
+    BASE: '${BASE}',
     INVALID_CLASS: 'css-error',
     COOKIE_EXPIRES: 365,
     /* -------------------------------------------------- 函数 -------------------------------------------------- */
@@ -8,48 +16,48 @@ var Smart = {
         checkRequired: function(formId) {
             var result = true;
             $('#' + formId + ' .ext-required')
-                .each(function() {
-                    var value = $.trim($(this).val());
-                    var tagName = this.tagName;
-                    if (tagName == 'INPUT' || tagName == 'TEXTAREA') {
-                        if (value == '') {
-                            $(this).addClass(Smart.INVALID_CLASS);
-                            result = false;
-                        } else {
-                            $(this).removeClass(Smart.INVALID_CLASS);
+                    .each(function() {
+                        var value = $.trim($(this).val());
+                        var tagName = this.tagName;
+                        if (tagName == 'INPUT' || tagName == 'TEXTAREA') {
+                            if (value == '') {
+                                $(this).addClass(Smart.INVALID_CLASS);
+                                result = false;
+                            } else {
+                                $(this).removeClass(Smart.INVALID_CLASS);
+                            }
+                        } else if (tagName == 'SELECT') {
+                            if (value == '' || value == 0) {
+                                $(this).addClass(Smart.INVALID_CLASS);
+                                result = false;
+                            } else {
+                                $(this).removeClass(Smart.INVALID_CLASS);
+                            }
                         }
-                    } else if (tagName == 'SELECT') {
-                        if (value == '' || value == 0) {
-                            $(this).addClass(Smart.INVALID_CLASS);
-                            result = false;
-                        } else {
-                            $(this).removeClass(Smart.INVALID_CLASS);
+                    })
+                    .change(function() {
+                        var value = $.trim($(this).val());
+                        var tagName = this.tagName;
+                        if (tagName == 'INPUT' || tagName == 'TEXTAREA') {
+                            if (value != '') {
+                                $(this).removeClass(Smart.INVALID_CLASS);
+                            } else {
+                                $(this).addClass(Smart.INVALID_CLASS);
+                            }
+                        } else if (tagName == 'SELECT') {
+                            if (value != '' && value != 0) {
+                                $(this).removeClass(Smart.INVALID_CLASS);
+                            } else {
+                                $(this).addClass(Smart.INVALID_CLASS);
+                            }
                         }
-                    }
-                })
-                .change(function() {
-                    var value = $.trim($(this).val());
-                    var tagName = this.tagName;
-                    if (tagName == 'INPUT' || tagName == 'TEXTAREA') {
-                        if (value != '') {
-                            $(this).removeClass(Smart.INVALID_CLASS);
-                        } else {
-                            $(this).addClass(Smart.INVALID_CLASS);
-                        }
-                    } else if (tagName == 'SELECT') {
-                        if (value != '' && value != 0) {
-                            $(this).removeClass(Smart.INVALID_CLASS);
-                        } else {
-                            $(this).addClass(Smart.INVALID_CLASS);
-                        }
-                    }
-                });
+                    });
             return result;
         }
     },
     Cookie: {
         put: function(key, value) {
-            $.cookie(key, value, {path: Smart.BASE, expires: Smart.COOKIE_EXPIRES});
+            $.cookie(key, value, {path: '/', expires: Smart.COOKIE_EXPIRES});
         },
         get: function(key) {
             return $.cookie(key);
@@ -95,39 +103,39 @@ var Smart = {
             // 点击并切换页面编号
             var pageNumberInput = '#' + pagerId + ' .ext-pager-pn';
             $(document)
-                .on('click', pageNumberInput, function() {
-                    $(this).select();
-                })
-                .on('keydown', pageNumberInput, function(event) {
-                    if (event.keyCode == '13') {
-                        var pageNumber = $(this).val();
-                        var totalPage = parseInt($pager.find('.ext-pager-tp').text());
-                        if (isNaN(pageNumber) || pageNumber <= 0 || pageNumber > totalPage) {
-                            alert(Smart.i18n('common.pager.input_error'));
-                            $(this).select();
-                            return;
+                    .on('click', pageNumberInput, function() {
+                        $(this).select();
+                    })
+                    .on('keydown', pageNumberInput, function(event) {
+                        if (event.keyCode == '13') {
+                            var pageNumber = $(this).val();
+                            var totalPage = parseInt($pager.find('.ext-pager-tp').text());
+                            if (isNaN(pageNumber) || pageNumber <= 0 || pageNumber > totalPage) {
+                                alert(Smart.i18n('common.pager.input_error'));
+                                $(this).select();
+                                return;
+                            }
+                            onChangePageNumber(pageNumber);
                         }
-                        onChangePageNumber(pageNumber);
-                    }
-                });
+                    });
             // 点击并切换每页条数
             var pageSizeInput = '#' + pagerId + ' .ext-pager-ps';
             $(document)
-                .on('click', pageSizeInput, function() {
-                    $(this).select();
-                })
-                .on('keydown', pageSizeInput, function(event) {
-                    if (event.keyCode == '13') {
-                        var pageSize = $(this).val();
-                        if (isNaN(pageSize) || pageSize <= 0) {
-                            alert(Smart.i18n('common.pager.input_error'));
-                            $(this).select();
-                            return;
+                    .on('click', pageSizeInput, function() {
+                        $(this).select();
+                    })
+                    .on('keydown', pageSizeInput, function(event) {
+                        if (event.keyCode == '13') {
+                            var pageSize = $(this).val();
+                            if (isNaN(pageSize) || pageSize <= 0) {
+                                alert(Smart.i18n('common.pager.input_error'));
+                                $(this).select();
+                                return;
+                            }
+                            onChangePageSize(pageSize);
+                            Smart.Cookie.put('cookie_ps_' + pagerId, pageSize);
                         }
-                        onChangePageSize(pageSize);
-                        Smart.Cookie.put('cookie_ps_' + pagerId, pageSize);
-                    }
-                });
+                    });
         })();
         // 获取页面编号
         this.getPageNumber = function() {
@@ -201,3 +209,4 @@ $(function() {
         $(this).attr('src', url);
     });
 });
+</script>

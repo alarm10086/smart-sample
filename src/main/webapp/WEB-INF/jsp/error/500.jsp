@@ -6,7 +6,7 @@
 <head>
     <%@ include file="../common/meta.jsp" %>
     <title><f:message key="common.title"/> - <f:message key="error.page"/></title>
-    <%@ include file="../common/css.jsp" %>
+    <%@ include file="../common/style.jsp" %>
 </head>
 <body>
 
@@ -25,7 +25,7 @@
 
 <%@ include file="../common/footer.jsp" %>
 
-<%@ include file="../common/js.jsp" %>
+<%@ include file="../common/script.jsp" %>
 
 </body>
 </html>

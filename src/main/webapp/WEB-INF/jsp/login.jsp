@@ -6,7 +6,7 @@
 <head>
     <%@ include file="common/meta.jsp" %>
     <title><f:message key="common.title"/> - <f:message key="login"/></title>
-    <%@ include file="common/css.jsp" %>
+    <%@ include file="common/style.jsp" %>
 </head>
 <body>
 
@@ -42,7 +42,8 @@
 
 <%@ include file="common/footer.jsp" %>
 
-<%@ include file="common/js.jsp" %>
+<%@ include file="common/script.jsp" %>
+
 <script type="text/javascript" src="${BASE}/www/js/login.js"></script>
 
 </body>
