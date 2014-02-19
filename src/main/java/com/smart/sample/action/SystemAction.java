@@ -19,13 +19,13 @@ public class SystemAction {
     @Inject
     private UserService userService;
 
-    @Request("GET:/captcha")
+    @Request.Get("/captcha")
     public void captcha() {
         String captcha = WebUtil.createCaptcha(DataContext.getResponse());
         DataContext.Session.put(Constant.CAPTCHA, captcha);
     }
 
-    @Request("POST:/login")
+    @Request.Post("/login")
     public Result login(Map<String, Object> fieldMap) {
         String username = CastUtil.castString(fieldMap.get("username"));
         String password = CastUtil.castString(fieldMap.get("password"));
@@ -51,7 +51,7 @@ public class SystemAction {
         return new Result(true);
     }
 
-    @Request("GET:/logout")
+    @Request.Get("/logout")
     public Result logout() {
         DataContext.Session.removeAll();
         return new Result(true);

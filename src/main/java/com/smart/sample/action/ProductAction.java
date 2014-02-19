@@ -26,7 +26,7 @@ public class ProductAction {
     @Inject
     private ProductService productService;
 
-    @Request("GET:/product")
+    @Request.Get("/product")
     public Page index() {
         int pageNumber = 1;
         int pageSize = Tool.getPageSize("product_pager");
@@ -37,7 +37,7 @@ public class ProductAction {
             .data("productBeanPager", productBeanPager);
     }
 
-    @Request("POST:/product/search")
+    @Request.Post("/product/search")
     public Page search(Map<String, Object> fieldMap) {
         int pageNumber = CastUtil.castInt(fieldMap.get(Constant.PAGE_NUMBER));
         int pageSize = CastUtil.castInt(fieldMap.get(Constant.PAGE_SIZE));
@@ -48,34 +48,34 @@ public class ProductAction {
             .data("productBeanPager", productBeanPager);
     }
 
-    @Request("GET:/product/create")
+    @Request.Get("/product/create")
     public Page create() {
         List<ProductType> productTypeList = productService.getProductTypeList();
         return new Page("product_create.jsp")
             .data("productTypeList", productTypeList);
     }
 
-    @Request("POST:/product/create")
+    @Request.Post("/product/create")
     public Result create(Map<String, Object> fieldMap, Multiparts multiparts) {
         Multipart multipart = multiparts.getOne();
         boolean success = productService.createProduct(fieldMap, multipart);
         return new Result(success);
     }
 
-    @Request("DELETE:/product/delete/{id}")
+    @Request.Delete("/product/delete/{id}")
     public Result delete(long id) {
         boolean success = productService.deleteProduct(id);
         return new Result(success);
     }
 
-    @Request("GET:/product/view/{id}")
+    @Request.Get("/product/view/{id}")
     public Page view(long id) {
         ProductBean productBean = productService.getProductBean(id);
         return new Page("product_view.jsp")
             .data("productBean", productBean);
     }
 
-    @Request("GET:/product/edit/{id}")
+    @Request.Get("/product/edit/{id}")
     public Page edit(long id) {
         List<ProductType> productTypeList = productService.getProductTypeList();
         ProductBean productBean = productService.getProductBean(id);
@@ -84,20 +84,20 @@ public class ProductAction {
             .data("productBean", productBean);
     }
 
-    @Request("PUT:/product/update/{id}")
+    @Request.Put("/product/update/{id}")
     public Result update(long id, Map<String, Object> fieldMap) {
         boolean success = productService.updateProduct(id, fieldMap, null);
         return new Result(success);
     }
 
-    @Request("GET:/product/upload_picture/{id}")
+    @Request.Get("/product/upload_picture/{id}")
     public Page uploadPicture(long id) {
         Product product = productService.getProduct(id);
         return new Page("product_upload.jsp")
             .data("product", product);
     }
 
-    @Request("POST:/product/upload_picture/{id}")
+    @Request.Post("/product/upload_picture/{id}")
     public Result uploadPicture(long id, Map<String, Object> fieldMap, Multiparts multiparts) {
         Multipart multipart = multiparts.getOne();
         boolean success = productService.updateProduct(id, fieldMap, multipart);
@@ -105,7 +105,7 @@ public class ProductAction {
             .data(multipart.getFileName());
     }
 
-    @Request("GET:/product/download_picture/{id}")
+    @Request.Get("/product/download_picture/{id}")
     public void downloadPicture(long id) {
         Product product = productService.getProduct(id);
         String picture = product.getPicture();
