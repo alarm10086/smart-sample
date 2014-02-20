@@ -6,9 +6,9 @@ import com.smart.framework.annotation.Inject;
 import com.smart.framework.annotation.Request;
 import com.smart.framework.bean.Multipart;
 import com.smart.framework.bean.Multiparts;
-import com.smart.framework.bean.Page;
 import com.smart.framework.bean.Pager;
 import com.smart.framework.bean.Result;
+import com.smart.framework.bean.View;
 import com.smart.framework.util.CastUtil;
 import com.smart.framework.util.WebUtil;
 import com.smart.sample.Constant;
@@ -27,31 +27,31 @@ public class ProductAction {
     private ProductService productService;
 
     @Request.Get("/product")
-    public Page index() {
+    public View index() {
         int pageNumber = 1;
         int pageSize = Tool.getPageSize("product_pager");
         String name = "";
 
         Pager<ProductBean> productBeanPager = productService.getProductBeanPager(pageNumber, pageSize, name);
-        return new Page("product.jsp")
+        return new View("product.jsp")
             .data("productBeanPager", productBeanPager);
     }
 
     @Request.Post("/product/search")
-    public Page search(Map<String, Object> fieldMap) {
+    public View search(Map<String, Object> fieldMap) {
         int pageNumber = CastUtil.castInt(fieldMap.get(Constant.PAGE_NUMBER));
         int pageSize = CastUtil.castInt(fieldMap.get(Constant.PAGE_SIZE));
         String name = CastUtil.castString(fieldMap.get("name"));
 
         Pager<ProductBean> productBeanPager = productService.getProductBeanPager(pageNumber, pageSize, name);
-        return new Page("product_list.jsp")
+        return new View("product_list.jsp")
             .data("productBeanPager", productBeanPager);
     }
 
     @Request.Get("/product/create")
-    public Page create() {
+    public View create() {
         List<ProductType> productTypeList = productService.getProductTypeList();
-        return new Page("product_create.jsp")
+        return new View("product_create.jsp")
             .data("productTypeList", productTypeList);
     }
 
@@ -69,17 +69,17 @@ public class ProductAction {
     }
 
     @Request.Get("/product/view/{id}")
-    public Page view(long id) {
+    public View view(long id) {
         ProductBean productBean = productService.getProductBean(id);
-        return new Page("product_view.jsp")
+        return new View("product_view.jsp")
             .data("productBean", productBean);
     }
 
     @Request.Get("/product/edit/{id}")
-    public Page edit(long id) {
+    public View edit(long id) {
         List<ProductType> productTypeList = productService.getProductTypeList();
         ProductBean productBean = productService.getProductBean(id);
-        return new Page("product_edit.jsp")
+        return new View("product_edit.jsp")
             .data("productTypeList", productTypeList)
             .data("productBean", productBean);
     }
@@ -91,9 +91,9 @@ public class ProductAction {
     }
 
     @Request.Get("/product/upload_picture/{id}")
-    public Page uploadPicture(long id) {
+    public View uploadPicture(long id) {
         Product product = productService.getProduct(id);
-        return new Page("product_upload.jsp")
+        return new View("product_upload.jsp")
             .data("product", product);
     }
 
