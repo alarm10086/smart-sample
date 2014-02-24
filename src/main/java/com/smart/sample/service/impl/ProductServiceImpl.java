@@ -25,7 +25,7 @@ public class ProductServiceImpl implements ProductService {
             fieldMap.put("picture", multipart.getFileName());
         }
         boolean result = DataSet.insert(Product.class, fieldMap);
-        if (result) {
+        if (result && multipart != null) {
             UploadHelper.uploadFile(Tool.getBasePath(), multipart);
         }
         return result;
@@ -44,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
             fieldMap.put("picture", multipart.getFileName());
         }
         boolean result = DataSet.update(Product.class, fieldMap, "id = ?", id);
-        if (result) {
+        if (result && multipart != null) {
             UploadHelper.uploadFile(Tool.getBasePath(), multipart);
         }
         return result;
@@ -72,7 +72,7 @@ public class ProductServiceImpl implements ProductService {
     public Pager<ProductBean> getProductBeanPager(int pageNumber, int pageSize, String name) {
         String condition = "name like ?";
         String sort = "id desc";
-        Object[] params = {'%' + name + '%'};
+        Object[] params = {"%" + name + "%"};
 
         long count = DataSet.selectCount(Product.class, condition, params);
         List<ProductBean> productBeanList = new ArrayList<ProductBean>();
