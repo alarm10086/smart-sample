@@ -5,6 +5,7 @@ import com.smart.framework.annotation.Action;
 import com.smart.framework.annotation.Inject;
 import com.smart.framework.annotation.Request;
 import com.smart.framework.bean.Result;
+import com.smart.framework.bean.View;
 import com.smart.framework.util.CastUtil;
 import com.smart.framework.util.StringUtil;
 import com.smart.framework.util.WebUtil;
@@ -23,6 +24,11 @@ public class SystemAction {
     public void captcha() {
         String captcha = WebUtil.createCaptcha(DataContext.getResponse());
         DataContext.Session.put(Constant.CAPTCHA, captcha);
+    }
+
+    @Request.Get("/login")
+    public View login() {
+        return new View("login.jsp");
     }
 
     @Request.Post("/login")
