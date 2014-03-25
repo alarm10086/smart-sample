@@ -1,10 +1,10 @@
-package com.smart.sample.ws.soap.impl;
+package com.smart.sample.soap.impl;
 
 import com.smart.framework.DataSet;
 import com.smart.framework.annotation.Service;
 import com.smart.framework.annotation.Transaction;
 import com.smart.sample.entity.Product;
-import com.smart.sample.ws.soap.ProductService;
+import com.smart.sample.soap.ProductService;
 import java.util.List;
 import java.util.Map;
 

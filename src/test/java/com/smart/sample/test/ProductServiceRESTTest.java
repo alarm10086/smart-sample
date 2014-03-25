@@ -2,7 +2,7 @@ package com.smart.sample.test;
 
 import com.smart.plugin.rest.RestHelper;
 import com.smart.sample.entity.Product;
-import com.smart.sample.ws.rest.ProductService;
+import com.smart.sample.rest.ProductService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

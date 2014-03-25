@@ -1,4 +1,4 @@
-package com.smart.sample.ws.rest;
+package com.smart.sample.rest;
 
 import com.smart.framework.DataSet;
 import com.smart.framework.annotation.Service;

@@ -1,4 +1,4 @@
-package com.smart.sample.ws.soap.adapter;
+package com.smart.sample.soap.adapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

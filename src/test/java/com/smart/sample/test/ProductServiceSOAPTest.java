@@ -2,7 +2,7 @@ package com.smart.sample.test;
 
 import com.smart.plugin.soap.SoapHelper;
 import com.smart.sample.entity.Product;
-import com.smart.sample.ws.soap.ProductService;
+import com.smart.sample.soap.ProductService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
