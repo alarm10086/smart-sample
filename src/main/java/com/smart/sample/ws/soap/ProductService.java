@@ -1,13 +1,13 @@
 package com.smart.sample.ws.soap;
 
-import com.smart.plugin.ws.WebService;
+import com.smart.plugin.soap.Soap;
 import com.smart.sample.entity.Product;
 import com.smart.sample.ws.soap.adapter.StringObjectMapAdapter;
 import java.util.List;
 import java.util.Map;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-@WebService(value = "/soap/ProductService", type = WebService.Type.SOAP)
+@Soap("/soap/ProductService")
 public interface ProductService {
 
     List<Product> getProductList();

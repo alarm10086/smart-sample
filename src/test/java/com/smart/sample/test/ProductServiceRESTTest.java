@@ -1,6 +1,6 @@
 package com.smart.sample.test;
 
-import com.smart.plugin.ws.RESTHelper;
+import com.smart.plugin.rest.RestHelper;
 import com.smart.sample.entity.Product;
 import com.smart.sample.ws.rest.ProductService;
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import org.junit.Test;
 public class ProductServiceRESTTest {
 
     private String wadl = "http://localhost:8080/smart-sample/ws/rest/ProductService";
-    private ProductService productService = RESTHelper.createClient(wadl, ProductService.class);
+    private ProductService productService = RestHelper.createClient(wadl, ProductService.class);
 
     @Test
     public void getProductListTest() {

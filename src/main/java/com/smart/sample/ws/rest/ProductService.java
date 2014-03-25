@@ -3,7 +3,7 @@ package com.smart.sample.ws.rest;
 import com.smart.framework.DataSet;
 import com.smart.framework.annotation.Service;
 import com.smart.framework.annotation.Transaction;
-import com.smart.plugin.ws.WebService;
+import com.smart.plugin.rest.Rest;
 import com.smart.sample.entity.Product;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +18,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @Service
-@WebService(value = "/rest/ProductService", type = WebService.Type.REST)
+@Rest("/rest/ProductService")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ProductService {

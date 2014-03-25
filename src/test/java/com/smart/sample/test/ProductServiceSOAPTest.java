@@ -1,6 +1,6 @@
 package com.smart.sample.test;
 
-import com.smart.plugin.ws.SOAPHelper;
+import com.smart.plugin.soap.SoapHelper;
 import com.smart.sample.entity.Product;
 import com.smart.sample.ws.soap.ProductService;
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import org.junit.Test;
 public class ProductServiceSOAPTest {
 
     private String wsdl = "http://localhost:8080/smart-sample/ws/soap/ProductService";
-    private ProductService productService = SOAPHelper.createClient(wsdl, ProductService.class);
+    private ProductService productService = SoapHelper.createClient(wsdl, ProductService.class);
 
     @Test
     public void getProductListTest() {
