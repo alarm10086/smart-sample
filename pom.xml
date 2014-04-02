@@ -50,6 +50,11 @@
             <artifactId>smart-framework</artifactId>
             <version>${smart.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>smart-security</artifactId>
+            <version>${smart.version}</version>
+        </dependency>
 		<dependency>
 		    <groupId>com.smart</groupId>
 		    <artifactId>smart-plugin-cache</artifactId>

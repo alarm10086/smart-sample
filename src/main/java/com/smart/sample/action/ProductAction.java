@@ -7,9 +7,9 @@ import com.smart.framework.annotation.Request;
 import com.smart.framework.bean.Multipart;
 import com.smart.framework.bean.Multiparts;
 import com.smart.framework.bean.Pager;
+import com.smart.framework.bean.Param;
 import com.smart.framework.bean.Result;
 import com.smart.framework.bean.View;
-import com.smart.framework.util.CastUtil;
 import com.smart.framework.util.WebUtil;
 import com.smart.sample.Constant;
 import com.smart.sample.Tool;
@@ -38,10 +38,10 @@ public class ProductAction {
     }
 
     @Request.Post("/product/search")
-    public View search(Map<String, Object> fieldMap) {
-        int pageNumber = CastUtil.castInt(fieldMap.get(Constant.PAGE_NUMBER));
-        int pageSize = CastUtil.castInt(fieldMap.get(Constant.PAGE_SIZE));
-        String name = CastUtil.castString(fieldMap.get("name"));
+    public View search(Param param) {
+        int pageNumber = param.get(Constant.PAGE_NUMBER, Integer.class);
+        int pageSize = param.get(Constant.PAGE_SIZE, Integer.class);
+        String name = param.get("name", String.class);
 
         Pager<ProductBean> productBeanPager = productService.getProductBeanPager(pageNumber, pageSize, name);
         return new View("product_list.jsp")
@@ -56,7 +56,8 @@ public class ProductAction {
     }
 
     @Request.Post("/product/create")
-    public Result create(Map<String, Object> fieldMap, Multiparts multiparts) {
+    public Result create(Param param, Multiparts multiparts) {
+        Map<String, Object> fieldMap = param.getFieldMap();
         Multipart multipart = multiparts.getOne();
         boolean success = productService.createProduct(fieldMap, multipart);
         return new Result(success);
@@ -85,7 +86,8 @@ public class ProductAction {
     }
 
     @Request.Put("/product/update/{id}")
-    public Result update(long id, Map<String, Object> fieldMap) {
+    public Result update(long id, Param param) {
+        Map<String, Object> fieldMap = param.getFieldMap();
         boolean success = productService.updateProduct(id, fieldMap, null);
         return new Result(success);
     }
@@ -98,7 +100,8 @@ public class ProductAction {
     }
 
     @Request.Post("/product/upload_picture/{id}")
-    public Result uploadPicture(long id, Map<String, Object> fieldMap, Multiparts multiparts) {
+    public Result uploadPicture(long id, Param param, Multiparts multiparts) {
+        Map<String, Object> fieldMap = param.getFieldMap();
         Multipart multipart = multiparts.getOne();
         boolean success = productService.updateProduct(id, fieldMap, multipart);
         return new Result(success)

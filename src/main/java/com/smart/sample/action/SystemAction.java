@@ -4,15 +4,14 @@ import com.smart.framework.DataContext;
 import com.smart.framework.annotation.Action;
 import com.smart.framework.annotation.Inject;
 import com.smart.framework.annotation.Request;
+import com.smart.framework.bean.Param;
 import com.smart.framework.bean.Result;
 import com.smart.framework.bean.View;
-import com.smart.framework.util.CastUtil;
 import com.smart.framework.util.StringUtil;
 import com.smart.framework.util.WebUtil;
 import com.smart.sample.Constant;
 import com.smart.sample.entity.User;
 import com.smart.sample.service.UserService;
-import java.util.Map;
 
 @Action
 public class SystemAction {
@@ -32,10 +31,10 @@ public class SystemAction {
     }
 
     @Request.Post("/login")
-    public Result login(Map<String, Object> fieldMap) {
-        String username = CastUtil.castString(fieldMap.get("username"));
-        String password = CastUtil.castString(fieldMap.get("password"));
-        String captcha = CastUtil.castString(fieldMap.get("captcha"));
+    public Result login(Param param) {
+        String username = param.get("username", String.class);
+        String password = param.get("password", String.class);
+        String captcha = param.get("captcha", String.class);
 
         String sessionCaptcha = DataContext.Session.get(Constant.CAPTCHA);
         if (!sessionCaptcha.equals(captcha)) {
