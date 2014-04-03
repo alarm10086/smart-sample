@@ -19,7 +19,7 @@ $(function() {
 
     $('#product_search_form').ajaxForm({
         type: 'post',
-        url: Smart.BASE + '/product/search',
+        url: BASE + '/product/search',
         data: searchFormData,
         dataType: 'html',
         success: function(html) {
@@ -34,7 +34,7 @@ $(function() {
         if (confirm(Smart.i18n('product.delete_confirm', name))) {
             $.ajax({
                 type: 'delete',
-                url: Smart.BASE + '/product/delete/' + productId,
+                url: BASE + '/product/delete/' + productId,
                 dataType: 'json',
                 success: function(result) {
                     if (result.success) {

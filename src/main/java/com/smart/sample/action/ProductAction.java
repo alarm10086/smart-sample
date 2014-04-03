@@ -39,9 +39,9 @@ public class ProductAction {
 
     @Request.Post("/product/search")
     public View search(Param param) {
-        int pageNumber = param.get(Constant.PAGE_NUMBER, Integer.class);
-        int pageSize = param.get(Constant.PAGE_SIZE, Integer.class);
-        String name = param.get("name", String.class);
+        int pageNumber = param.getInt(Constant.PAGE_NUMBER);
+        int pageSize = param.getInt(Constant.PAGE_SIZE);
+        String name = param.getString("name");
 
         Pager<ProductBean> productBeanPager = productService.getProductBeanPager(pageNumber, pageSize, name);
         return new View("product_list.jsp")

@@ -1,9 +1,9 @@
 $(function() {
-    var mainURL = Smart.BASE + '/product';
+    var mainURL = BASE + '/product';
 
     $('#login_form').ajaxForm({
         type: 'post',
-        url: Smart.BASE + '/login',
+        url: BASE + '/login',
         dataType: 'json',
         beforeSubmit: function() {
             var result = false;
@@ -15,12 +15,7 @@ $(function() {
         },
         success: function(result) {
             if (result.success) {
-                var redirectURL = result.data;
-                if (redirectURL) {
-                    location.href = Smart.BASE + redirectURL;
-                } else {
-                    location.href = mainURL;
-                }
+                location.href = mainURL;
             } else {
                 if (result.data == 'captcha_error') {
                     alert(Smart.i18n('common.captcha.error'));
