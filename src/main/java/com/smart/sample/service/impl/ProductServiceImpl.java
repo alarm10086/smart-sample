@@ -1,6 +1,7 @@
 package com.smart.sample.service.impl;
 
 import com.smart.framework.DataSet;
+import com.smart.framework.annotation.Inject;
 import com.smart.framework.annotation.Service;
 import com.smart.framework.annotation.Transaction;
 import com.smart.framework.bean.Multipart;
@@ -10,6 +11,7 @@ import com.smart.sample.Tool;
 import com.smart.sample.bean.ProductBean;
 import com.smart.sample.entity.Product;
 import com.smart.sample.entity.ProductType;
+import com.smart.sample.service.LogService;
 import com.smart.sample.service.ProductService;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,9 @@ import java.util.Map;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+
+    @Inject
+    private LogService logService;
 
     @Override
     @Transaction
@@ -47,6 +52,9 @@ public class ProductServiceImpl implements ProductService {
         if (result && multipart != null) {
             UploadHelper.uploadFile(Tool.getBasePath(), multipart);
         }
+
+        logService.log("update product by id is " + id);
+
         return result;
     }
 
