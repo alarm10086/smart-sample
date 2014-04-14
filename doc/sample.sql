@@ -61,3 +61,15 @@ CREATE TABLE `product_type` (
 -- ----------------------------
 INSERT INTO `product_type` VALUES ('1', 'Mobile Phone', '移动电话');
 INSERT INTO `product_type` VALUES ('2', 'Tablet Computer', '平板电脑');
+
+-- ----------------------------
+-- Table structure for log
+-- ----------------------------
+
+CREATE TABLE `log` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `date` char(10) DEFAULT NULL,
+  `time` char(8) DEFAULT NULL,
+  `description` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
