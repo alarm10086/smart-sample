@@ -10,7 +10,7 @@
         <smart.version>2.2-SNAPSHOT</smart.version>
     </properties>
 
-    <groupId>com.smart</groupId>
+    <groupId>smart</groupId>
     <artifactId>smart-sample</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
@@ -46,32 +46,32 @@
         </dependency>
         <!-- Smart -->
         <dependency>
-            <groupId>com.smart</groupId>
+            <groupId>smart</groupId>
             <artifactId>smart-framework</artifactId>
             <version>${smart.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.smart</groupId>
+            <groupId>smart</groupId>
             <artifactId>smart-security</artifactId>
             <version>${smart.version}</version>
         </dependency>
 		<dependency>
-		    <groupId>com.smart</groupId>
+		    <groupId>smart</groupId>
 		    <artifactId>smart-plugin-cache</artifactId>
             <version>${smart.version}</version>
 		</dependency>
         <dependency>
-            <groupId>com.smart</groupId>
+            <groupId>smart</groupId>
             <artifactId>smart-plugin-soap</artifactId>
             <version>${smart.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.smart</groupId>
+            <groupId>smart</groupId>
             <artifactId>smart-plugin-rest</artifactId>
             <version>${smart.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.smart</groupId>
+            <groupId>smart</groupId>
             <artifactId>smart-plugin-i18n</artifactId>
             <version>${smart.version}</version>
         </dependency>

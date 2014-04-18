@@ -1,0 +1,22 @@
+package smart.sample.soap;
+
+import java.util.List;
+import java.util.Map;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import smart.plugin.soap.Soap;
+import smart.sample.entity.Product;
+import smart.sample.soap.adapter.StringObjectMapAdapter;
+
+@Soap("/soap/ProductService")
+public interface ProductService {
+
+    List<Product> getProductList();
+
+    Product getProduct(long productId);
+
+    boolean createProduct(@XmlJavaTypeAdapter(StringObjectMapAdapter.class) Map<String, Object> productFieldMap);
+
+    boolean updateProduct(long productId, @XmlJavaTypeAdapter(StringObjectMapAdapter.class) Map<String, Object> productFieldMap);
+
+    boolean deleteProduct(long productId);
+}
