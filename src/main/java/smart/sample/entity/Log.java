@@ -1,6 +1,6 @@
 package smart.sample.entity;
 
-import com.smart.framework.base.BaseEntity;
+import smart.framework.base.BaseEntity;
 
 public class Log extends BaseEntity {
 
