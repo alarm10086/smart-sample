@@ -7,7 +7,7 @@ import com.smart.framework.annotation.Request;
 import com.smart.framework.bean.Multipart;
 import com.smart.framework.bean.Multiparts;
 import com.smart.framework.bean.Pager;
-import com.smart.framework.bean.Param;
+import com.smart.framework.bean.Params;
 import com.smart.framework.bean.Result;
 import com.smart.framework.bean.View;
 import com.smart.framework.util.WebUtil;
@@ -38,10 +38,10 @@ public class ProductAction {
     }
 
     @Request.Post("/product/search")
-    public View search(Param param) {
-        int pageNumber = param.getInt(Constant.PAGE_NUMBER);
-        int pageSize = param.getInt(Constant.PAGE_SIZE);
-        String name = param.getString("name");
+    public View search(Params params) {
+        int pageNumber = params.getInt(Constant.PAGE_NUMBER);
+        int pageSize = params.getInt(Constant.PAGE_SIZE);
+        String name = params.getString("name");
 
         Pager<ProductBean> productBeanPager = productService.getProductBeanPager(pageNumber, pageSize, name);
         return new View("product_list.jsp")
@@ -56,8 +56,8 @@ public class ProductAction {
     }
 
     @Request.Post("/product/create")
-    public Result create(Param param, Multiparts multiparts) {
-        Map<String, Object> fieldMap = param.getFieldMap();
+    public Result create(Params params, Multiparts multiparts) {
+        Map<String, Object> fieldMap = params.getFieldMap();
         Multipart multipart = multiparts.getOne();
         boolean success = productService.createProduct(fieldMap, multipart);
         return new Result(success);
@@ -86,8 +86,8 @@ public class ProductAction {
     }
 
     @Request.Put("/product/update/{id}")
-    public Result update(long id, Param param) {
-        Map<String, Object> fieldMap = param.getFieldMap();
+    public Result update(long id, Params params) {
+        Map<String, Object> fieldMap = params.getFieldMap();
         boolean success = productService.updateProduct(id, fieldMap, null);
         return new Result(success);
     }
@@ -100,8 +100,8 @@ public class ProductAction {
     }
 
     @Request.Post("/product/upload_picture/{id}")
-    public Result uploadPicture(long id, Param param, Multiparts multiparts) {
-        Map<String, Object> fieldMap = param.getFieldMap();
+    public Result uploadPicture(long id, Params params, Multiparts multiparts) {
+        Map<String, Object> fieldMap = params.getFieldMap();
         Multipart multipart = multiparts.getOne();
         boolean success = productService.updateProduct(id, fieldMap, multipart);
         return new Result(success)

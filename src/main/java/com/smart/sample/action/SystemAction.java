@@ -4,7 +4,7 @@ import com.smart.framework.DataContext;
 import com.smart.framework.annotation.Action;
 import com.smart.framework.annotation.Inject;
 import com.smart.framework.annotation.Request;
-import com.smart.framework.bean.Param;
+import com.smart.framework.bean.Params;
 import com.smart.framework.bean.Result;
 import com.smart.framework.bean.View;
 import com.smart.framework.util.WebUtil;
@@ -31,10 +31,10 @@ public class SystemAction {
     }
 
     @Request.Post("/login")
-    public Result login(Param param) {
-        String username = param.getString("username");
-        String password = param.getString("password");
-        String captcha = param.getString("captcha");
+    public Result login(Params params) {
+        String username = params.getString("username");
+        String password = params.getString("password");
+        String captcha = params.getString("captcha");
 
         String sessionCaptcha = DataContext.Session.get(Constant.CAPTCHA);
         if (!sessionCaptcha.equals(captcha)) {
