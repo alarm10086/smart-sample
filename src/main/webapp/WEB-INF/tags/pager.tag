@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/jsp/common/global.jsp" %>
 
 <%@ attribute name="id" required="true" type="java.lang.String" %>
-<%@ attribute name="pager" required="true" type="smart.framework.bean.Pager" %>
+<%@ attribute name="pager" required="true" type="smart.framework.dao.bean.Pager" %>
 
 <c:set var="pageNumber" value="${pager.pageNumber}"/>
 <c:set var="pageSize" value="${pager.pageSize}"/>

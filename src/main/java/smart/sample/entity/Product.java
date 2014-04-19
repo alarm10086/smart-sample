@@ -1,8 +1,10 @@
 package smart.sample.entity;
 
-import smart.framework.base.BaseEntity;
+import smart.framework.orm.BaseEntity;
 
 public class Product extends BaseEntity {
+
+    private long id;
 
     private long productTypeId;
 
@@ -15,6 +17,14 @@ public class Product extends BaseEntity {
     private String description;
 
     private String picture;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public long getProductTypeId() {
         return productTypeId;

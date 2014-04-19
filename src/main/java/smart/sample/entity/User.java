@@ -1,12 +1,22 @@
 package smart.sample.entity;
 
-import smart.framework.base.BaseEntity;
+import smart.framework.orm.BaseEntity;
 
 public class User extends BaseEntity {
+
+    private long id;
 
     private String username;
 
     private String password;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;

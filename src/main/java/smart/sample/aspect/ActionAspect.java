@@ -3,9 +3,9 @@ package smart.sample.aspect;
 import java.lang.reflect.Method;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import smart.framework.annotation.Action;
-import smart.framework.annotation.Aspect;
-import smart.framework.proxy.AspectProxy;
+import smart.framework.aop.AspectProxy;
+import smart.framework.aop.annotation.Aspect;
+import smart.framework.mvc.annotation.Action;
 
 @Aspect(annotation = Action.class)
 public class ActionAspect extends AspectProxy {

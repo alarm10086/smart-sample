@@ -1,6 +1,6 @@
 package smart.sample;
 
-import smart.framework.DataContext;
+import smart.framework.mvc.DataContext;
 import smart.framework.util.CastUtil;
 
 public class Tool {

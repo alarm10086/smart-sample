@@ -1,7 +1,7 @@
 package smart.sample;
 
 import java.util.Set;
-import smart.framework.helper.DatabaseHelper;
+import smart.framework.dao.DatabaseHelper;
 import smart.security.ISmartSecurity;
 
 public class SmartSecurity implements ISmartSecurity {

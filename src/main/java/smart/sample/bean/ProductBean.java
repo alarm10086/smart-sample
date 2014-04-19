@@ -1,6 +1,6 @@
 package smart.sample.bean;
 
-import smart.framework.base.BaseBean;
+import smart.framework.core.bean.BaseBean;
 import smart.sample.entity.Product;
 import smart.sample.entity.ProductType;
 

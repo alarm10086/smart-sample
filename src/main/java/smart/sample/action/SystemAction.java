@@ -1,11 +1,11 @@
 package smart.sample.action;
 
-import smart.framework.DataContext;
-import smart.framework.annotation.Action;
-import smart.framework.annotation.Request;
-import smart.framework.bean.Params;
-import smart.framework.bean.Result;
-import smart.framework.bean.View;
+import smart.framework.mvc.DataContext;
+import smart.framework.mvc.annotation.Action;
+import smart.framework.mvc.annotation.Request;
+import smart.framework.mvc.bean.Params;
+import smart.framework.mvc.bean.Result;
+import smart.framework.mvc.bean.View;
 import smart.framework.util.WebUtil;
 import smart.sample.Constant;
 import smart.security.SmartSecurityHelper;

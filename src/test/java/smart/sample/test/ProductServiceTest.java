@@ -6,10 +6,10 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import smart.framework.annotation.Order;
-import smart.framework.base.BaseTest;
-import smart.framework.bean.Pager;
-import smart.framework.helper.BeanHelper;
+import smart.framework.dao.bean.Pager;
+import smart.framework.ioc.BeanHelper;
+import smart.framework.test.BaseTest;
+import smart.framework.test.annotation.TestOrder;
 import smart.sample.bean.ProductBean;
 import smart.sample.service.ProductService;
 import smart.sample.service.impl.ProductServiceImpl;
@@ -25,7 +25,7 @@ public class ProductServiceTest extends BaseTest {
     }
 
     @Test
-    @Order(1)
+    @TestOrder(1)
     public void getProductBeanPagerTest() {
         int pageNumber = 1;
         int pageSize = 10;
@@ -38,7 +38,7 @@ public class ProductServiceTest extends BaseTest {
     }
 
     @Test
-    @Order(2)
+    @TestOrder(2)
     public void getProductBeanTest() {
         long productId = 1;
 
@@ -49,7 +49,7 @@ public class ProductServiceTest extends BaseTest {
     }
 
     @Test
-    @Order(3)
+    @TestOrder(3)
     public void createProductTest() {
         Map<String, Object> productFieldMap = new HashMap<String, Object>();
         productFieldMap.put("productTypeId", 1);
@@ -63,7 +63,7 @@ public class ProductServiceTest extends BaseTest {
     }
 
     @Test
-    @Order(4)
+    @TestOrder(4)
     public void updateProductTest() {
         long productId = 1;
         Map<String, Object> productFieldMap = new HashMap<String, Object>();
@@ -75,7 +75,7 @@ public class ProductServiceTest extends BaseTest {
     }
 
     @Test
-    @Order(5)
+    @TestOrder(5)
     public void deleteProductTest() {
         long productId = 1;
 

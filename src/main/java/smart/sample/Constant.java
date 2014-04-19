@@ -1,6 +1,6 @@
 package smart.sample;
 
-import smart.framework.helper.ConfigHelper;
+import smart.framework.core.ConfigHelper;
 
 public interface Constant {
 

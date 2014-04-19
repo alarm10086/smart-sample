@@ -1,6 +1,6 @@
 package smart.sample.service.impl;
 
-import smart.framework.annotation.Service;
+import smart.framework.tx.annotation.Service;
 import smart.sample.service.UserService;
 import smart.security.SmartSecurityHelper;
 

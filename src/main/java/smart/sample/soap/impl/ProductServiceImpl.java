@@ -2,9 +2,9 @@ package smart.sample.soap.impl;
 
 import java.util.List;
 import java.util.Map;
-import smart.framework.DataSet;
-import smart.framework.annotation.Service;
-import smart.framework.annotation.Transaction;
+import smart.framework.dao.DataSet;
+import smart.framework.tx.annotation.Service;
+import smart.framework.tx.annotation.Transaction;
 import smart.sample.entity.Product;
 import smart.sample.soap.ProductService;
 
