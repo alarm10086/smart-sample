@@ -2,22 +2,17 @@ package smart.sample.action;
 
 import smart.framework.DataContext;
 import smart.framework.annotation.Action;
-import smart.framework.annotation.Inject;
 import smart.framework.annotation.Request;
 import smart.framework.bean.Params;
 import smart.framework.bean.Result;
 import smart.framework.bean.View;
 import smart.framework.util.WebUtil;
 import smart.sample.Constant;
-import smart.sample.service.UserService;
 import smart.security.SmartSecurityHelper;
 import smart.security.exception.LoginException;
 
 @Action
 public class SystemAction {
-
-    @Inject
-    private UserService userService;
 
     @Request.Get("/captcha")
     public void captcha() {
