@@ -4,7 +4,7 @@ $(function() {
         url: BASE + '/product/update/' + $('#id').val(),
         dataType: 'json',
         beforeSubmit: function() {
-            return Smart4J.Validator.checkRequired('product_edit_form');
+            return Smart.Validator.checkRequired('product_edit_form');
         },
         success: function(result) {
             if (result.success) {

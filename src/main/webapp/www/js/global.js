@@ -1,6 +1,6 @@
 var BASE; // Context Path（在 script.jsp 中初始化）
 
-var Smart4J = {
+var Smart = {
     /* -------------------------------------------------- 函数 -------------------------------------------------- */
     Validator: {
         checkRequired: function(formId) {
@@ -101,7 +101,7 @@ var Smart4J = {
                         var pageNumber = $(this).val();
                         var totalPage = parseInt($pager.find('.ext-pager-tp').text());
                         if (isNaN(pageNumber) || pageNumber <= 0 || pageNumber > totalPage) {
-                            alert(Smart4J.i18n('common.pager.input_error'));
+                            alert(Smart.i18n('common.pager.input_error'));
                             $(this).select();
                             return;
                         }
@@ -118,12 +118,12 @@ var Smart4J = {
                     if (event.keyCode == '13') {
                         var pageSize = $(this).val();
                         if (isNaN(pageSize) || pageSize <= 0) {
-                            alert(Smart4J.i18n('common.pager.input_error'));
+                            alert(Smart.i18n('common.pager.input_error'));
                             $(this).select();
                             return;
                         }
                         onChangePageSize(pageSize);
-                        Smart4J.Cookie.put('cookie_ps_' + pagerId, pageSize);
+                        Smart.Cookie.put('cookie_ps_' + pagerId, pageSize);
                     }
                 });
         })();
@@ -157,7 +157,7 @@ $(function() {
                     location.href = BASE + '/';
                     break;
                 case 500:
-                    alert(Smart4J.i18n('error.page.500'));
+                    alert(Smart.i18n('error.page.500'));
                     break;
                 case 503:
                     alert(errorThrown);
@@ -169,13 +169,13 @@ $(function() {
     // 切换系统语言
     $('#language').find('a').click(function() {
         var language = $(this).data('value');
-        Smart4J.Cookie.put('cookie_language', language);
+        Smart.Cookie.put('cookie_language', language);
         location.reload();
     });
 
     // 绑定注销事件
     $('#logout').click(function() {
-        if (confirm(Smart4J.i18n('common.logout_confirm'))) {
+        if (confirm(Smart.i18n('common.logout_confirm'))) {
             $.ajax({
                 type: 'get',
                 url: BASE + '/logout',
@@ -195,7 +195,7 @@ $(function() {
         if (index != -1) {
             url = url.substring(0, index);
         }
-        url = url + '?_=' + Smart4J.timestamp();
+        url = url + '?_=' + Smart.timestamp();
         $(this).attr('src', url);
     });
 });

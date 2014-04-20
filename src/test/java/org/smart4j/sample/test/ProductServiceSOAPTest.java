@@ -11,7 +11,7 @@ import org.smart4j.sample.soap.ProductService;
 
 public class ProductServiceSOAPTest {
 
-    private String wsdl = "http://localhost:8080/smart4j-sample/ws/soap/ProductService";
+    private String wsdl = "http://localhost:8080/smart-sample/ws/soap/ProductService";
     private ProductService productService = SoapHelper.createClient(wsdl, ProductService.class);
 
     @Test

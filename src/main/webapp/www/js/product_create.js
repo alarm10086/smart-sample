@@ -4,7 +4,7 @@ $(function() {
         url: BASE + '/product/create',
         dataType: 'json',
         beforeSubmit: function() {
-            return Smart4J.Validator.checkRequired('product_create_form');
+            return Smart.Validator.checkRequired('product_create_form');
         },
         success: function(result) {
             if (result.success) {
