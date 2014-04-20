@@ -7,7 +7,7 @@ $(function() {
         dataType: 'json',
         beforeSubmit: function() {
             var result = false;
-            if (Smart.Validator.checkRequired('login_form')) {
+            if (Smart4J.Validator.checkRequired('login_form')) {
                 $('#login_form').find(':input').prop('disabled', true);
                 result = true;
             }
@@ -18,9 +18,9 @@ $(function() {
                 location.href = mainURL;
             } else {
                 if (result.data == 'captcha_error') {
-                    alert(Smart.i18n('common.captcha.error'));
+                    alert(Smart4J.i18n('common.captcha.error'));
                 } else {
-                    alert(Smart.i18n('login.failure'));
+                    alert(Smart4J.i18n('login.failure'));
                 }
                 $('#login_form').find(':input').prop('disabled', false);
                 $('#captcha_img').click();

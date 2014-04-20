@@ -1,5 +1,5 @@
 $(function() {
-    var pager = new Smart.Pager(
+    var pager = new Smart4J.Pager(
         'product_pager',
         function (pageNumber) {
             searchFormData.pageNumber = pageNumber;
@@ -31,7 +31,7 @@ $(function() {
         var $tr = $(this).closest('tr');
         var productId = $tr.data('id');
         var name = $tr.data('name');
-        if (confirm(Smart.i18n('product.delete_confirm', name))) {
+        if (confirm(Smart4J.i18n('product.delete_confirm', name))) {
             $.ajax({
                 type: 'delete',
                 url: BASE + '/product/delete/' + productId,
