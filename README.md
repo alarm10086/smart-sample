@@ -13,3 +13,17 @@
 3. 修改 Tomcat 的 server.xml 文件，添加 URIEncoding="UTF-8" 配置，使 GET 请求中可带有中文字符
 4. 使用 Maven 将 smart-sample 应用打包为 war 文件，并部署到 Tomcat 中，也可在 IDE 中部署并运行
 5. 使用该 URL 访问应用：http://[host]:[port]/smart-sample/，用户名/密码：admin/admin
+
+--
+
+Smart Sample for Eclipse
+
+导入 Eclipse，可直接运行！
+
+[http://git.oschina.net/coxapp/smart-sample](http://git.oschina.net/coxapp/smart-sample)
+
+--
+
+Smart Sample 在线示例
+
+[http://smartsample.duapp.com](http://smartsample.duapp.com)
