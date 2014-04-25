@@ -75,9 +75,14 @@
             <artifactId>smart-plugin-i18n</artifactId>
             <version>${smart.version}</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.smart4j</groupId>
             <artifactId>smart-plugin-c3p0</artifactId>
+            <version>${smart.version}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.smart4j</groupId>
+            <artifactId>smart-plugin-druid</artifactId>
             <version>${smart.version}</version>
         </dependency>
     </dependencies>
