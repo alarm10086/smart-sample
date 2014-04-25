@@ -18,7 +18,7 @@ import org.smart4j.plugin.rest.Rest;
 import org.smart4j.sample.entity.Product;
 
 @Service
-@Rest("/rest/ProductService")
+@Rest("/product")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ProductService {
