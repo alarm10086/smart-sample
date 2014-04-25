@@ -75,6 +75,11 @@
             <artifactId>smart-plugin-i18n</artifactId>
             <version>${smart.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.smart4j</groupId>
+            <artifactId>smart-plugin-c3p0</artifactId>
+            <version>${smart.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -115,18 +120,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <!-- OSC Public -->
-        <repository>
-            <id>osc</id>
-            <url>http://maven.oschina.net/content/groups/public/</url>
-        </repository>
-        <!-- OSC Thirdparty -->
-        <repository>
-            <id>osc_thirdparty</id>
-            <url>http://maven.oschina.net/content/repositories/thirdparty/</url>
-        </repository>
-    </repositories>
 
 </project>
