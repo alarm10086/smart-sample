@@ -3,7 +3,7 @@ package org.smart4j.sample.service;
 import java.util.List;
 import java.util.Map;
 import org.smart4j.framework.dao.bean.Pager;
-import org.smart4j.framework.mvc.pojo.Multipart;
+import org.smart4j.framework.mvc.bean.Multipart;
 import org.smart4j.sample.bean.ProductBean;
 import org.smart4j.sample.entity.Product;
 import org.smart4j.sample.entity.ProductType;
