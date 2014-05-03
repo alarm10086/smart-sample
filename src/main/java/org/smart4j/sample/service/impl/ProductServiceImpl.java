@@ -7,7 +7,7 @@ import org.smart4j.framework.dao.DataSet;
 import org.smart4j.framework.dao.bean.Pager;
 import org.smart4j.framework.ioc.annotation.Inject;
 import org.smart4j.framework.mvc.UploadHelper;
-import org.smart4j.framework.mvc.bean.Multipart;
+import org.smart4j.framework.mvc.pojo.Multipart;
 import org.smart4j.framework.tx.annotation.Service;
 import org.smart4j.framework.tx.annotation.Transaction;
 import org.smart4j.sample.Tool;
