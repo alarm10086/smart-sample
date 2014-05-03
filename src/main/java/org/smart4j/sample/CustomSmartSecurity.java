@@ -2,9 +2,9 @@ package org.smart4j.sample;
 
 import java.util.Set;
 import org.smart4j.framework.dao.DatabaseHelper;
-import org.smart4j.security.ISmartSecurity;
+import org.smart4j.security.SmartSecurity;
 
-public class SmartSecurity implements ISmartSecurity {
+public class CustomSmartSecurity implements SmartSecurity {
 
     @Override
     public String getPassword(String username) {
