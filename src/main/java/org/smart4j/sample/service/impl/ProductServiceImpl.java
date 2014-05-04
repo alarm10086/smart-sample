@@ -85,7 +85,7 @@ public class ProductServiceImpl implements ProductService {
         long count = DataSet.selectCount(Product.class, condition, params);
         List<ProductBean> productBeanList = new ArrayList<ProductBean>();
         List<Product> productList = DataSet.selectListForPager(pageNumber, pageSize, Product.class, condition, sort, params);
-        Map<Long, ProductType> productTypeMap = DataSet.selectMap(ProductType.class, "");
+        Map<Long, ProductType> productTypeMap = DataSet.selectMap(ProductType.class);
         for (Product product : productList) {
             ProductType productType = productTypeMap.get(product.getProductTypeId());
             if (productType != null) {
@@ -97,6 +97,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductType> getProductTypeList() {
-        return DataSet.selectList(ProductType.class, "", "");
+        return DataSet.selectList(ProductType.class);
     }
 }
