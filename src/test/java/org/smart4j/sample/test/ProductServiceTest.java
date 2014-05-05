@@ -6,22 +6,25 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.smart4j.framework.dao.DatabaseHelper;
 import org.smart4j.framework.dao.bean.Pager;
 import org.smart4j.framework.ioc.BeanHelper;
-import org.smart4j.framework.test.BaseTest;
+import org.smart4j.framework.test.OrderedRunner;
 import org.smart4j.framework.test.annotation.TestOrder;
 import org.smart4j.sample.bean.ProductBean;
 import org.smart4j.sample.service.ProductService;
 import org.smart4j.sample.service.impl.ProductServiceImpl;
 
-public class ProductServiceTest extends BaseTest {
+@RunWith(OrderedRunner.class)
+public class ProductServiceTest {
 
     private ProductService productService = BeanHelper.getBean(ProductServiceImpl.class);
 
     @BeforeClass
     @AfterClass
     public static void init() {
-        initSQL("sql/product.sql");
+        DatabaseHelper.initSQL("sql/product.sql");
     }
 
     @Test
