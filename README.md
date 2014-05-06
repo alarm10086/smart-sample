@@ -21,9 +21,3 @@ Smart Sample for Eclipse
 导入 Eclipse，可直接运行！
 
 [http://git.oschina.net/coxapp/smart-sample](http://git.oschina.net/coxapp/smart-sample)
-
---
-
-Smart Sample 在线示例
-
-[http://smartsample.duapp.com](http://smartsample.duapp.com)
