@@ -30,6 +30,13 @@
             <version>3.0.1</version>
             <scope>provided</scope>
         </dependency>
+        <!-- JSP -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.2</version>
+            <scope>provided</scope>
+        </dependency>
         <!-- JSTL -->
         <dependency>
             <groupId>javax.servlet</groupId>

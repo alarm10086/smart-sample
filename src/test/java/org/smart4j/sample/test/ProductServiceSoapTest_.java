@@ -9,7 +9,7 @@ import org.smart4j.plugin.soap.SoapHelper;
 import org.smart4j.sample.entity.Product;
 import org.smart4j.sample.soap.ProductService;
 
-public class ProductServiceSOAPTest {
+public class ProductServiceSoapTest_ {
 
     private String wsdl = "http://localhost:8080/smart-sample/soap/product";
     private ProductService productService = SoapHelper.createClient(wsdl, ProductService.class);

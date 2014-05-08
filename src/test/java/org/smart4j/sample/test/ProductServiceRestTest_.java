@@ -9,7 +9,7 @@ import org.smart4j.plugin.rest.RestHelper;
 import org.smart4j.sample.entity.Product;
 import org.smart4j.sample.rest.ProductService;
 
-public class ProductServiceRESTTest {
+public class ProductServiceRestTest_ {
 
     private String wadl = "http://localhost:8080/smart-sample/rest/product";
     private ProductService productService = RestHelper.createClient(wadl, ProductService.class);
