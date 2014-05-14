@@ -1,6 +1,6 @@
 package org.smart4j.sample.service.impl;
 
-import org.smart4j.framework.dao.DataSet;
+import org.smart4j.framework.orm.DataSet;
 import org.smart4j.framework.tx.annotation.Service;
 import org.smart4j.framework.tx.annotation.Transaction;
 import org.smart4j.framework.util.DateUtil;

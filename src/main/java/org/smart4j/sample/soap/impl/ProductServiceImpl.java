@@ -2,7 +2,7 @@ package org.smart4j.sample.soap.impl;
 
 import java.util.List;
 import java.util.Map;
-import org.smart4j.framework.dao.DataSet;
+import org.smart4j.framework.orm.DataSet;
 import org.smart4j.framework.tx.annotation.Service;
 import org.smart4j.framework.tx.annotation.Transaction;
 import org.smart4j.sample.entity.Product;
