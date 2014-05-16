@@ -11,9 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import org.smart4j.framework.orm.Conditions;
 import org.smart4j.framework.orm.DataSet;
-import org.smart4j.framework.orm.Sorts;
 import org.smart4j.framework.tx.annotation.Service;
 import org.smart4j.framework.tx.annotation.Transaction;
 import org.smart4j.plugin.rest.Rest;
@@ -28,13 +26,13 @@ public class ProductService {
     @GET
     @Path("/products")
     public List<Product> getProductList() {
-        return DataSet.selectList(Product.class, null, new Sorts().sort("id", "asc"));
+        return DataSet.selectList(Product.class, "", "#id asc");
     }
 
     @GET
     @Path("/product/{productId}")
     public Product getProduct(@PathParam("productId") long productId) {
-        return DataSet.select(Product.class, new Conditions().condition("id", "=", "?"), productId);
+        return DataSet.select(Product.class, "#id = ?", productId);
     }
 
     @POST
@@ -48,13 +46,13 @@ public class ProductService {
     @Path("/product/{productId}")
     @Transaction
     public boolean updateProduct(@PathParam("productId") long productId, Map<String, Object> productFieldMap) {
-        return DataSet.update(Product.class, productFieldMap, new Conditions().condition("id", "=", "?"), productId);
+        return DataSet.update(Product.class, productFieldMap, "#id = ?", productId);
     }
 
     @DELETE
     @Path("/product/{productId}")
     @Transaction
     public boolean deleteProduct(@PathParam("productId") long productId) {
-        return DataSet.delete(Product.class, new Conditions().condition("id", "=", "?"), productId);
+        return DataSet.delete(Product.class, "#id = ?", productId);
     }
 }
