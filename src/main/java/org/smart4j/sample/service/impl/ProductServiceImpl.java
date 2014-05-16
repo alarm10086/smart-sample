@@ -7,7 +7,9 @@ import org.smart4j.framework.dao.bean.Pager;
 import org.smart4j.framework.ioc.annotation.Inject;
 import org.smart4j.framework.mvc.UploadHelper;
 import org.smart4j.framework.mvc.bean.Multipart;
+import org.smart4j.framework.orm.Conditions;
 import org.smart4j.framework.orm.DataSet;
+import org.smart4j.framework.orm.Sorts;
 import org.smart4j.framework.tx.annotation.Service;
 import org.smart4j.framework.tx.annotation.Transaction;
 import org.smart4j.sample.Tool;
@@ -39,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transaction
     public boolean deleteProduct(long id) {
-        return DataSet.delete(Product.class, "id = ?", id);
+        return DataSet.delete(Product.class, new Conditions().condition("id", "=", "?"), id);
     }
 
     @Override
@@ -48,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
         if (multipart != null) {
             fieldMap.put("picture", multipart.getFileName());
         }
-        boolean result = DataSet.update(Product.class, fieldMap, "id = ?", id);
+        boolean result = DataSet.update(Product.class, fieldMap, new Conditions().condition("id", "=", "?"), id);
         if (result && multipart != null) {
             UploadHelper.uploadFile(Tool.getBasePath(), multipart);
         }
@@ -60,7 +62,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProduct(long id) {
-        return DataSet.select(Product.class, "id = ?", id);
+        return DataSet.select(Product.class, new Conditions().condition("id", "=", "?"), id);
     }
 
     @Override
@@ -68,7 +70,7 @@ public class ProductServiceImpl implements ProductService {
         ProductBean productBean = null;
         Product product = getProduct(id);
         if (product != null) {
-            ProductType productType = DataSet.select(ProductType.class, "id = ?", product.getProductTypeId());
+            ProductType productType = DataSet.select(ProductType.class, new Conditions().condition("id", "=", "?"), product.getProductTypeId());
             if (productType != null) {
                 productBean = new ProductBean(product, productType);
             }
@@ -78,13 +80,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Pager<ProductBean> getProductBeanPager(int pageNumber, int pageSize, String name) {
-        String condition = "name like ?";
-        String sort = "id desc";
+        Conditions conditions = new Conditions().condition("name", "like", "?");
+        Sorts sorts = new Sorts().sort("id", "desc");
         Object[] params = {"%" + name + "%"};
 
-        long count = DataSet.selectCount(Product.class, condition, params);
+        long count = DataSet.selectCount(Product.class, conditions, params);
         List<ProductBean> productBeanList = new ArrayList<ProductBean>();
-        List<Product> productList = DataSet.selectListForPager(pageNumber, pageSize, Product.class, condition, sort, params);
+        List<Product> productList = DataSet.selectListForPager(pageNumber, pageSize, Product.class, conditions, sorts, params);
         Map<Long, ProductType> productTypeMap = DataSet.selectMap(ProductType.class);
         for (Product product : productList) {
             ProductType productType = productTypeMap.get(product.getProductTypeId());
