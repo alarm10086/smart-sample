@@ -13,7 +13,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getProductList() {
-        return DataSet.selectList(Product.class, "", "#id asc");
+        return DataSet.selectListWithSort(Product.class, "#id asc");
     }
 
     @Override

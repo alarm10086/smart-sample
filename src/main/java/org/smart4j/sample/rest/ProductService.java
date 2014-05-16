@@ -26,7 +26,7 @@ public class ProductService {
     @GET
     @Path("/products")
     public List<Product> getProductList() {
-        return DataSet.selectList(Product.class, "", "#id asc");
+        return DataSet.selectListWithSort(Product.class, "#id asc");
     }
 
     @GET
