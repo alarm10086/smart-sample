@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transaction
     public boolean deleteProduct(long id) {
-        return DataSet.delete(Product.class, "#id = ?", id);
+        return DataSet.delete(Product.class, "id = ?", id);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
         if (multipart != null) {
             fieldMap.put("picture", multipart.getFileName());
         }
-        boolean result = DataSet.update(Product.class, fieldMap, "#id = ?", id);
+        boolean result = DataSet.update(Product.class, fieldMap, "id = ?", id);
         if (result && multipart != null) {
             UploadHelper.uploadFile(Tool.getBasePath(), multipart);
         }
@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProduct(long id) {
-        return DataSet.select(Product.class, "#id = ?", id);
+        return DataSet.select(Product.class, "id = ?", id);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class ProductServiceImpl implements ProductService {
         ProductBean productBean = null;
         Product product = getProduct(id);
         if (product != null) {
-            ProductType productType = DataSet.select(ProductType.class, "#id = ?", product.getProductTypeId());
+            ProductType productType = DataSet.select(ProductType.class, "id = ?", product.getProductTypeId());
             if (productType != null) {
                 productBean = new ProductBean(product, productType);
             }
@@ -78,8 +78,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Pager<ProductBean> getProductBeanPager(int pageNumber, int pageSize, String name) {
-        String condition = "#name like ?";
-        String sort = "#id desc";
+        String condition = "name like ?";
+        String sort = "id desc";
         Object[] params = {"%" + name + "%"};
 
         long count = DataSet.selectCount(Product.class, condition, params);

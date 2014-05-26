@@ -13,12 +13,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getProductList() {
-        return DataSet.selectListWithSort(Product.class, "#id asc");
+        return DataSet.selectListWithSort(Product.class, "id asc");
     }
 
     @Override
     public Product getProduct(long productId) {
-        return DataSet.select(Product.class, "#id = ?", productId);
+        return DataSet.select(Product.class, "id = ?", productId);
     }
 
     @Override
@@ -30,12 +30,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transaction
     public boolean updateProduct(long productId, Map<String, Object> productFieldMap) {
-        return DataSet.update(Product.class, productFieldMap, "#id = ?", productId);
+        return DataSet.update(Product.class, productFieldMap, "id = ?", productId);
     }
 
     @Override
     @Transaction
     public boolean deleteProduct(long productId) {
-        return DataSet.delete(Product.class, "#id = ?", productId);
+        return DataSet.delete(Product.class, "id = ?", productId);
     }
 }

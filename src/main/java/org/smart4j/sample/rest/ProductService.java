@@ -26,13 +26,13 @@ public class ProductService {
     @GET
     @Path("/products")
     public List<Product> getProductList() {
-        return DataSet.selectListWithSort(Product.class, "#id asc");
+        return DataSet.selectListWithSort(Product.class, "id asc");
     }
 
     @GET
     @Path("/product/{productId}")
     public Product getProduct(@PathParam("productId") long productId) {
-        return DataSet.select(Product.class, "#id = ?", productId);
+        return DataSet.select(Product.class, "id = ?", productId);
     }
 
     @POST
@@ -46,13 +46,13 @@ public class ProductService {
     @Path("/product/{productId}")
     @Transaction
     public boolean updateProduct(@PathParam("productId") long productId, Map<String, Object> productFieldMap) {
-        return DataSet.update(Product.class, productFieldMap, "#id = ?", productId);
+        return DataSet.update(Product.class, productFieldMap, "id = ?", productId);
     }
 
     @DELETE
     @Path("/product/{productId}")
     @Transaction
     public boolean deleteProduct(@PathParam("productId") long productId) {
-        return DataSet.delete(Product.class, "#id = ?", productId);
+        return DataSet.delete(Product.class, "id = ?", productId);
     }
 }
