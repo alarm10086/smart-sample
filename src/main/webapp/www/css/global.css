@@ -113,24 +113,28 @@ img {
 #header a {
     color: #FFF;
 }
-#header #logo {
+#header .logo {
     float: left;
     font-size: 16px;
     font-weight: bold;
     margin: 10px;
 }
-#header #menu {
+#header .menu {
     float: left;
     margin: 10px;
 }
-#header #menu a {
+#header .menu a {
     margin: 10px;
 }
-#header #oper {
+#header .oper {
     float: right;
     margin: 10px;
 }
-#header #oper button {
+#header .oper span {
+    height: 20px;
+    padding: 0 5px;
+}
+#header .oper button {
     height: 20px;
     padding: 0 5px;
 }

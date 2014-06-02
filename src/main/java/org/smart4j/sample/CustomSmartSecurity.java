@@ -4,7 +4,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import org.smart4j.framework.dao.DatabaseHelper;
-import org.smart4j.security.SmartSecurity;
+import org.smart4j.plugin.security.SmartSecurity;
 
 public class CustomSmartSecurity implements SmartSecurity {
 
@@ -22,7 +22,7 @@ public class CustomSmartSecurity implements SmartSecurity {
     }
 
     @Override
-    public Set<String> getPermNameSet(String roleName) {
+    public Set<String> getPermissionNameSet(String roleName) {
         String sql = "select distinct p.permission_name from role r, role_permission rp, permission p where r.id = rp.role_id and p.id = rp.permission_id and r.role_name = ?";
         List<String> list = DatabaseHelper.queryColumnList(sql, roleName);
         return new LinkedHashSet<String>(list);

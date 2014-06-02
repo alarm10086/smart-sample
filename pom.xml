@@ -57,11 +57,6 @@
             <artifactId>smart-framework</artifactId>
             <version>${smart.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.smart4j</groupId>
-            <artifactId>smart-security</artifactId>
-            <version>${smart.version}</version>
-        </dependency>
 		<dependency>
 		    <groupId>org.smart4j</groupId>
 		    <artifactId>smart-plugin-cache</artifactId>
@@ -90,6 +85,11 @@
         <dependency>
             <groupId>org.smart4j</groupId>
             <artifactId>smart-plugin-druid</artifactId>
+            <version>${smart.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.smart4j</groupId>
+            <artifactId>smart-plugin-security</artifactId>
             <version>${smart.version}</version>
         </dependency>
     </dependencies>
