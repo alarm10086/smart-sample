@@ -8,7 +8,7 @@ $(function() {
         },
         success: function(result) {
             if (result.success) {
-                location.href = BASE + '/product';
+                location.href = BASE + '/products';
             }
         }
     });
@@ -18,6 +18,6 @@ $(function() {
     });
 
     $('#back').click(function() {
-        location.href = BASE + '/product';
+        location.href = BASE + '/products';
     });
 });

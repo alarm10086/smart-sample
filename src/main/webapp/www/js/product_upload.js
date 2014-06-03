@@ -18,6 +18,6 @@ $(function() {
     });
 
     $('#back').click(function() {
-        location.href = BASE + '/product';
+        location.href = BASE + '/products';
     });
 });

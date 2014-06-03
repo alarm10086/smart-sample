@@ -54,13 +54,17 @@
                     </div>
                     <div class="css-form-row">
                         <label></label>
-                        <a href="${BASE}/product/upload_picture/${product.id}"><f:message key="common.upload"/></a>
+                        <security:hasRole name="admin">
+                            <a href="${BASE}/product/upload_picture/${product.id}"><f:message key="common.upload"/></a>
+                        </security:hasRole>
                         <a href="${BASE}/product/download_picture/${product.id}"><f:message key="common.download"/></a>
                     </div>
                 </div>
             </div>
             <div class="css-form-footer">
-                <button type="button" id="edit"><f:message key="common.edit"/></button>
+                <security:hasPermission name="product.edit">
+                    <button type="button" id="edit"><f:message key="common.edit"/></button>
+                </security:hasPermission>
                 <button type="button" id="back"><f:message key="common.back"/></button>
             </div>
         </form>

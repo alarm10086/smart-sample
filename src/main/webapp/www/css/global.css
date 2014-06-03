@@ -328,3 +328,7 @@ img {
 .css-cursor-pointer {
     cursor: pointer;
 }
+
+.css-tip {
+    color: #999;
+}

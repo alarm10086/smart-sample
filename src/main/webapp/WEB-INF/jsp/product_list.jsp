@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ include file="common/global.jsp" %>
+<%@ taglib prefix="security" uri="/security" %>
 
 <c:set var="productBeanList" value="${productBeanPager.recordList}"/>
 
@@ -22,9 +23,14 @@
             <c:set var="picture" value="www/upload/${product.picture}"/>
             <tr data-id="${product.id}" data-name="${product.name}">
                 <td>
-                    <a href="${BASE}/product/upload_picture/${product.id}">
+                    <security:hasRole name="admin">
+                        <a href="${BASE}/product/upload_picture/${product.id}">
+                            <img src="${BASE}/${not empty product.picture ? picture : 'www/img/s.gif'}" height="32"/>
+                        </a>
+                    </security:hasRole>
+                    <security:lacksRole name="admin">
                         <img src="${BASE}/${not empty product.picture ? picture : 'www/img/s.gif'}" height="32"/>
-                    </a>
+                    </security:lacksRole>
                 </td>
                 <td>${productType.name}</td>
                 <td>
@@ -34,8 +40,12 @@
                 <td>${product.price}</td>
                 <td>${product.description}</td>
                 <td>
-                    <a href="${BASE}/product/edit/${product.id}"><f:message key="common.edit"/></a>
-                    <a href="#" class="ext-product-delete"><f:message key="common.delete"/></a>
+                    <security:hasPermission name="product.edit">
+                        <a href="${BASE}/product/edit/${product.id}"><f:message key="common.edit"/></a>
+                    </security:hasPermission>
+                    <security:hasPermission name="product.delete">
+                        <a href="#" class="ext-product-delete"><f:message key="common.delete"/></a>
+                    </security:hasPermission>
                 </td>
             </tr>
         </c:forEach>

@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ include file="common/global.jsp" %>
+<%@ taglib prefix="security" uri="/security" %>
 
 <!DOCTYPE html>
 <html>
@@ -9,6 +10,10 @@
     <%@ include file="common/style.jsp" %>
 </head>
 <body>
+
+<security:user>
+    <c:redirect context="${BASE}" url="/products"/>
+</security:user>
 
 <div id="header">
     <div class="logo">
@@ -31,7 +36,7 @@
         </div>
         <div class="css-form-row">
             <label for="captcha"><f:message key="common.captcha"/>:</label>
-            <input type="password" id="captcha" name="captcha" class="css-width-50 ext-required">
+            <input type="text" id="captcha" name="captcha" class="css-width-50 ext-required">
             <img id="captcha_img" src="${BASE}/captcha" title="<f:message key="common.captcha.change"/>" class="css-cursor-pointer ext-captcha">
         </div>
         <div class="css-form-footer css-text-center">

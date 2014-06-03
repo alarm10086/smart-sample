@@ -1,12 +1,12 @@
-#Smart Sample
+# Smart Sample
 
-##运行环境
+## 运行环境
 
 1. JDK 1.6+
 2. MySQL 5.5+
 3. Tomcat 7.0+
 
-##使用方法
+## 使用方法
 
 1. 打开 src/main/resources/smart.properties 文件，修改数据库连接信息
 2. 在 MySQL 中创建数据库，并执行 doc/sample.sql 脚本，初始化表结构及其数据

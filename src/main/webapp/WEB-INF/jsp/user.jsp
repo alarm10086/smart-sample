@@ -32,30 +32,12 @@
                         </form>
                     </div>
                     <div class="css-right">
-                        <a href="${BASE}/user/create"><f:message key="user.create_user"/></a>
+                        <a href="${BASE}/user"><f:message key="user.create_user"/></a>
                     </div>
                 </div>
-                <table class="css-table">
-                    <thead>
-                        <tr>
-                            <td><f:message key="user.username"/></td>
-                            <td class="css-width-75"><f:message key="common.action"/></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="user" items="${userList}">
-                            <tr data-id="${user.id}" data-name="${user.username}">
-                                <td>
-                                    <a href="${BASE}/user/${user.id}">${user.username}</a>
-                                </td>
-                                <td>
-                                    <a href="${BASE}/user/${user.id}"><f:message key="common.edit"/></a>
-                                    <a href="${BASE}/user/${user.id}" class="ext-user-delete"><f:message key="common.delete"/></a>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                <div id="user_list">
+                    <%@ include file="user_list.jsp" %>
+                </div>
             </div>
         </div>
     </div>

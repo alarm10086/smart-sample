@@ -1,5 +1,5 @@
 $(function() {
-    var mainURL = BASE + '/product';
+    var mainURL = BASE + '/products';
 
     $('#login_form').ajaxForm({
         type: 'post',

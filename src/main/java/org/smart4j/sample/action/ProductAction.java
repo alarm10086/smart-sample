@@ -14,6 +14,7 @@ import org.smart4j.framework.mvc.bean.Result;
 import org.smart4j.framework.mvc.bean.View;
 import org.smart4j.framework.util.WebUtil;
 import org.smart4j.plugin.security.annotation.HasPermissions;
+import org.smart4j.plugin.security.annotation.HasRoles;
 import org.smart4j.sample.Constant;
 import org.smart4j.sample.Tool;
 import org.smart4j.sample.bean.ProductBean;
@@ -27,7 +28,7 @@ public class ProductAction {
     @Inject
     private ProductService productService;
 
-    @Request.Get("/product")
+    @Request.Get("/products")
     public View index() {
         int pageNumber = 1;
         int pageSize = Tool.getPageSize("product_pager");
@@ -57,6 +58,7 @@ public class ProductAction {
             .data("productTypeList", productTypeList);
     }
 
+    @HasPermissions("product.create")
     @Request.Post("/product/create")
     public Result create(Params params, Multiparts multiparts) {
         Map<String, Object> fieldMap = params.getFieldMap();
@@ -65,12 +67,14 @@ public class ProductAction {
         return new Result(success);
     }
 
+    @HasPermissions("product.delete")
     @Request.Delete("/product/delete/{id}")
     public Result delete(long id) {
         boolean success = productService.deleteProduct(id);
         return new Result(success);
     }
 
+    @HasPermissions("product.view")
     @Request.Get("/product/view/{id}")
     public View view(long id) {
         ProductBean productBean = productService.getProductBean(id);
@@ -78,6 +82,7 @@ public class ProductAction {
             .data("productBean", productBean);
     }
 
+    @HasPermissions("product.edit")
     @Request.Get("/product/edit/{id}")
     public View edit(long id) {
         List<ProductType> productTypeList = productService.getProductTypeList();
@@ -87,6 +92,7 @@ public class ProductAction {
             .data("productBean", productBean);
     }
 
+    @HasRoles("admin")
     @Request.Put("/product/update/{id}")
     public Result update(long id, Params params) {
         Map<String, Object> fieldMap = params.getFieldMap();
@@ -94,6 +100,7 @@ public class ProductAction {
         return new Result(success);
     }
 
+    @HasRoles("admin")
     @Request.Get("/product/upload_picture/{id}")
     public View uploadPicture(long id) {
         Product product = productService.getProduct(id);
@@ -101,6 +108,7 @@ public class ProductAction {
             .data("product", product);
     }
 
+    @HasRoles("admin")
     @Request.Post("/product/upload_picture/{id}")
     public Result uploadPicture(long id, Params params, Multiparts multiparts) {
         Map<String, Object> fieldMap = params.getFieldMap();

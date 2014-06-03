@@ -1,14 +1,14 @@
 $(function() {
-    $('#product_create_form').ajaxForm({
+    $('#user_create_form').ajaxForm({
         type: 'post',
-        url: BASE + '/product/create',
+        url: BASE + '/user',
         dataType: 'json',
         beforeSubmit: function() {
-            return Smart.Validator.checkRequired('product_create_form');
+            return Smart.Validator.checkRequired('user_create_form');
         },
         success: function(result) {
             if (result.success) {
-                location.href = BASE + '/products';
+                location.href = BASE + '/users';
             }
         }
     });
