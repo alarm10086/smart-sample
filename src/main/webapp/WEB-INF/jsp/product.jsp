@@ -33,7 +33,7 @@
                     </div>
                     <div class="css-right">
                         <security:hasPermission name="product.create">
-                            <a href="${BASE}/product/create"><f:message key="product.new_product"/></a>
+                            <a href="${BASE}/product/create"><f:message key="product.create_product"/></a>
                         </security:hasPermission>
                     </div>
                 </div>

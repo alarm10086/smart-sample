@@ -7,6 +7,7 @@
     </div>
     <div class="menu">
         <a href="${BASE}/product"><f:message key="product"/></a>
+        <a href="${BASE}/user"><f:message key="user"/></a>
     </div>
     <div class="oper">
         <span><f:message key="common.user"/>: <security:principal/></span>

@@ -15,7 +15,7 @@
 <div id="content">
     <form id="product_create_form" enctype="multipart/form-data" class="css-form">
         <div class="css-form-header">
-            <h3><f:message key="product.new_product"/></h3>
+            <h3><f:message key="product.create_product"/></h3>
         </div>
         <div class="css-form-row">
             <label for="productType"><f:message key="product.product_type"/>:</label>
