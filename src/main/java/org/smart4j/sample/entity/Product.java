@@ -1,8 +1,9 @@
 package org.smart4j.sample.entity;
 
-import org.smart4j.framework.orm.BaseEntity;
+import org.smart4j.framework.orm.annotation.Entity;
 
-public class Product extends BaseEntity {
+@Entity
+public class Product {
 
     private long id;
 

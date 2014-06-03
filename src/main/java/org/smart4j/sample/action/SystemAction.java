@@ -6,10 +6,11 @@ import org.smart4j.framework.mvc.annotation.Request;
 import org.smart4j.framework.mvc.bean.Params;
 import org.smart4j.framework.mvc.bean.Result;
 import org.smart4j.framework.mvc.bean.View;
+import org.smart4j.framework.util.StringUtil;
 import org.smart4j.framework.util.WebUtil;
+import org.smart4j.plugin.security.SecurityHelper;
+import org.smart4j.plugin.security.fault.LoginException;
 import org.smart4j.sample.Constant;
-import org.smart4j.security.SmartSecurityHelper;
-import org.smart4j.security.exception.LoginException;
 
 @Action
 public class SystemAction {
@@ -32,12 +33,12 @@ public class SystemAction {
         String captcha = params.getString("captcha");
 
         String sessionCaptcha = DataContext.Session.get(Constant.CAPTCHA);
-        if (!sessionCaptcha.equals(captcha)) {
+        if (StringUtil.isNotEmpty(sessionCaptcha) && !sessionCaptcha.equals(captcha)) {
             return new Result(false).data("captcha_error");
         }
 
         try {
-            SmartSecurityHelper.login(username, password, false);
+            SecurityHelper.login(username, password, false);
         } catch (LoginException e) {
             return new Result(false);
         }
@@ -47,7 +48,7 @@ public class SystemAction {
 
     @Request.Get("/logout")
     public Result logout() {
-        SmartSecurityHelper.logout();
+        SecurityHelper.logout();
         return new Result(true);
     }
 }

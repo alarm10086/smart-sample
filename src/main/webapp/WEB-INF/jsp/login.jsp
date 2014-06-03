@@ -11,7 +11,7 @@
 <body>
 
 <div id="header">
-    <div id="logo">
+    <div class="logo">
         <a href="${BASE}/"><f:message key="common.title"/></a>
     </div>
 </div>

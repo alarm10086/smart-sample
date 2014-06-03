@@ -1,8 +1,9 @@
 package org.smart4j.sample.entity;
 
-import org.smart4j.framework.orm.BaseEntity;
+import org.smart4j.framework.orm.annotation.Entity;
 
-public class Log extends BaseEntity {
+@Entity
+public class Log {
 
     private long id;
 

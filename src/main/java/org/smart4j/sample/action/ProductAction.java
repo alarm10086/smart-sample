@@ -13,6 +13,7 @@ import org.smart4j.framework.mvc.bean.Params;
 import org.smart4j.framework.mvc.bean.Result;
 import org.smart4j.framework.mvc.bean.View;
 import org.smart4j.framework.util.WebUtil;
+import org.smart4j.plugin.security.annotation.HasPermissions;
 import org.smart4j.sample.Constant;
 import org.smart4j.sample.Tool;
 import org.smart4j.sample.bean.ProductBean;
@@ -48,6 +49,7 @@ public class ProductAction {
             .data("productBeanPager", productBeanPager);
     }
 
+    @HasPermissions("product.create")
     @Request.Get("/product/create")
     public View create() {
         List<ProductType> productTypeList = productService.getProductTypeList();

@@ -16,17 +16,13 @@ public class ActionAspect extends AspectProxy {
 
     @Override
     public void before(Class<?> cls, Method method, Object[] params) throws Throwable {
-        if (logger.isDebugEnabled()) {
-            logger.debug("---------- begin ----------");
-        }
+        logger.debug("---------- begin ----------");
         begin = System.currentTimeMillis();
     }
 
     @Override
     public void after(Class<?> cls, Method method, Object[] params, Object result) throws Throwable {
         logger.info("time: " + (System.currentTimeMillis() - begin) + "ms");
-        if (logger.isDebugEnabled()) {
-            logger.debug("----------- end -----------");
-        }
+        logger.debug("----------- end -----------");
     }
 }

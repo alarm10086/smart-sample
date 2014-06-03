@@ -5,14 +5,14 @@ import java.util.List;
 import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
-import org.smart4j.plugin.soap.SoapHelper;
+import org.smart4j.plugin.rest.RestHelper;
 import org.smart4j.sample.entity.Product;
-import org.smart4j.sample.soap.ProductService;
+import org.smart4j.sample.rest.ProductService;
 
-public class ProductServiceSOAPTest {
+public class ProductServiceRestTest {
 
-    private String wsdl = "http://localhost:8080/smart-sample/ws/soap/ProductService";
-    private ProductService productService = SoapHelper.createClient(wsdl, ProductService.class);
+    private String wadl = "http://localhost:8080/smart-sample/rest/product";
+    private ProductService productService = RestHelper.createClient(wadl, ProductService.class);
 
     @Test
     public void getProductListTest() {

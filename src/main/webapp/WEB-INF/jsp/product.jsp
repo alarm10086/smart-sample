@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ include file="common/global.jsp" %>
+<%@ taglib prefix="security" uri="/security" %>
 
 <!DOCTYPE html>
 <html>
@@ -31,7 +32,9 @@
                         </form>
                     </div>
                     <div class="css-right">
-                        <a href="${BASE}/product/create"><f:message key="product.new_product"/></a>
+                        <security:hasPermission name="product.create">
+                            <a href="${BASE}/product/create"><f:message key="product.create_product"/></a>
+                        </security:hasPermission>
                     </div>
                 </div>
                 <div id="product_list">
