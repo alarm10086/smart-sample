@@ -195,6 +195,9 @@ img {
     text-align: right;
     width: 120px;
 }
+.css-form-cell {
+    height: 30px;
+}
 .css-form-footer {
     border-top: 1px solid #CCC;
     padding: 10px;
@@ -331,4 +334,12 @@ img {
 
 .css-tip {
     color: #999;
+}
+
+label.css-checkbox {
+    width: inherit;
+    margin-right: 10px;
+}
+label.css-checkbox input[type="checkbox"] {
+    margin-right: 2px;
 }
