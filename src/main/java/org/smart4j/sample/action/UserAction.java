@@ -33,7 +33,6 @@ public class UserAction {
     public View index() {
         List<UserBean> userBeanList = userService.findUserBeanList();
         DataContext.Request.put("userBeanList", userBeanList);
-
         return new View("user.jsp");
     }
 
@@ -42,7 +41,6 @@ public class UserAction {
         String username = params.getString("username");
         List<UserBean> userBeanList = userService.findUserBeanListByUsername(username);
         DataContext.Request.put("userBeanList", userBeanList);
-
         return new View("user_list.jsp");
     }
 
@@ -50,7 +48,6 @@ public class UserAction {
     public View create() {
         List<Role> roleList = roleService.getRoleList();
         DataContext.Request.put("roleList", roleList);
-
         return new View("user_create.jsp");
     }
 
@@ -58,7 +55,6 @@ public class UserAction {
     public Result save(Params params) {
         Map<String, Object> fieldMap = params.getFieldMap();
         boolean result = userService.saveUser(fieldMap);
-
         return new Result(result);
     }
 
@@ -77,14 +73,12 @@ public class UserAction {
     public Result update(long id, Params params) {
         Map<String, Object> fieldMap = params.getFieldMap();
         boolean result = userService.updateUser(id, fieldMap);
-
         return new Result(result);
     }
 
     @Request.Delete("/user/{id}")
     public Result delete(long id) {
         boolean result = userService.deleteUser(id);
-
         return new Result(result);
     }
 }
