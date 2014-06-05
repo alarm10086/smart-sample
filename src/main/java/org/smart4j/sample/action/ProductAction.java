@@ -6,7 +6,10 @@ import org.smart4j.framework.dao.bean.Pager;
 import org.smart4j.framework.ioc.annotation.Inject;
 import org.smart4j.framework.mvc.DataContext;
 import org.smart4j.framework.mvc.annotation.Action;
-import org.smart4j.framework.mvc.annotation.Request;
+import org.smart4j.framework.mvc.annotation.DELETE;
+import org.smart4j.framework.mvc.annotation.GET;
+import org.smart4j.framework.mvc.annotation.POST;
+import org.smart4j.framework.mvc.annotation.PUT;
 import org.smart4j.framework.mvc.bean.Multipart;
 import org.smart4j.framework.mvc.bean.Multiparts;
 import org.smart4j.framework.mvc.bean.Params;
@@ -28,7 +31,7 @@ public class ProductAction {
     @Inject
     private ProductService productService;
 
-    @Request.Get("/products")
+    @GET("/products")
     public View index() {
         int pageNumber = 1;
         int pageSize = Tool.getPageSize("product_pager");
@@ -39,7 +42,7 @@ public class ProductAction {
             .data("productBeanPager", productBeanPager);
     }
 
-    @Request.Post("/product/search")
+    @POST("/product/search")
     public View search(Params params) {
         int pageNumber = params.getInt(Constant.PAGE_NUMBER);
         int pageSize = params.getInt(Constant.PAGE_SIZE);
@@ -51,7 +54,7 @@ public class ProductAction {
     }
 
     @HasPermissions("product.create")
-    @Request.Get("/product/create")
+    @GET("/product/create")
     public View create() {
         List<ProductType> productTypeList = productService.getProductTypeList();
         return new View("product_create.jsp")
@@ -59,7 +62,7 @@ public class ProductAction {
     }
 
     @HasPermissions("product.create")
-    @Request.Post("/product/create")
+    @POST("/product/create")
     public Result create(Params params, Multiparts multiparts) {
         Map<String, Object> fieldMap = params.getFieldMap();
         Multipart multipart = multiparts.getOne();
@@ -68,14 +71,14 @@ public class ProductAction {
     }
 
     @HasPermissions("product.delete")
-    @Request.Delete("/product/delete/{id}")
+    @DELETE("/product/delete/{id}")
     public Result delete(long id) {
         boolean success = productService.deleteProduct(id);
         return new Result(success);
     }
 
     @HasPermissions("product.view")
-    @Request.Get("/product/view/{id}")
+    @GET("/product/view/{id}")
     public View view(long id) {
         ProductBean productBean = productService.getProductBean(id);
         return new View("product_view.jsp")
@@ -83,7 +86,7 @@ public class ProductAction {
     }
 
     @HasPermissions("product.edit")
-    @Request.Get("/product/edit/{id}")
+    @GET("/product/edit/{id}")
     public View edit(long id) {
         List<ProductType> productTypeList = productService.getProductTypeList();
         ProductBean productBean = productService.getProductBean(id);
@@ -93,7 +96,7 @@ public class ProductAction {
     }
 
     @HasRoles("admin")
-    @Request.Put("/product/update/{id}")
+    @PUT("/product/update/{id}")
     public Result update(long id, Params params) {
         Map<String, Object> fieldMap = params.getFieldMap();
         boolean success = productService.updateProduct(id, fieldMap, null);
@@ -101,7 +104,7 @@ public class ProductAction {
     }
 
     @HasRoles("admin")
-    @Request.Get("/product/upload_picture/{id}")
+    @GET("/product/upload_picture/{id}")
     public View uploadPicture(long id) {
         Product product = productService.getProduct(id);
         return new View("product_upload.jsp")
@@ -109,7 +112,7 @@ public class ProductAction {
     }
 
     @HasRoles("admin")
-    @Request.Post("/product/upload_picture/{id}")
+    @POST("/product/upload_picture/{id}")
     public Result uploadPicture(long id, Params params, Multiparts multiparts) {
         Map<String, Object> fieldMap = params.getFieldMap();
         Multipart multipart = multiparts.getOne();
@@ -118,7 +121,7 @@ public class ProductAction {
             .data(multipart.getFileName());
     }
 
-    @Request.Get("/product/download_picture/{id}")
+    @GET("/product/download_picture/{id}")
     public void downloadPicture(long id) {
         Product product = productService.getProduct(id);
         String picture = product.getPicture();

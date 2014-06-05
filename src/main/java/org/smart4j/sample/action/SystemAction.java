@@ -2,7 +2,8 @@ package org.smart4j.sample.action;
 
 import org.smart4j.framework.mvc.DataContext;
 import org.smart4j.framework.mvc.annotation.Action;
-import org.smart4j.framework.mvc.annotation.Request;
+import org.smart4j.framework.mvc.annotation.GET;
+import org.smart4j.framework.mvc.annotation.POST;
 import org.smart4j.framework.mvc.bean.Params;
 import org.smart4j.framework.mvc.bean.Result;
 import org.smart4j.framework.mvc.bean.View;
@@ -15,18 +16,18 @@ import org.smart4j.sample.Constant;
 @Action
 public class SystemAction {
 
-    @Request.Get("/captcha")
+    @GET("/captcha")
     public void captcha() {
         String captcha = WebUtil.createCaptcha(DataContext.getResponse());
         DataContext.Session.put(Constant.CAPTCHA, captcha);
     }
 
-    @Request.Get("/login")
+    @GET("/login")
     public View login() {
         return new View("login.jsp");
     }
 
-    @Request.Post("/login")
+    @POST("/login")
     public Result login(Params params) {
         String username = params.getString("username");
         String password = params.getString("password");
@@ -46,7 +47,7 @@ public class SystemAction {
         return new Result(true);
     }
 
-    @Request.Get("/logout")
+    @GET("/logout")
     public Result logout() {
         SecurityHelper.logout();
         return new Result(true);
