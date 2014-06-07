@@ -3,7 +3,6 @@ package org.smart4j.sample.action;
 import java.util.List;
 import java.util.Map;
 import org.smart4j.framework.ioc.annotation.Inject;
-import org.smart4j.framework.mvc.DataContext;
 import org.smart4j.framework.mvc.annotation.Action;
 import org.smart4j.framework.mvc.annotation.DELETE;
 import org.smart4j.framework.mvc.annotation.GET;
@@ -35,23 +34,23 @@ public class UserAction {
     @GET("/users")
     public View index() {
         List<UserBean> userBeanList = userService.findUserBeanList();
-        DataContext.Request.put("userBeanList", userBeanList);
-        return new View("user.jsp");
+        return new View("user.jsp")
+            .data("userBeanList", userBeanList);
     }
 
     @POST("/users")
     public View search(Params params) {
         String username = params.getString("username");
         List<UserBean> userBeanList = userService.findUserBeanListByUsername(username);
-        DataContext.Request.put("userBeanList", userBeanList);
-        return new View("user_list.jsp");
+        return new View("user_list.jsp")
+            .data("userBeanList", userBeanList);
     }
 
     @GET("/user")
     public View create() {
         List<Role> roleList = roleService.getRoleList();
-        DataContext.Request.put("roleList", roleList);
-        return new View("user_create.jsp");
+        return new View("user_create.jsp")
+            .data("roleList", roleList);
     }
 
     @POST("/user")
@@ -64,12 +63,10 @@ public class UserAction {
     @GET("/user/{id}")
     public View edit(long id) {
         UserBean userBean = userService.findUserBean(id);
-        DataContext.Request.put("userBean", userBean);
-
         List<Role> roleList = roleService.getRoleList();
-        DataContext.Request.put("roleList", roleList);
-
-        return new View("user_edit.jsp");
+        return new View("user_edit.jsp")
+            .data("userBean", userBean)
+            .data("roleList", roleList);
     }
 
     @PUT("/user/{id}")
