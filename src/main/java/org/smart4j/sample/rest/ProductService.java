@@ -19,24 +19,26 @@ import org.smart4j.sample.entity.Product;
 
 @Service
 @Rest("/product")
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
+@Path("ProductService")
 public class ProductService {
 
     @GET
     @Path("/products")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Product> getProductList() {
         return DataSet.selectListWithSort(Product.class, "id asc");
     }
 
     @GET
     @Path("/product/{productId}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Product getProduct(@PathParam("productId") long productId) {
         return DataSet.select(Product.class, "id = ?", productId);
     }
 
     @POST
     @Path("/product")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Transaction
     public boolean createProduct(Map<String, Object> productFieldMap) {
         return DataSet.insert(Product.class, productFieldMap);
@@ -44,6 +46,7 @@ public class ProductService {
 
     @PUT
     @Path("/product/{productId}")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Transaction
     public boolean updateProduct(@PathParam("productId") long productId, Map<String, Object> productFieldMap) {
         return DataSet.update(Product.class, productFieldMap, "id = ?", productId);
