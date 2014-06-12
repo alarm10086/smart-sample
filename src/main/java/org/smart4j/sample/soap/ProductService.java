@@ -7,7 +7,7 @@ import org.smart4j.plugin.soap.Soap;
 import org.smart4j.sample.entity.Product;
 import org.smart4j.sample.soap.adapter.StringObjectMapAdapter;
 
-@Soap("/product")
+@Soap
 public interface ProductService {
 
     List<Product> getProductList();

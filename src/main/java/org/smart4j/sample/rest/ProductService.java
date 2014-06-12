@@ -18,8 +18,8 @@ import org.smart4j.plugin.rest.Rest;
 import org.smart4j.sample.entity.Product;
 
 @Service
-@Rest("/product")
-@Path("ProductService")
+@Rest
+@Path("/ProductService")
 public class ProductService {
 
     @GET

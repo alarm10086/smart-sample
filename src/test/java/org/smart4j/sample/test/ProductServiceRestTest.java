@@ -1,18 +1,32 @@
 package org.smart4j.sample.test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
+import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import org.smart4j.plugin.rest.RestHelper;
 import org.smart4j.sample.entity.Product;
 import org.smart4j.sample.rest.ProductService;
 
 public class ProductServiceRestTest {
 
-    private String wadl = "http://localhost:8080/smart-sample/rest/product";
-    private ProductService productService = RestHelper.createClient(wadl, ProductService.class);
+    private ProductService productService;
+
+    @Before
+    public void before() {
+        List<Object> providerList = new ArrayList<Object>();
+        providerList.add(new JacksonJsonProvider());
+
+        productService = JAXRSClientFactory.create(
+            "http://localhost:8080/smart-sample/rest/ProductService",
+            ProductService.class,
+            providerList
+        );
+    }
 
     @Test
     public void getProductListTest() {

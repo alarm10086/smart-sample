@@ -3,16 +3,24 @@ package org.smart4j.sample.test;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.apache.cxf.frontend.ClientProxyFactoryBean;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import org.smart4j.plugin.soap.SoapHelper;
 import org.smart4j.sample.entity.Product;
 import org.smart4j.sample.soap.ProductService;
 
 public class ProductServiceSoapTest {
 
-    private String wsdl = "http://localhost:8080/smart-sample/soap/product";
-    private ProductService productService = SoapHelper.createClient(wsdl, ProductService.class);
+    private ProductService productService;
+
+    @Before
+    public void before() {
+        ClientProxyFactoryBean factory = new ClientProxyFactoryBean();
+        factory.setAddress("http://localhost:8080/smart-sample/soap/ProductService");
+        factory.setServiceClass(ProductService.class);
+        productService = factory.create(ProductService.class);
+    }
 
     @Test
     public void getProductListTest() {
