@@ -19,7 +19,7 @@
         <mysql.version>5.1.25</mysql.version>
         <smart-framework.version>2.4-SNAPSHOT</smart-framework.version>
         <smart-plugin-i18n.version>1.0</smart-plugin-i18n.version>
-        <smart-plugin-security.version>1.0</smart-plugin-security.version>
+        <smart-plugin-security.version>1.1-SNAPSHOT</smart-plugin-security.version>
         <smart-plugin-cache.version>1.0</smart-plugin-cache.version>
         <smart-plugin-soap.version>1.1-SNAPSHOT</smart-plugin-soap.version>
         <smart-plugin-rest.version>1.1-SNAPSHOT</smart-plugin-rest.version>
