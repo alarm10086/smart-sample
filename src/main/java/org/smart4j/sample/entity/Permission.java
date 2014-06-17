@@ -1,9 +1,10 @@
 package org.smart4j.sample.entity;
 
+import java.io.Serializable;
 import org.smart4j.framework.orm.annotation.Entity;
 
 @Entity
-public class Permission {
+public class Permission implements Serializable {
 
     private long id;
 

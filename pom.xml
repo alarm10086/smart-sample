@@ -23,6 +23,7 @@
         <smart-plugin-cache.version>1.0</smart-plugin-cache.version>
         <smart-plugin-soap.version>1.1-SNAPSHOT</smart-plugin-soap.version>
         <smart-plugin-rest.version>1.1-SNAPSHOT</smart-plugin-rest.version>
+        <smart-plugin-hessian.version>1.1-SNAPSHOT</smart-plugin-hessian.version>
         <smart-plugin-druid.version>1.0</smart-plugin-druid.version>
     </properties>
 
@@ -92,6 +93,11 @@
             <groupId>org.smart4j</groupId>
             <artifactId>smart-plugin-rest</artifactId>
             <version>${smart-plugin-rest.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.smart4j</groupId>
+            <artifactId>smart-plugin-hessian</artifactId>
+            <version>${smart-plugin-hessian.version}</version>
         </dependency>
         <dependency>
             <groupId>org.smart4j</groupId>

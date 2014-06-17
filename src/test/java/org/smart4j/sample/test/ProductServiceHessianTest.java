@@ -1,11 +1,9 @@
 package org.smart4j.sample.test;
 
-import java.util.ArrayList;
+import com.caucho.hessian.client.HessianProxyFactory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
-import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,23 +11,23 @@ import org.junit.runner.RunWith;
 import org.smart4j.framework.test.OrderedRunner;
 import org.smart4j.framework.test.annotation.TestOrder;
 import org.smart4j.sample.entity.Product;
-import org.smart4j.sample.rest.ProductService;
+import org.smart4j.sample.hessian.ProductService;
 
 @RunWith(OrderedRunner.class)
-public class ProductServiceRestTest {
+public class ProductServiceHessianTest {
 
     private ProductService productService;
 
     @Before
     public void before() {
-        List<Object> providerList = new ArrayList<Object>();
-        providerList.add(new JacksonJsonProvider());
-
-        productService = JAXRSClientFactory.create(
-            "http://localhost:8080/smart-sample/rest/ProductService",
-            ProductService.class,
-            providerList
-        );
+        HessianProxyFactory factory = new HessianProxyFactory();
+        try {
+            productService = (ProductService) factory.create(
+                "http://localhost:8080/smart-sample/hessian/ProductService"
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
