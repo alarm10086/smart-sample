@@ -12,7 +12,7 @@
 <body>
 
 <security:user>
-    <c:redirect context="${BASE}" url="/products"/>
+    <c:redirect context="/${BASE}" url="/products"/>
 </security:user>
 
 <div id="header">

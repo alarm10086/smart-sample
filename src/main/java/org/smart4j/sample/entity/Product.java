@@ -1,5 +1,6 @@
 package org.smart4j.sample.entity;
 
+import org.smart4j.framework.orm.annotation.Column;
 import org.smart4j.framework.orm.annotation.Entity;
 
 @Entity
@@ -9,6 +10,7 @@ public class Product {
 
     private long productTypeId;
 
+    @Column("product_name")
     private String name;
 
     private String code;

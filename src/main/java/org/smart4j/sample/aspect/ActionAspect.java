@@ -22,7 +22,7 @@ public class ActionAspect extends AspectProxy {
 
     @Override
     public void after(Class<?> cls, Method method, Object[] params, Object result) throws Throwable {
-        logger.info("time: " + (System.currentTimeMillis() - begin) + "ms");
+        logger.debug("time: " + (System.currentTimeMillis() - begin) + "ms");
         logger.debug("----------- end -----------");
     }
 }
