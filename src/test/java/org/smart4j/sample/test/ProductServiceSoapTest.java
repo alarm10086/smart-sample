@@ -7,9 +7,13 @@ import org.apache.cxf.frontend.ClientProxyFactoryBean;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.smart4j.framework.test.OrderedRunner;
+import org.smart4j.framework.test.annotation.TestOrder;
 import org.smart4j.sample.entity.Product;
 import org.smart4j.sample.soap.ProductService;
 
+@RunWith(OrderedRunner.class)
 public class ProductServiceSoapTest {
 
     private ProductService productService;
@@ -23,13 +27,14 @@ public class ProductServiceSoapTest {
     }
 
     @Test
+    @TestOrder(1)
     public void getProductListTest() {
         List<Product> productList = productService.getProductList();
         Assert.assertNotNull(productList);
-        Assert.assertEquals(productList.size(), 12);
     }
 
     @Test
+    @TestOrder(2)
     public void getProductTest() {
         long productId = 1;
 
@@ -38,32 +43,36 @@ public class ProductServiceSoapTest {
     }
 
     @Test
+    @TestOrder(3)
     public void createProductTest() {
         Map<String, Object> productFieldMap = new HashMap<String, Object>();
+        productFieldMap.put("id", Long.MAX_VALUE);
         productFieldMap.put("productTypeId", 1);
-        productFieldMap.put("name", "1");
-        productFieldMap.put("code", "1");
-        productFieldMap.put("price", 1);
-        productFieldMap.put("description", "1");
+        productFieldMap.put("name", "test");
+        productFieldMap.put("code", "test");
+        productFieldMap.put("price", 1000);
+        productFieldMap.put("description", "test");
 
         boolean result = productService.createProduct(productFieldMap);
         Assert.assertTrue(result);
     }
 
     @Test
+    @TestOrder(4)
     public void updateProductTest() {
-        long productId = 13;
+        long productId = Long.MAX_VALUE;
         Map<String, Object> productFieldMap = new HashMap<String, Object>();
-        productFieldMap.put("name", "13");
-        productFieldMap.put("code", "13");
+        productFieldMap.put("name", "test2");
+        productFieldMap.put("code", "test2");
 
         boolean result = productService.updateProduct(productId, productFieldMap);
         Assert.assertTrue(result);
     }
 
     @Test
+    @TestOrder(5)
     public void deleteProductTest() {
-        long productId = 13;
+        long productId = Long.MAX_VALUE;
 
         boolean result = productService.deleteProduct(productId);
         Assert.assertTrue(result);
